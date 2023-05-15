@@ -1,40 +1,138 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset='utf-8'>
+    <meta charset="utf-8" />
     <title>Kuru Kuru~</title>
-    <link rel="stylesheet" href="style.css" type="text/css">
-    <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css" type="text/css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet" />
     <script src="https://code.iconify.design/iconify-icon/1.0.2/iconify-icon.min.js"></script>
 </head>
+
 <body>
-    <img src="assets/hertaa1.gif" class="preload">
-    <img src="assets/hertaa2.gif" class="preload">
+    <img src="img/hertaa1.gif" class="preload" />
+    <img src="img/hertaa2.gif" class="preload" />
     <div id="content">
         <h1>Welcome to herta kuru</h1>
-        <hr id="subtitle-seperator">
-        <h2>The website for Herta, the <del>annoying</del> cutest genius Honkai: Star Rail character out there.</h2>
+        <hr id="subtitle-seperator" />
+        <h2>
+            The website for Herta, the <del>annoying</del> cutest genius Honkai:
+            Star Rail character out there.
+        </h2>
         <div id="counter-container">
             <p>The kuru~ has been squished</p>
-            <br>
+            <br />
+            <br />
             <p id="counter">0</p>
-            <br>
+            <br />
+            <br />
             <p>times</p>
-            <button id="counter-button" onclick="counterClick()">Squish the kuru~!</button>
+            <button id="counter-button" onclick="counterClick()">
+                Squish the kuru~!
+            </button>
         </div>
-        <hr>
+        <hr />
         <div id="grid">
-            <noscript>Your browser does not support JavaScript or JavaScript has been disabled.<br>This website relies on JavaScript, so please enable it or use another browser.</noscript>
+            <noscript>Your browser does not support JavaScript or JavaScript has been
+                disabled.<br />This website relies on JavaScript, so please enable it
+                or use another browser.</noscript>
         </div>
     </div>
     <div id="footer">
-        <img id="herta-card" loading="lazy" src="assets/card.jpg" alt="">
+        <img id="herta-card" loading="lazy" src="img/card.jpg" alt="" />
         <div id="footer-text">
-            <p>Herta gif made by </p>
-            <p><a href="https://twitter.com/Seseren_kr" target="_blank"><iconify-icon icon="mdi:twitter" id="twitter-footer-icon" class="footer-icon"></iconify-icon><span class="footer-icon-text">@Seseren_kr</span></a></p>
-            <p id="footer-repository-text">You can check out the GitHub repository here:</p>
-            <p><a href="https://github.com/duiqt/herta.kuru" target="_blank"><iconify-icon icon="mdi:github" id="github-footer-icon" class="footer-icon"></iconify-icon><span class="footer-icon-text">herta_kuru repo</span></a></p>
+            <p>Herta gif made by</p>
+            <p>
+                <a href="https://twitter.com/Seseren_kr" target="_blank"><iconify-icon icon="mdi:twitter"
+                        id="twitter-footer-icon" class="footer-icon"></iconify-icon><span
+                        class="footer-icon-text">@Seseren_kr</span></a>
+            </p>
+            <p id="footer-repository-text">
+                You can check out the GitHub repository here:
+            </p>
+            <p>
+                <a href="https://github.com/duiqt/herta.kuru" target="_blank"><iconify-icon icon="mdi:github"
+                        id="github-footer-icon" class="footer-icon"></iconify-icon><span
+                        class="footer-icon-text">herta_kuru repo</span></a>
+            </p>
         </div>
     </div>
 </body>
 </html>
+
+<script>
+    //varible
+    var audioList = [
+        new Audio("audio/kuruto.mp3"),
+        new Audio("audio/kuru1.mp3"),
+        new Audio("audio/kuru2.mp3"),
+    ];
+
+    for (const audio of audioList) {
+        audio.preload = "auto";
+    }
+
+    var counter = 0;
+    var temporaryCounter = 0;
+    var firstSquish = true;
+    //end varible
+
+    //counter button
+    function counterClick() {
+        var counterElement = document.getElementById("counter");
+        temporaryCounter += 1;
+        counterElement.textContent = (counter + temporaryCounter).toLocaleString();
+
+        playKuru();
+        animateHerta();
+    }
+
+    function playKuru() {
+        var audio;
+
+        if (firstSquish) {
+            firstSquish = false;
+            audio = audioList[0].cloneNode();
+        } else {
+            var random = Math.floor(Math.random() * 2) + 1;
+            audio = audioList[random].cloneNode();
+        }
+
+        audio.play();
+
+        audio.addEventListener("ended", function () {
+            this.remove();
+        });
+    }
+
+    function animateHerta() {
+        var counter_button = document.getElementById("counter-button");
+        var id = null;
+
+        var random = Math.floor(Math.random() * 2) + 1;
+        var elem = document.createElement("img");
+        elem.src = `img/hertaa${random}.gif`;
+        elem.style.position = "absolute";
+        elem.style.right = "-500px";
+        elem.style.top = counter_button.getClientRects()[0].bottom + scrollY - 430 + "px"
+        elem.style.zIndex = "-1";
+        document.body.appendChild(elem);
+
+        var pos = -500;
+        var limit = window.innerWidth + 500;
+        clearInterval(id);
+        id = setInterval(frame, 10);
+        function frame() {
+            if (pos >= limit) {
+                clearInterval(id);
+                elem.remove()
+            } else {
+                pos += 20;
+                elem.style.right = pos + 'px';
+            }
+        }
+    }
+    //end counter button
+</script>
