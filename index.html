@@ -60,6 +60,7 @@
         </div>
     </div>
 </body>
+
 </html>
 
 <script>
@@ -74,16 +75,16 @@
         audio.preload = "auto";
     }
 
-    var counter = 0;
-    var temporaryCounter = 0;
     var firstSquish = true;
     //end varible
 
     //counter button
     function counterClick() {
         var counterElement = document.getElementById("counter");
-        temporaryCounter += 1;
-        counterElement.textContent = (counter + temporaryCounter).toLocaleString();
+        let temporaryCounter = localStorage.getItem('count')
+        temporaryCounter++
+        counterElement.innerHTML = temporaryCounter
+        localStorage.setItem('count', temporaryCounter);
 
         playKuru();
         animateHerta();
