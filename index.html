@@ -116,15 +116,15 @@
         var elem = document.createElement("img");
         elem.src = `img/hertaa${random}.gif`;
         elem.style.position = "absolute";
-        elem.style.right = "-256px";
+        elem.style.right = "-510px";
         elem.style.top = counter_button.getClientRects()[0].bottom + scrollY - 430 + "px"
         elem.style.zIndex = "-1";
         document.body.appendChild(elem);
 
-        var pos = -256;
-        var limit = window.innerWidth + 256;
+        var pos = -510;
+        var limit = window.innerWidth + 510;
         clearInterval(id);
-        id = setInterval(frame, 10);
+        id = setInterval(frame, 12);
         function frame() {
             if (pos >= limit) {
                 clearInterval(id);
