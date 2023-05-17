@@ -83,7 +83,7 @@
         localStorage.setItem("count", 0);
     }
 
-    let temporaryCounter = localStorage.getItem("count");
+    let temporaryCounter = parseInt(localStorage.getItem("count"));
     const counterElement = document.getElementById("counter");
     const counterTimesElement = document.getElementById("counter-times");
     
