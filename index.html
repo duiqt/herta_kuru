@@ -79,13 +79,19 @@
     var firstSquish = true;
     //end varible
 
+    if(!localStorage.getItem("count")){
+        localStorage.setItem("count", 0);
+    }
+
+    let temporaryCounter = localStorage.getItem("count");
+    const counterElement = document.getElementById("counter");
+    counterElement.innerText = temporaryCounter;
+
     //counter button
     function counterClick() {
-        var counterElement = document.getElementById("counter");
-        let temporaryCounter = localStorage.getItem('count')
-        temporaryCounter++
-        counterElement.innerHTML = temporaryCounter
-        localStorage.setItem('count', temporaryCounter);
+        ++temporaryCounter;
+        counterElement.innerText = temporaryCounter;
+        localStorage.setItem("count", temporaryCounter);
 
         playKuru();
         animateHerta();
