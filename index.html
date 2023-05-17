@@ -29,7 +29,7 @@
             <p id="counter">0</p>
             <br />
             <br />
-            <p>times</p>
+            <p id="counter-times">times</p>
             <button id="counter-button" onclick="counterClick()">
                 Squish the kuru~!
             </button>
@@ -79,22 +79,29 @@
     var firstSquish = true;
     //end varible
 
-    if(!localStorage.getItem("count")){
+    if (!localStorage.getItem("count")) {
         localStorage.setItem("count", 0);
     }
 
     let temporaryCounter = localStorage.getItem("count");
     const counterElement = document.getElementById("counter");
-    counterElement.innerText = temporaryCounter;
+    const counterTimesElement = document.getElementById("counter-times");
+    
+    displayCounter(temporaryCounter);
 
     //counter button
     function counterClick() {
         ++temporaryCounter;
-        counterElement.innerText = temporaryCounter;
+        displayCounter(temporaryCounter);
         localStorage.setItem("count", temporaryCounter);
 
         playKuru();
         animateHerta();
+    }
+    
+    function displayCounter(value) {
+        counterElement.innerText = value;
+        counterTimesElement.innerText = value === 1 ? "time" : "times";
     }
 
     function playKuru() {
