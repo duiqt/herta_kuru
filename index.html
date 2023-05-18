@@ -66,7 +66,7 @@
 
 <script>
     //varible
-    var audioList = [
+    const audioList = [
         new Audio("audio/kuruto.mp3"),
         new Audio("audio/kuru1.mp3"),
         new Audio("audio/kuru2.mp3"),
@@ -76,7 +76,7 @@
         audio.preload = "auto";
     }
 
-    var firstSquish = true;
+    let firstSquish = true;
     //end varible
 
     if (!localStorage.getItem("count")) {
@@ -105,13 +105,13 @@
     }
 
     function playKuru() {
-        var audio;
+        let audio;
 
         if (firstSquish) {
             firstSquish = false;
             audio = audioList[0].cloneNode();
         } else {
-            var random = Math.floor(Math.random() * 2) + 1;
+            const random = Math.floor(Math.random() * 2) + 1;
             audio = audioList[random].cloneNode();
         }
 
@@ -123,11 +123,11 @@
     }
 
     function animateHerta() {
-        var counter_button = document.getElementById("counter-button");
-        var id = null;
+        const counter_button = document.getElementById("counter-button");
+        let id = null;
 
-        var random = Math.floor(Math.random() * 2) + 1;
-        var elem = document.createElement("img");
+        const random = Math.floor(Math.random() * 2) + 1;
+        const elem = document.createElement("img");
         elem.src = `img/hertaa${random}.gif`;
         elem.style.position = "absolute";
         elem.style.right = "-510px";
@@ -135,11 +135,10 @@
         elem.style.zIndex = "-1";
         document.body.appendChild(elem);
 
-        var pos = -510;
-        var limit = window.innerWidth + 510;
+        let pos = -510;
+        const limit = window.innerWidth + 510;
         clearInterval(id);
-        id = setInterval(frame, 12);
-        function frame() {
+        id = setInterval(() => {
             if (pos >= limit) {
                 clearInterval(id);
                 elem.remove()
@@ -147,7 +146,7 @@
                 pos += 20;
                 elem.style.right = pos + 'px';
             }
-        }
+        }, 12);
     }
     //end counter button
 </script>
