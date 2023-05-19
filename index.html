@@ -130,13 +130,13 @@
         const elem = document.createElement("img");
         elem.src = `img/hertaa${random}.gif`;
         elem.style.position = "absolute";
-        elem.style.right = "-510px";
+        elem.style.right = "-500px";
         elem.style.top = counter_button.getClientRects()[0].bottom + scrollY - 430 + "px"
         elem.style.zIndex = "-1";
         document.body.appendChild(elem);
 
-        let pos = -510;
-        const limit = window.innerWidth + 510;
+        let pos = -500;
+        const limit = window.innerWidth + 500;
         clearInterval(id);
         id = setInterval(() => {
             if (pos >= limit) {
