@@ -56,9 +56,14 @@ hr {
     text-shadow: #9d88d3 0 0 10px,#9d88d3 0 0 10px,#9d88d3 0 0 10px,#9d88d3 0 0 10px,#9d88d3 0 0 10px;
 }
 
-#counter {
+#global-counter {
     color: #574f84;
     font-size: 2em;
+}
+
+#local-counter {
+    color: #574f84;
+    font-size: 0.75em;
 }
 
 #counter-button {
