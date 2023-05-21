@@ -35,7 +35,7 @@ function getGlobalCount() {
 localCounter.textContent = localCount.toLocaleString();
 getGlobalCount();
 
-let prevTime = Number.MAX_SAFE_INTEGER; // prevent focus event on load
+let prevTime = 0;
 // update global count every 10 seconds when tab is visible
 setInterval(() => {
     if (document.hasFocus() && getTimePassed() - prevTime > 10000) {
