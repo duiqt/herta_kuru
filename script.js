@@ -27,12 +27,23 @@ function getGlobalCount() {
         .then((response) => response.json())
         .then((data) => {
             globalCount = data.count;
-            globalCounter.textContent = data.count.toLocaleString();
+            // animate counter starting from current value to the updated value
+            const startingCount = parseInt(globalCounter.textContent.replace(/,/g, ''));
+            (animateCounter = () => {
+                const currentCount = parseInt(globalCounter.textContent.replace(/,/g, ''));
+                const time = (globalCount - startingCount) / 200; // speed
+                if (currentCount < globalCount) {
+                    globalCounter.textContent = Math.ceil(currentCount + time).toLocaleString('en-US');
+                    setTimeout(animateCounter, 1);
+                } else {
+                    globalCounter.textContent = globalCount.toLocaleString('en-US');
+                }
+            })()
         })
         .catch((err) => console.error(err));
 }
 // initialize counters
-localCounter.textContent = localCount.toLocaleString();
+localCounter.textContent = localCount.toLocaleString('en-US');
 getGlobalCount();
 
 let prevTime = 0;
@@ -86,8 +97,8 @@ counterButton.addEventListener('click', (e) => {
         timer = setTimeout(() => update(e), 5000);
     }
 
-    localCounter.textContent = localCount.toLocaleString();
-    globalCounter.textContent = globalCount.toLocaleString();
+    localCounter.textContent = localCount.toLocaleString('en-US');
+    globalCounter.textContent = globalCount.toLocaleString('en-US');
 
     counterTimes.textContent = parseInt(counterTimes.textContent) === 1
         ? 'time'
