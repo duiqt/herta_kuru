@@ -26,11 +26,12 @@
             <p>The kuru~ has been squished</p>
             <br />
             <br />
-            <p id="counter">0</p>
+            <p id="global-counter">0</p>
+            <p id="local-counter">0</p>
             <br />
             <br />
             <p id="counter-times">times</p>
-            <button id="counter-button" onclick="counterClick()">
+            <button id="counter-button">
                 Squish the kuru~!
             </button>
         </div>
@@ -78,31 +79,91 @@
 
     let firstSquish = true;
     //end varible
+    
+    const getTimePassed = () => Date.parse(new Date());
 
-    if (!localStorage.getItem("count")) {
-        localStorage.setItem("count", 0);
+    const counterTimes = document.getElementById("counter-times");
+    const globalCounter = document.querySelector('#global-counter');
+    const localCounter = document.querySelector('#local-counter');
+    let globalCount = 0;
+    let localCount = localStorage.getItem('count-v2') || 0;
+    // stores counts from clicks until 5 seconds have passed without a click
+    let heldCount = 0;
+
+    function getGlobalCount() {
+        fetch('https://kuru-kuru-count-api.onrender.com/sync', { method: 'GET'})
+            .then((response) => response.json())
+            .then((data) => {
+                globalCount = data.count;
+                globalCounter.textContent = data.count.toLocaleString();
+            })
+            .catch((err) => console.error(err));
+    }
+    // initialize counters
+    localCounter.textContent = localCount.toLocaleString();
+    getGlobalCount();
+    
+    let prevTime = Number.MAX_SAFE_INTEGER; // prevent focus event on load
+    // update global count every 10 seconds when tab is visible
+    setInterval(() => {
+        if (document.hasFocus() && getTimePassed() - prevTime > 10000) {
+            getGlobalCount();
+            prevTime = getTimePassed();
+        }
+    }, 10000);
+
+    function update(e, resetCount=true) {
+        // update global count
+        const data = {
+            count: heldCount,
+            e: e // check if request is triggered by event
+        };
+
+        fetch('https://kuru-kuru-count-api.onrender.com/update', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(data)
+        })
+            .then(() => {
+                // update local count
+                localStorage.setItem('count-v2', localCount);
+                if (resetCount) heldCount = 0;
+            })
+            .catch((err) => console.error(err));
     }
 
-    let temporaryCounter = parseInt(localStorage.getItem("count"));
-    const counterElement = document.getElementById("counter");
-    const counterTimesElement = document.getElementById("counter-times");
-    
-    displayCounter(temporaryCounter);
-
+    let timer;
     //counter button
-    function counterClick() {
-        ++temporaryCounter;
-        displayCounter(temporaryCounter);
-        localStorage.setItem("count", temporaryCounter);
+    const counterButton = document.querySelector('#counter-button');
+    counterButton.addEventListener('click', (e) => {
+        prevTime = getTimePassed();
+
+        heldCount++;
+        localCount++;
+        globalCount++;
+
+        if (heldCount === 10) {
+            // update on 10 counts
+            update(e, false);
+            heldCount -= 10;
+        } else {
+            // update 5 seconds after last click
+            clearTimeout(timer);
+            timer = setTimeout(() => update(e), 5000);
+        }
+
+        localCounter.textContent = localCount.toLocaleString();
+        globalCounter.textContent = globalCount.toLocaleString();
+
+        counterTimes.textContent = parseInt(counterTimes.textContent) === 1
+            ? 'time'
+            : 'times';
 
         playKuru();
         animateHerta();
-    }
-    
-    function displayCounter(value) {
-        counterElement.innerText = value;
-        counterTimesElement.innerText = value === 1 ? "time" : "times";
-    }
+    });
 
     function playKuru() {
         let audio;
@@ -123,7 +184,6 @@
     }
 
     function animateHerta() {
-        const counter_button = document.getElementById("counter-button");
         let id = null;
 
         const random = Math.floor(Math.random() * 2) + 1;
@@ -131,7 +191,7 @@
         elem.src = `img/hertaa${random}.gif`;
         elem.style.position = "absolute";
         elem.style.right = "-500px";
-        elem.style.top = counter_button.getClientRects()[0].bottom + scrollY - 430 + "px"
+        elem.style.top = counterButton.getClientRects()[0].bottom + scrollY - 430 + "px"
         elem.style.zIndex = "-1";
         document.body.appendChild(elem);
 
