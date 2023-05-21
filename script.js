@@ -14,7 +14,6 @@ let firstSquish = true;
 
 const getTimePassed = () => Date.parse(new Date());
 
-const counterTimes = document.getElementById("counter-times");
 const globalCounter = document.querySelector('#global-counter');
 const localCounter = document.querySelector('#local-counter');
 let globalCount = 0;
@@ -99,10 +98,6 @@ counterButton.addEventListener('click', (e) => {
 
     localCounter.textContent = localCount.toLocaleString('en-US');
     globalCounter.textContent = globalCount.toLocaleString('en-US');
-
-    counterTimes.textContent = parseInt(counterTimes.textContent) === 1
-        ? 'time'
-        : 'times';
 
     playKuru();
     animateHerta();
