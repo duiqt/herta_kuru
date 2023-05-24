@@ -99,6 +99,8 @@ counterButton.addEventListener('click', (e) => {
     localCounter.textContent = localCount.toLocaleString('en-US');
     globalCounter.textContent = globalCount.toLocaleString('en-US');
 
+    triggerRipple(e);
+
     playKuru();
     animateHerta();
 });
@@ -145,5 +147,24 @@ function animateHerta() {
             elem.style.right = pos + 'px';
         }
     }, 12);
+}
+
+function triggerRipple(e) {
+    let ripple = document.createElement("span");
+        
+    ripple.classList.add("ripple");
+
+    const counter_button = document.getElementById("counter-button");
+    counter_button.appendChild(ripple);
+
+    let x = e.clientX - e.target.offsetLeft;
+    let y = e.clientY - e.target.offsetTop;
+
+    ripple.style.left = `${x}px`;
+    ripple.style.top = `${y}px`;
+
+    setTimeout(() => {
+        ripple.remove();
+    }, 300);
 }
 //end counter button
