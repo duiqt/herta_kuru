@@ -8,11 +8,11 @@ body {
     font-family: 'Roboto', sans-serif;
     font-size: 1.5em;
     color: white;
+    overflow-x: hidden;
 }
 
 .wrapper {
     position: relative;
-    overflow-x: hidden;
 }
 
 .preload {
