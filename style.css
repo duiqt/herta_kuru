@@ -66,7 +66,6 @@ hr {
 }
 
 #counter-button {
-    cursor: pointer;
     background-color: #574f84;
     border: none;
     border-radius: 16px;
@@ -77,10 +76,40 @@ hr {
     font-family: 'Roboto', sans-serif;
     font-weight: bold;
     margin-top: 16px;
+
+    position: relative;
+    overflow: hidden;
+    box-shadow: 6px 7px 40px -4px rgba(0, 0, 0, 0.2);
 }
 
 #counter-button:hover {
     background-color: #2d2463;
+}
+
+#counter-button span {
+    position: absolute;
+    border-radius: 50%;
+    background-color: #ffffff50;
+
+    width: 100px;
+    height: 100px;
+    margin-top: -50px;
+    margin-left: -50px;
+
+    animation: ripple 1s;
+    opacity: 0;
+}
+
+@keyframes ripple {
+    from {
+        opacity: 1;
+        transform: scale(0);
+    }
+
+    to {
+        opacity: 0;
+        transform: scale(10);
+    }
 }
 
 #footer {
