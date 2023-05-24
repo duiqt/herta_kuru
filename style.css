@@ -8,6 +8,10 @@ body {
     font-family: 'Roboto', sans-serif;
     font-size: 1.5em;
     color: white;
+}
+
+.wrapper {
+    position: relative;
     overflow-x: hidden;
 }
 
@@ -32,7 +36,7 @@ h1 {
 h2 {
     text-align: center;
     font-weight: bold;
-    font-size: 1.5em;    
+    font-size: 1.5em;
 }
 
 hr {
@@ -47,19 +51,20 @@ hr {
 }
 
 #counter-container {
-    text-align: center; 
+    text-align: center;
     font-weight: bold;
     margin: 64px 0;
 }
 
-#counter-container > p {
-    text-shadow: #9d88d3 0 0 10px,#9d88d3 0 0 10px,#9d88d3 0 0 10px,#9d88d3 0 0 10px,#9d88d3 0 0 10px;
+#counter-container>p {
+    text-shadow: #9d88d3 0 0 10px, #9d88d3 0 0 10px, #9d88d3 0 0 10px, #9d88d3 0 0 10px, #9d88d3 0 0 10px;
 }
 
 #global-counter {
     color: #574f84;
     font-size: 2em;
 }
+
 #local-counter {
     color: #574f84;
     font-size: 0.75em;
@@ -116,7 +121,7 @@ hr {
     background-color: white;
     color: black;
     padding: 16px 10vw;
-    display: flex;    
+    display: flex;
     gap: 16px;
     align-items: center;
     justify-content: center;
@@ -135,7 +140,7 @@ hr {
 .footer-icon {
     display: inline-block;
     vertical-align: middle;
-    font-size: 2em;    
+    font-size: 2em;
 }
 
 #twitter-footer-icon {
@@ -175,7 +180,7 @@ hr {
         font-size: 1.25em;
     }
 
-    #subtitle-seperator {    
+    #subtitle-seperator {
         margin-top: 3px;
         margin-bottom: 11px;
     }
@@ -186,7 +191,7 @@ hr {
         width: calc(100% / 3 - 10px);
     }
 
-    #footer {        
+    #footer {
         flex-wrap: wrap;
     }
 
@@ -209,7 +214,7 @@ hr {
         font-size: 1em;
     }
 
-    #subtitle-seperator {    
+    #subtitle-seperator {
         margin-top: 6px;
         margin-bottom: 12px;
     }
@@ -230,7 +235,7 @@ hr {
         font-size: 1.25em;
     }
 
-    #subtitle-seperator {    
+    #subtitle-seperator {
         margin-top: 8px;
         margin-bottom: 13px;
     }
@@ -247,7 +252,7 @@ hr {
         font-size: 2em;
     }
 
-    #subtitle-seperator {    
+    #subtitle-seperator {
         margin-top: 10px;
     }
 }
