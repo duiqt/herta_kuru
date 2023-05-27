@@ -159,6 +159,12 @@ counterButton.addEventListener('click', (e) => {
     animateHerta();
 });
 
+function randomChoiceFromArray(myArr) {
+    const randomIndex = Math.floor(Math.random() * myArr.length);
+    const randomItem = myArr[randomIndex];
+    return randomItem;
+}
+
 function playKuru() {
     let audio;
 
@@ -166,8 +172,7 @@ function playKuru() {
         firstSquish = false;
         audio = getLocalAudioList()[0].cloneNode();
     } else {
-        const random = Math.floor(Math.random() * 2) + 1;
-        audio = getLocalAudioList()[random].cloneNode();
+        audio = randomChoiceFromArray(getLocalAudioList()).cloneNode();
     }
 
     audio.play();
