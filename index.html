@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="utf-8" />
-    <title>Kuru Kuru~</title>
+    <title id="doc-title">Kuru Kuru~</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
     <link rel="stylesheet" href="style.css" type="text/css" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -17,21 +17,27 @@
         <img src="img/hertaa1.gif" class="preload" />
         <img src="img/hertaa2.gif" class="preload" />
         <div id="content">
-            <h1>Welcome to herta kuru</h1>
+            <h1 id="page-title">Welcome to herta kuru</h1>
+            <select id="language-selector">
+                <option value="en" selected>English</option>
+                <option value="cn">中文</option>
+            </select>
+
+
             <hr id="subtitle-seperator" />
-            <h2>
+            <h2 id="page-descriptions">
                 The website for Herta, the <del>annoying</del> cutest genius Honkai:
                 Star Rail character out there.
             </h2>
             <div id="counter-container">
-                <h3>The kuru~ has been squished</h3>
+                <h3 id="counter-descriptions">The kuru~ has been squished</h3>
                 <br />
                 <br />
                 <p id="global-counter">0</p>
                 <p id="local-counter">0</p>
                 <br />
                 <br />
-                <p>times</p>
+                <p id="counter-unit">times</p>
                 <button id="counter-button">
                     Squish the kuru~!
                 </button>
@@ -47,7 +53,7 @@
     <div id="footer">
         <img id="herta-card" loading="lazy" src="img/card.jpg" alt="" />
         <div id="footer-text">
-            <p>Herta gif made by</p>
+            <p id="credits-gif">Herta gif made by</p>
             <p>
                 <a href="https://twitter.com/Seseren_kr" target="_blank"><iconify-icon icon="mdi:twitter"
                         id="twitter-footer-icon" class="footer-icon"></iconify-icon><span
@@ -59,7 +65,7 @@
             <p>
                 <a href="https://github.com/duiqt/herta.kuru" target="_blank"><iconify-icon icon="mdi:github"
                         id="github-footer-icon" class="footer-icon"></iconify-icon><span
-                        class="footer-icon-text">herta_kuru repo</span></a>
+                        class="footer-icon-text" id="footer-repository-text-2">herta_kuru repo</span></a>
             </p>
         </div>
     </div>

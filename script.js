@@ -1,16 +1,70 @@
 //varible
-const audioList = [
-    new Audio("audio/kuruto.mp3"),
-    new Audio("audio/kuru1.mp3"),
-    new Audio("audio/kuru2.mp3"),
-];
-
-for (const audio of audioList) {
-    audio.preload = "auto";
-}
+var audioList = [];  // will be loaded later
 
 let firstSquish = true;
 //end varible
+
+//language support
+const LANGUAGES = {
+    "en": {
+        audioList: [
+            new Audio("audio/en/kuruto.mp3"),
+            new Audio("audio/en/kuru1.mp3"),
+            new Audio("audio/en/kuru2.mp3"),
+        ],
+        texts: {
+            "page-title": "Welcome to herta kuru",
+            "doc-title": "Kuru Kuru~",
+            "page-descriptions": "The website for Herta, the <del>annoying</del> cutest genius Honkai: Star Rail character out there.",
+            "counter-descriptions": "The kuru~ has been squished",
+            "counter-unit": "times",
+            "counter-button": "Squish the kuru~!",
+            "credits-gif": "Herta gif made by",
+            "footer-repository-text": "You can check out the GitHub repository here:",
+            "footer-repository-text-2": "herta_kuru repo"
+        }
+    }, "cn": {
+        audioList: [
+            new Audio("audio/cn/gululu.mp3"),
+            new Audio("audio/cn/gururu.mp3"),
+            new Audio("audio/cn/转圈圈.mp3"),
+            new Audio("audio/cn/转圈圈咯.mp3"),
+        ],
+        texts: {
+            "page-title": "黑塔转圈圈~",
+            "doc-title": "咕噜噜~",
+            "page-descriptions": "给黑塔酱写的小网站，欸对，就是那个最<del>吵闹的</del>可爱的《崩坏：星穹铁道》角色！",
+            "counter-descriptions": "黑塔已经咕噜~了",
+            "counter-unit": "次",
+            "counter-button": "转圈圈~",
+            "credits-gif": "黑塔GIF作者：",
+            "footer-repository-text": "源代码在此：",
+            "footer-repository-text-2": "herta_kuru 仓库"
+        }
+    }
+    // TODO Korean and Japanese (text&voice) support
+};
+var current_language = "en";
+function reload_language() {
+    let localTexts = LANGUAGES[current_language].texts;
+    Object.entries(localTexts).forEach(([textId, value]) => {
+        document.getElementById(textId).innerHTML = value;
+    });
+    for (const audio of LANGUAGES[current_language].audioList) {
+        audio.preload = "auto";
+        // TODO instead of requesting the files every time the button gets clicked, request all the audio files at once during preparation
+    }
+}
+reload_language()
+document.getElementById("language-selector").addEventListener("change", (ev) => {
+    current_language = ev.target.value;
+    reload_language();
+    // TODO get the language selection stored in localStorage
+});
+
+function getLocalAudioList() {
+    return LANGUAGES[current_language].audioList;
+}
 
 const getTimePassed = () => Date.parse(new Date());
 
@@ -22,7 +76,7 @@ let localCount = localStorage.getItem('count-v2') || 0;
 let heldCount = 0;
 
 function getGlobalCount() {
-    fetch('https://kuru-kuru-count-api.onrender.com/sync', { method: 'GET'})
+    fetch('https://kuru-kuru-count-api.onrender.com/sync', { method: 'GET' })
         .then((response) => response.json())
         .then((data) => {
             globalCount = data.count;
@@ -54,7 +108,7 @@ setInterval(() => {
     }
 }, 10000);
 
-function update(e, resetCount=true) {
+function update(e, resetCount = true) {
     // update global count
     const data = {
         count: heldCount,
@@ -105,15 +159,20 @@ counterButton.addEventListener('click', (e) => {
     animateHerta();
 });
 
+function randomChoiceFromArray(myArr) {
+    const randomIndex = Math.floor(Math.random() * myArr.length);
+    const randomItem = myArr[randomIndex];
+    return randomItem;
+}
+
 function playKuru() {
     let audio;
 
     if (firstSquish) {
         firstSquish = false;
-        audio = audioList[0].cloneNode();
+        audio = getLocalAudioList()[0].cloneNode();
     } else {
-        const random = Math.floor(Math.random() * 2) + 1;
-        audio = audioList[random].cloneNode();
+        audio = randomChoiceFromArray(getLocalAudioList()).cloneNode();
     }
 
     audio.play();
@@ -151,7 +210,7 @@ function animateHerta() {
 
 function triggerRipple(e) {
     let ripple = document.createElement("span");
-        
+
     ripple.classList.add("ripple");
 
     const counter_button = document.getElementById("counter-button");
@@ -168,3 +227,4 @@ function triggerRipple(e) {
     }, 300);
 }
 //end counter button
+
