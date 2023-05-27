@@ -256,3 +256,28 @@ hr {
         margin-top: 10px;
     }
 }
+
+#language-selector {
+    width: 200px;
+    height: 40px;
+    background-color: #d1bdff;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    padding: 10px;
+    margin-bottom: 20px;
+    color: #333;
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+}
+
+#language-selector:focus {
+    outline: none;
+    box-shadow: 0 0 10px #719ECE;
+}
+
+#language-selector option {
+    background-color: #fff;
+    color: #333;
+}
