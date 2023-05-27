@@ -160,6 +160,11 @@ counterButton.addEventListener('click', (e) => {
 });
 
 function randomChoiceFromArray(myArr) {
+    if (current_language == "en") {
+        const randomIndex = Math.floor(Math.random() * 2) + 1; //kuruto audio only play once at first squish
+        const randomItem = myArr[randomIndex];
+        return randomItem;
+    }
     const randomIndex = Math.floor(Math.random() * myArr.length);
     const randomItem = myArr[randomIndex];
     return randomItem;
