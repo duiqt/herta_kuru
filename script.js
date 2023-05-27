@@ -59,6 +59,7 @@ reload_language()
 document.getElementById("language-selector").addEventListener("change", (ev) => {
     current_language = ev.target.value;
     reload_language();
+    // TODO get the language selection stored in localStorage
 });
 
 function getLocalAudioList() {
