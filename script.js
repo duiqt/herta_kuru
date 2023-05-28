@@ -43,6 +43,24 @@ const LANGUAGES = {
             "footer-repository-text-2": "herta_kuru 仓库"
         },
         cardImage: "img/card_cn.jpg"
+    },
+    "ja": {
+        audioList: [
+            new Audio("audio/ja/kuruto.mp3"),
+            new Audio("audio/ja/kuru1.mp3"),
+            new Audio("audio/ja/kuru2.mp3"),
+        ],
+        texts: {
+            "page-title": "ヘルタクルへようこそ~",
+            "doc-title": "クル クル~",
+            "page-descriptions": "このサイトはヘルタのために作られた、 あの崩壊：スターレイルの <del>悩ましい</del> かわいい天才キャラー。",
+            "counter-descriptions": "全世界のクル再生数",
+            "counter-unit": "回",
+            "counter-button": "クル クル~!",
+            "credits-gif": "GIF作成者は",
+            "footer-repository-text": "こちはこのページGitHubリポジトリ:",
+            "footer-repository-text-2": "herta_kuru リポジトリ"
+        }
     }
     // TODO Korean and Japanese (text&voice&card) support
 };
