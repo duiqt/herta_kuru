@@ -65,6 +65,7 @@ document.getElementById("language-selector").addEventListener("change", (ev) => 
 function getLocalAudioList() {
     return LANGUAGES[current_language].audioList;
 }
+//end language support
 
 const getTimePassed = () => Date.parse(new Date());
 
