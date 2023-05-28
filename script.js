@@ -222,7 +222,7 @@ function tryCachedObject(origUrl) {
 
 function getRandomAudioUrl() {
     var localAudioList = getLocalAudioList()
-    if (current_language == "en") {
+    if (current_language == "en" || current_language == "ja") {
         const randomIndex = Math.floor(Math.random() * 2) + 1; //kuruto audio only play once at first squish
         const randomItem = localAudioList[randomIndex];
         return randomItem;
