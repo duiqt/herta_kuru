@@ -76,7 +76,7 @@ const LANGUAGES = {
             "page-title": "ヘルタクルへようこそ~",
             "doc-title": "クル クル~",
             "page-descriptions": "このサイトはヘルタのために作られた、 あの崩壊：スターレイルの <del>悩ましい</del> かわいい天才キャラー。",
-            //dynamic texts(TODO)
+            // TODO dynamic texts for Japanese
             "counter-descriptions": "全世界のクル再生数",
             "counter-unit": "回",
             "counter-button": "クル クル~!",
