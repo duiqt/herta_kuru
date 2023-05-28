@@ -44,7 +44,10 @@ const LANGUAGES = {
     }
     // TODO Korean and Japanese (text&voice) support
 };
-var current_language = "en";
+var current_language = localStorage.getItem("lang") || "en";
+if (current_language != "en") {
+    document.getElementById("language-selector").value = current_language;
+}
 function reload_language() {
     let localTexts = LANGUAGES[current_language].texts;
     Object.entries(localTexts).forEach(([textId, value]) => {
@@ -58,13 +61,14 @@ function reload_language() {
 reload_language()
 document.getElementById("language-selector").addEventListener("change", (ev) => {
     current_language = ev.target.value;
+    localStorage.setItem("lang", ev.target.value);
     reload_language();
-    // TODO get the language selection stored in localStorage
 });
 
 function getLocalAudioList() {
     return LANGUAGES[current_language].audioList;
 }
+//end language support
 
 const getTimePassed = () => Date.parse(new Date());
 
@@ -159,21 +163,23 @@ counterButton.addEventListener('click', (e) => {
     animateHerta();
 });
 
-function randomChoiceFromArray(myArr) {
-    const randomIndex = Math.floor(Math.random() * myArr.length);
-    const randomItem = myArr[randomIndex];
+function getRandomAudio(isFirstSquish = false) {
+    var localAudioList = getLocalAudioList()
+    if (current_language == "en" && isFirstSquish) {
+        const randomIndex = Math.floor(Math.random() * 2) + 1; //kuruto audio only play once at first squish
+        const randomItem = localAudioList[randomIndex];
+        return randomItem;
+    }
+    const randomIndex = Math.floor(Math.random() * localAudioList.length);
+    const randomItem = localAudioList[randomIndex];
     return randomItem;
 }
 
 function playKuru() {
     let audio;
 
-    if (firstSquish) {
-        firstSquish = false;
-        audio = getLocalAudioList()[0].cloneNode();
-    } else {
-        audio = randomChoiceFromArray(getLocalAudioList()).cloneNode();
-    }
+    audio = getRandomAudio(firstSquish).cloneNode();
+    firstSquish = false;
 
     audio.play();
 
