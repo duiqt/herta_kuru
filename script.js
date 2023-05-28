@@ -8,9 +8,9 @@ let firstSquish = true;
 const LANGUAGES = {
     "en": {
         audioList: [
-            new Audio("audio/ja/kuruto.mp3"),
-            new Audio("audio/ja/kuru1.mp3"),
-            new Audio("audio/ja/kuru2.mp3"),
+            "audio/ja/kuruto.mp3",
+            "audio/ja/kuru1.mp3",
+            "audio/ja/kuru2.mp3",
         ],
         texts: {
             "page-title": "Welcome to herta kuru",
@@ -26,10 +26,10 @@ const LANGUAGES = {
         cardImage: "img/card_en.jpg"
     }, "cn": {
         audioList: [
-            new Audio("audio/cn/gululu.mp3"),
-            new Audio("audio/cn/gururu.mp3"),
-            new Audio("audio/cn/转圈圈.mp3"),
-            new Audio("audio/cn/转圈圈咯.mp3"),
+            "audio/cn/gululu.mp3",
+            "audio/cn/gururu.mp3",
+            "audio/cn/转圈圈.mp3",
+            "audio/cn/转圈圈咯.mp3",
         ],
         texts: {
             "page-title": "黑塔转圈圈~",
@@ -46,9 +46,9 @@ const LANGUAGES = {
     },
     "ja": {
         audioList: [
-            new Audio("audio/ja/kuruto.mp3"),
-            new Audio("audio/ja/kuru1.mp3"),
-            new Audio("audio/ja/kuru2.mp3"),
+            "audio/ja/kuruto.mp3",
+            "audio/ja/kuru1.mp3",
+            "audio/ja/kuru2.mp3",
         ],
         texts: {
             "page-title": "ヘルタクルへようこそ~",
@@ -77,7 +77,6 @@ function reload_language() {
     });
     for (const audio of curLang.audioList) {
         audio.preload = "auto";
-        // TODO instead of requesting the files every time the button gets clicked, request all the audio files at once during preparation
     }
     document.getElementById("herta-card").src = curLang.cardImage;
 }
@@ -111,11 +110,14 @@ function getGlobalCount(duration = null, callback = null) {
             // animate counter starting from current value to the updated value
             const startingCount = parseInt(globalCounter.textContent.replace(/,/g, ''));
             (animateCounter = () => {
-                const currentCount = parseInt(globalCounter.textContent.replace(/,/g, ''));
-                const step = (globalCount - startingCount) / (duration || 200);  // how many numbers it'll fly through, in 1ms
+                const k = 5;
+                var currentCount = parseInt(globalCounter.textContent.replace(/,/g, ''));
+                const step = (globalCount - startingCount) * 1.0 / (duration || 200) * k;  // how many numbers it'll fly through, in 1ms
+                console.log(duration, step)
                 if (currentCount < globalCount) {
-                    globalCounter.textContent = Math.ceil(currentCount + step).toLocaleString('en-US');
-                    setTimeout(animateCounter, 1);
+                    currentCount += step;
+                    globalCounter.textContent = Math.ceil(currentCount).toLocaleString('en-US');
+                    setTimeout(animateCounter, k);
                 } else {
                     globalCounter.textContent = globalCount.toLocaleString('en-US');
                     if (callback != null) {
@@ -133,15 +135,15 @@ let prevTime = 0;
 // update global count every 10 seconds when tab is visible
 const UPDATE_INTERVAL = 10000;
 function updateGlobalCount(first = false) {
-    if (document.hasFocus() && getTimestamp() - prevTime > 10000) {
+    if ((getTimestamp() - prevTime > UPDATE_INTERVAL) || first) {
         getGlobalCount(first ? 200 : UPDATE_INTERVAL, () => {
             updateGlobalCount();
         });
     } else {
-        setTimeout(updateGlobalCount, UPDATE_INTERVAL);
+        setTimeout(updateGlobalCount, 1000);  // check it 1sec later
     }
 }
-updateGlobalCount(true)
+updateGlobalCount(true);
 
 function update(e, resetCount = true) {
     // update global count
@@ -166,6 +168,7 @@ function update(e, resetCount = true) {
 }
 
 let timer;
+
 //counter button
 const counterButton = document.querySelector('#counter-button');
 counterButton.addEventListener('click', (e) => {
@@ -194,7 +197,30 @@ counterButton.addEventListener('click', (e) => {
     animateHerta();
 });
 
-function getRandomAudio() {
+var cachedObjects = {};
+
+function tryCachedObject(origUrl) {
+    // check if the object is already cached
+    if (cachedObjects[origUrl]) {
+        return cachedObjects[origUrl];
+    } else {
+        // start caching it
+        fetch(origUrl)
+            .then((response) => response.blob())
+            .then((blob) => {
+                // Create a blob URL for the object
+                const blobUrl = URL.createObjectURL(blob);
+                // get the object cached by storing the blob URL in the cachedObjects object
+                cachedObjects[origUrl] = blobUrl;
+            })
+            .catch((error) => {
+                console.error(`Error caching object from ${origUrl}: ${error}`);
+            });
+        return origUrl;
+    }
+}
+
+function getRandomAudioUrl() {
     var localAudioList = getLocalAudioList()
     if (current_language == "en") {
         const randomIndex = Math.floor(Math.random() * 2) + 1; //kuruto audio only play once at first squish
@@ -207,14 +233,16 @@ function getRandomAudio() {
 }
 
 function playKuru() {
-    let audio;
+    let audioUrl;
 
     if (firstSquish) {
         firstSquish = false;
-        audio = getLocalAudioList()[0].cloneNode(); //get kuruto audio at first squish, then never again
+        audioUrl = getLocalAudioList()[0]; //get kuruto audio at first squish, then never again
     } else {
-        audio = getRandomAudio().cloneNode();
+        audioUrl = getRandomAudioUrl();
     }
+
+    let audio = new Audio(tryCachedObject(audioUrl));
 
     audio.play();
 
@@ -268,4 +296,3 @@ function triggerRipple(e) {
     }, 300);
 }
 //end counter button
-
