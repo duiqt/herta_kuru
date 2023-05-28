@@ -78,6 +78,14 @@ const LANGUAGES = {
             "page-descriptions": "このサイトはヘルタのために作られた、 あの崩壊：スターレイルの <del>悩ましい</del> かわいい天才キャラー。",
             //dynamic texts(TODO)
             "counter-descriptions": "全世界のクル再生数",
+            "counter-descriptions": {
+                0:{
+                    "counter-descriptions": "全世界のクル再生数",
+                },
+                1:{
+                    "counter-descriptions": "全世界のクル再生数",
+                }
+            },
             "counter-unit": "回",
             "counter-button": "クル クル~!",
             "credits-gif": "GIF作成者は",
