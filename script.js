@@ -113,16 +113,15 @@ localCounter.textContent = localCount.toLocaleString('en-US');
 let prevTime = 0;
 // update global count every 10 seconds when tab is visible
 const UPDATE_INTERVAL = 10000;
-function updateGlobalCount() {
-    if (document.hasFocus() && getTimestamp() - prevTime > 10000) {
-        getGlobalCount(UPDATE_INTERVAL, () => {
+function updateGlobalCount(first = false) {
+    if (document.hasFocus() && getTimestamp() - prevTime > UPDATE_INTERVAL) {
+        getGlobalCount(first ? 200 : UPDATE_INTERVAL, () => {
             updateGlobalCount();
         });
     } else {
         setTimeout(updateGlobalCount, UPDATE_INTERVAL);
     }
 }
-getGlobalCount(200);
 updateGlobalCount(true);
 
 function update(e, resetCount = true) {
