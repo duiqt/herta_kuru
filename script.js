@@ -60,7 +60,7 @@ const LANGUAGES = {
             "counter-unit": "回",
             "counter-button": "クル クル~!",
             "credits-gif": "GIF作成者は",
-            "footer-repository-text": "こちはこのページGitHubリポジトリ:",
+            "footer-repository-text": "こちらはこのページGitHubリポジトリ:",
             "footer-repository-text-2": "herta_kuru リポジトリ"
         },
         cardImage: "img/card_ja.jpg"
