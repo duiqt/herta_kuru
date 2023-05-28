@@ -60,7 +60,8 @@ const LANGUAGES = {
             "credits-gif": "GIF作成者は",
             "footer-repository-text": "こちはこのページGitHubリポジトリ:",
             "footer-repository-text-2": "herta_kuru リポジトリ"
-        }
+        },
+        cardImage: "img/card_ja.jpg"
     }
     // TODO Korean and Japanese (text&voice&card) support
 };
