@@ -8,9 +8,9 @@ let firstSquish = true;
 const LANGUAGES = {
     "en": {
         audioList: [
-            new Audio("audio/en/kuruto.mp3"),
-            new Audio("audio/en/kuru1.mp3"),
-            new Audio("audio/en/kuru2.mp3"),
+            new Audio("audio/ja/kuruto.mp3"),
+            new Audio("audio/ja/kuru1.mp3"),
+            new Audio("audio/ja/kuru2.mp3"),
         ],
         texts: {
             "page-title": "Welcome to herta kuru",
@@ -63,7 +63,7 @@ const LANGUAGES = {
         },
         cardImage: "img/card_ja.jpg"
     }
-    // TODO Korean and Japanese (text&voice&card) support
+    // TODO Korean (text&voice&card) support
 };
 var current_language = localStorage.getItem("lang") || "en";
 if (current_language != "en") {
