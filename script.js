@@ -17,18 +17,9 @@ const LANGUAGES = {
             "doc-title": "Kuru Kuru~",
             "page-descriptions": "The website for Herta, the <del>annoying</del> cutest genius Honkai: Star Rail character out there.",
             //dynamic texts
-            "counter-descriptions": {
-                0: {
-                    "counter-descriptions": "The kuru~ has been squished for",
-                    "counter-button": "Kuru kuru~!",
-                },
-                1: {
-                    "counter-descriptions": "Herta has been kuru~ed for",
-                    "counter-button": "Squish the kuru~!",
-                }
-            },
+            "counter-descriptions": ["The kuru~ has been squished for", "Herta has been kuru~ed for"],
             "counter-unit": "times",
-            "counter-button": "Squish the kuru~!",
+            "counter-button": ["Squish the kuru~!", "Kuru kuru~!"],
             "credits-gif": "Herta gif made by",
             "footer-repository-text": "You can check out the GitHub repository here:",
             "footer-repository-text-2": "herta_kuru repo"
@@ -45,21 +36,9 @@ const LANGUAGES = {
             "page-title": "黑塔转圈圈~",
             "doc-title": "咕噜噜~",
             "page-descriptions": "给黑塔酱写的小网站，对，就是那个<del>烦人的</del>最可爱的《崩坏：星穹铁道》角色！",
-            //dynamic texts
-            "counter-descriptions": {
-                0: {
-                    "counter-descriptions": "黑塔已经咕噜噜~了",
-                    "counter-unit": "次",
-                    "counter-button": "咕噜噜！",
-                },
-                1: {
-                    "counter-descriptions": "黑塔已经转了",
-                    "counter-unit": "次圈圈",
-                    "counter-button": "转圈圈！",
-                }
-            },
-            "counter-unit": "次",
-            "counter-button": "转圈圈~",
+            "counter-descriptions": ["黑塔已经咕噜噜~了", "黑塔已经转了"],
+            "counter-unit": ["次", "次圈圈"],
+            "counter-button": ["转圈圈~", "咕噜噜！"],
             "credits-gif": "黑塔GIF作者：",
             "footer-repository-text": "源代码在此：",
             "footer-repository-text-2": "herta_kuru 仓库"
@@ -78,14 +57,6 @@ const LANGUAGES = {
             "page-descriptions": "このサイトはヘルタのために作られた、 あの崩壊：スターレイルの <del>悩ましい</del> かわいい天才キャラー。",
             // TODO dynamic texts for Japanese
             "counter-descriptions": "全世界のクル再生数",
-            "counter-descriptions": {
-                0:{
-                    "counter-descriptions": "全世界のクル再生数",
-                },
-                1:{
-                    "counter-descriptions": "全世界のクル再生数",
-                }
-            },
             "counter-unit": "回",
             "counter-button": "クル クル~!",
             "credits-gif": "GIF作成者は",
@@ -101,17 +72,13 @@ if (current_language != "en") {
     document.getElementById("language-selector").value = current_language;
 }
 function reload_language() {
-    switchDescription()
     let curLang = LANGUAGES[current_language];
     let localTexts = curLang.texts;
     Object.entries(localTexts).forEach(([textId, value]) => {
-        if (textId != "counter-descriptions") {
+        if (value instanceof String)
             document.getElementById(textId).innerHTML = value;
-        }
     });
-    for (const audio of curLang.audioList) {
-        audio.preload = "auto";
-    }
+    refreshDynamicTexts()
     document.getElementById("herta-card").src = curLang.cardImage;
 }
 reload_language()
@@ -229,7 +196,7 @@ counterButton.addEventListener('click', (e) => {
 
     playKuru();
     animateHerta();
-    switchDescription();
+    refreshDynamicTexts();
 });
 
 var cachedObjects = {};
@@ -253,6 +220,12 @@ function tryCachedObject(origUrl) {
             });
         return origUrl;
     }
+}
+
+function randomChoice(myArr) {
+    const randomIndex = Math.floor(Math.random() * myArr.length);
+    const randomItem = myArr[randomIndex];
+    return randomItem;
 }
 
 function getRandomAudioUrl() {
@@ -332,12 +305,11 @@ function triggerRipple(e) {
 }
 //end counter button
 
-function switchDescription() {
+function refreshDynamicTexts() {
     let curLang = LANGUAGES[current_language];
-    let localText = curLang.texts["counter-descriptions"];
-    let randomIndex = Math.floor(Math.random() * (Object.keys(localText).length));
-    let localTexts = localText[randomIndex];
+    let localTexts = curLang.texts;
     Object.entries(localTexts).forEach(([textId, value]) => {
-        document.getElementById(textId).innerHTML = value;
+        if (value instanceof Array)
+            document.getElementById(textId).innerHTML = randomChoice(value);
     });
 }
