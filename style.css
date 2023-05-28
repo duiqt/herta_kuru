@@ -1,14 +1,18 @@
 * {
     margin: 0;
     padding: 0;
+    /* disable double_tap zoom on mobile devices */
+    -ms-touch-action: manipulation;
+    touch-action: manipulation;
+    /* strange margin-right occurs when vw<500px */
+    overflow-x: hidden;
 }
 
 body {
     background-color: #9d88d3;
-    font-family: 'Roboto', sans-serif;
+    font-family: -apple-system,BlinkMacSystemFont,"Segoe UI Adjusted","Segoe UI","Liberation Sans",'Roboto', sans-serif;
     font-size: 1.5em;
     color: white;
-    overflow-x: hidden;
 }
 
 .wrapper {
@@ -44,6 +48,51 @@ hr {
     border-top: none;
     border-left: none;
     border-right: none;
+}
+
+#title-container{
+    display: flex;
+    justify-content:center;
+}
+
+#page-title{
+    text-align: left;
+}
+
+#title-img{
+    height: 4em;
+}
+
+#language-selector {
+    position:relative;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 200px;
+    height: 40px;
+    background-color: #d1bdff;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    text-align: center;
+    text-align-last: center;
+    padding: 10px;
+    margin: 20px 0;
+    color: rgb(38, 0, 63);
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    cursor: pointer;
+    outline: none;
+}
+
+#language-selector:hover {
+    box-shadow: 0 0 10px #719ECE;
+}
+
+#language-selector option {
+    text-align: center;
+    background-color: #fff;
+    color: #333;
 }
 
 #subtitle-seperator {
@@ -85,10 +134,16 @@ hr {
     position: relative;
     overflow: hidden;
     box-shadow: 6px 7px 40px -4px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+    transition: background-color 0.1s ease-in-out, scale 0.1s cubic-bezier(0.075, 0.82, 0.165, 1);
 }
 
 #counter-button:hover {
     background-color: #2d2463;
+}
+
+#counter-button:active {
+    scale: 0.95;
 }
 
 #counter-button span {
@@ -122,7 +177,7 @@ hr {
     color: black;
     padding: 16px 10vw;
     display: flex;
-    gap: 16px;
+    gap: 30px;
     align-items: center;
     justify-content: center;
 }
@@ -255,29 +310,4 @@ hr {
     #subtitle-seperator {
         margin-top: 10px;
     }
-}
-
-#language-selector {
-    width: 200px;
-    height: 40px;
-    background-color: #d1bdff;
-    border: none;
-    border-radius: 5px;
-    font-size: 16px;
-    padding: 10px;
-    margin-bottom: 20px;
-    color: #333;
-    appearance: none;
-    -webkit-appearance: none;
-    -moz-appearance: none;
-}
-
-#language-selector:focus {
-    outline: none;
-    box-shadow: 0 0 10px #719ECE;
-}
-
-#language-selector option {
-    background-color: #fff;
-    color: #333;
 }
