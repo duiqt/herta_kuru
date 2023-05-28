@@ -132,7 +132,7 @@ hr {
     color: black;
     padding: 16px 10vw;
     display: flex;
-    gap: 16px;
+    gap: 30px;
     align-items: center;
     justify-content: center;
 }
