@@ -75,7 +75,7 @@ function reload_language() {
     let curLang = LANGUAGES[current_language];
     let localTexts = curLang.texts;
     Object.entries(localTexts).forEach(([textId, value]) => {
-        if (value instanceof String)
+        if (!(value instanceof Array))
             document.getElementById(textId).innerHTML = value;
     });
     refreshDynamicTexts()
