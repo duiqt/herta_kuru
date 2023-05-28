@@ -8,9 +8,9 @@ let firstSquish = true;
 const LANGUAGES = {
     "en": {
         audioList: [
-            new Audio("audio/en/kuruto.mp3"),
-            new Audio("audio/en/kuru1.mp3"),
-            new Audio("audio/en/kuru2.mp3"),
+            "audio/en/kuruto.mp3",
+            "audio/en/kuru1.mp3",
+            "audio/en/kuru2.mp3",
         ],
         texts: {
             "page-title": "Welcome to herta kuru",
@@ -26,10 +26,10 @@ const LANGUAGES = {
         cardImage: "img/card_en.jpg"
     }, "cn": {
         audioList: [
-            new Audio("audio/cn/gululu.mp3"),
-            new Audio("audio/cn/gururu.mp3"),
-            new Audio("audio/cn/转圈圈.mp3"),
-            new Audio("audio/cn/转圈圈咯.mp3"),
+            "audio/cn/gululu.mp3",
+            "audio/cn/gururu.mp3",
+            "audio/cn/转圈圈.mp3",
+            "audio/cn/转圈圈咯.mp3",
         ],
         texts: {
             "page-title": "黑塔转圈圈~",
@@ -58,7 +58,6 @@ function reload_language() {
     });
     for (const audio of curLang.audioList) {
         audio.preload = "auto";
-        // TODO instead of requesting the files every time the button gets clicked, request all the audio files at once during preparation
     }
     document.getElementById("herta-card").src = curLang.cardImage;
 }
@@ -150,6 +149,7 @@ function update(e, resetCount = true) {
 }
 
 let timer;
+
 //counter button
 const counterButton = document.querySelector('#counter-button');
 counterButton.addEventListener('click', (e) => {
@@ -178,7 +178,30 @@ counterButton.addEventListener('click', (e) => {
     animateHerta();
 });
 
-function getRandomAudio() {
+var cachedObjects = {};
+
+function tryCachedObject(origUrl) {
+    // check if the object is already cached
+    if (cachedObjects[origUrl]) {
+        return cachedObjects[origUrl];
+    } else {
+        // start caching it
+        fetch(origUrl)
+            .then((response) => response.blob())
+            .then((blob) => {
+                // Create a blob URL for the object
+                const blobUrl = URL.createObjectURL(blob);
+                // get the object cached by storing the blob URL in the cachedObjects object
+                cachedObjects[origUrl] = blobUrl;
+            })
+            .catch((error) => {
+                console.error(`Error caching object from ${origUrl}: ${error}`);
+            });
+        return origUrl;
+    }
+}
+
+function getRandomAudioUrl() {
     var localAudioList = getLocalAudioList()
     if (current_language == "en") {
         const randomIndex = Math.floor(Math.random() * 2) + 1; //kuruto audio only play once at first squish
@@ -191,14 +214,16 @@ function getRandomAudio() {
 }
 
 function playKuru() {
-    let audio;
+    let audioUrl;
 
     if (firstSquish) {
         firstSquish = false;
-        audio = getLocalAudioList()[0].cloneNode(); //get kuruto audio at first squish, then never again
+        audioUrl = getLocalAudioList()[0]; //get kuruto audio at first squish, then never again
     } else {
-        audio = getRandomAudio().cloneNode();
+        audioUrl = getRandomAudioUrl();
     }
+
+    let audio = new Audio(tryCachedObject(audioUrl));
 
     audio.play();
 
