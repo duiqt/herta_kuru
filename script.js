@@ -22,8 +22,8 @@ const LANGUAGES = {
             "credits-gif": "Herta gif made by",
             "footer-repository-text": "You can check out the GitHub repository here:",
             "footer-repository-text-2": "herta_kuru repo"
-        }
-    }, "cn": {
+        },
+        cardImage: "img/card_en.jpg"    }, "cn": {
         audioList: [
             new Audio("audio/cn/gululu.mp3"),
             new Audio("audio/cn/gururu.mp3"),
@@ -40,23 +40,26 @@ const LANGUAGES = {
             "credits-gif": "黑塔GIF作者：",
             "footer-repository-text": "源代码在此：",
             "footer-repository-text-2": "herta_kuru 仓库"
-        }
+        },
+        cardImage: "img/card_cn.jpg" 
     }
-    // TODO Korean and Japanese (text&voice) support
+    // TODO Korean and Japanese (text&voice&card) support
 };
 var current_language = localStorage.getItem("lang") || "en";
 if (current_language != "en") {
     document.getElementById("language-selector").value = current_language;
 }
 function reload_language() {
-    let localTexts = LANGUAGES[current_language].texts;
+    let curLang = LANGUAGES[current_language];
+    let localTexts = curLang.texts;
     Object.entries(localTexts).forEach(([textId, value]) => {
         document.getElementById(textId).innerHTML = value;
     });
-    for (const audio of LANGUAGES[current_language].audioList) {
+    for (const audio of curLang.audioList) {
         audio.preload = "auto";
         // TODO instead of requesting the files every time the button gets clicked, request all the audio files at once during preparation
     }
+    document.getElementById("herta-card").src = curLang.cardImage;
 }
 reload_language()
 document.getElementById("language-selector").addEventListener("change", (ev) => {
