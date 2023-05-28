@@ -160,9 +160,9 @@ counterButton.addEventListener('click', (e) => {
     animateHerta();
 });
 
-function getRandomAudio(isFirstSquish = false) {
+function getRandomAudio() {
     var localAudioList = getLocalAudioList()
-    if (current_language == "en" && isFirstSquish) {
+    if (current_language == "en") {
         const randomIndex = Math.floor(Math.random() * 2) + 1; //kuruto audio only play once at first squish
         const randomItem = localAudioList[randomIndex];
         return randomItem;
@@ -175,8 +175,12 @@ function getRandomAudio(isFirstSquish = false) {
 function playKuru() {
     let audio;
 
-    audio = getRandomAudio(firstSquish).cloneNode();
-    firstSquish = false;
+    if (firstSquish) {
+        firstSquish = false;
+        audio = getLocalAudioList()[0].cloneNode(); //get kuruto audio at first squish, then never again
+    } else {
+        audio = getRandomAudio().cloneNode();
+    }
 
     audio.play();
 
