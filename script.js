@@ -18,11 +18,11 @@ const LANGUAGES = {
             "page-descriptions": "The website for Herta, the <del>annoying</del> cutest genius Honkai: Star Rail character out there.",
             //dynamic texts
             "counter-descriptions": {
-                0:{
+                0: {
                     "counter-descriptions": "The kuru~ has been squished for",
                     "counter-button": "Kuru kuru~!",
                 },
-                1:{
+                1: {
                     "counter-descriptions": "Herta has been kuru~ed for",
                     "counter-button": "Squish the kuru~!",
                 }
@@ -47,12 +47,12 @@ const LANGUAGES = {
             "page-descriptions": "给黑塔酱写的小网站，对，就是那个<del>烦人的</del>最可爱的《崩坏：星穹铁道》角色！",
             //dynamic texts
             "counter-descriptions": {
-                0:{
+                0: {
                     "counter-descriptions": "黑塔已经咕噜噜~了",
                     "counter-unit": "次",
                     "counter-button": "咕噜噜！",
                 },
-                1:{
+                1: {
                     "counter-descriptions": "黑塔已经转了",
                     "counter-unit": "次圈圈",
                     "counter-button": "转圈圈！",
@@ -97,7 +97,7 @@ function reload_language() {
     let curLang = LANGUAGES[current_language];
     let localTexts = curLang.texts;
     Object.entries(localTexts).forEach(([textId, value]) => {
-        if(textId!="counter-descriptions"){
+        if (textId != "counter-descriptions") {
             document.getElementById(textId).innerHTML = value;
         }
     });
@@ -324,10 +324,10 @@ function triggerRipple(e) {
 }
 //end counter button
 
-function switchDescription(){
+function switchDescription() {
     let curLang = LANGUAGES[current_language];
-    let localText = curLang.texts["counter-descriptions"];    
-    let randomIndex = Math.floor(Math.random()*(Object.keys(localText).length));
+    let localText = curLang.texts["counter-descriptions"];
+    let randomIndex = Math.floor(Math.random() * (Object.keys(localText).length));
     let localTexts = localText[randomIndex];
     Object.entries(localTexts).forEach(([textId, value]) => {
         document.getElementById(textId).innerHTML = value;
