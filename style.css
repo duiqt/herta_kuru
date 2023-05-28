@@ -1,6 +1,11 @@
 * {
     margin: 0;
     padding: 0;
+    /* disable double_tap zoom on mobile devices */
+    -ms-touch-action: manipulation;
+    touch-action: manipulation;
+    /* strange margin-right occurs when vw<500px */
+    overflow-x: hidden;
 }
 
 body {
@@ -8,7 +13,6 @@ body {
     font-family: 'Roboto', sans-serif;
     font-size: 1.5em;
     color: white;
-    overflow-x: hidden;
 }
 
 .wrapper {
@@ -85,10 +89,16 @@ hr {
     position: relative;
     overflow: hidden;
     box-shadow: 6px 7px 40px -4px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+    transition: background-color 0.1s ease-in-out, scale 0.1s cubic-bezier(0.075, 0.82, 0.165, 1);
 }
 
 #counter-button:hover {
     background-color: #2d2463;
+}
+
+#counter-button:active {
+    scale: 0.95;
 }
 
 #counter-button span {
@@ -257,27 +267,35 @@ hr {
     }
 }
 
+
 #language-selector {
+    position:relative;
+    left: 50%;
+    transform: translateX(-50%);
     width: 200px;
     height: 40px;
     background-color: #d1bdff;
     border: none;
     border-radius: 5px;
     font-size: 16px;
+    text-align: center;
+    text-align-last: center;
     padding: 10px;
-    margin-bottom: 20px;
-    color: #333;
+    margin: 20px 0;
+    color: rgb(38, 0, 63);
     appearance: none;
     -webkit-appearance: none;
     -moz-appearance: none;
+    cursor: pointer;
+    outline: none;
 }
 
-#language-selector:focus {
-    outline: none;
+#language-selector:hover {
     box-shadow: 0 0 10px #719ECE;
 }
 
 #language-selector option {
+    text-align: center;
     background-color: #fff;
     color: #333;
 }
