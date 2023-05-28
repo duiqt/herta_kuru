@@ -33,7 +33,7 @@ const LANGUAGES = {
             "audio/cn/转圈圈咯.mp3",
         ],
         texts: {
-            "page-title": "黑塔转圈圈~",
+            "page-title": "黑塔转圈圈",
             "doc-title": "咕噜噜~",
             "page-descriptions": "给黑塔酱写的小网站，对，就是那个<del>烦人的</del>最可爱的《崩坏：星穹铁道》角色！",
             "counter-descriptions": ["黑塔已经咕噜噜~了", "黑塔已经转了"],
