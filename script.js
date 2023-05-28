@@ -8,9 +8,9 @@ let firstSquish = true;
 const LANGUAGES = {
     "en": {
         audioList: [
-            "audio/en/kuruto.mp3",
-            "audio/en/kuru1.mp3",
-            "audio/en/kuru2.mp3",
+            "audio/ja/kuruto.mp3",
+            "audio/ja/kuru1.mp3",
+            "audio/ja/kuru2.mp3",
         ],
         texts: {
             "page-title": "Welcome to herta kuru",
@@ -43,8 +43,27 @@ const LANGUAGES = {
             "footer-repository-text-2": "herta_kuru 仓库"
         },
         cardImage: "img/card_cn.jpg"
+    },
+    "ja": {
+        audioList: [
+            "audio/ja/kuruto.mp3",
+            "audio/ja/kuru1.mp3",
+            "audio/ja/kuru2.mp3",
+        ],
+        texts: {
+            "page-title": "ヘルタクルへようこそ~",
+            "doc-title": "クル クル~",
+            "page-descriptions": "このサイトはヘルタのために作られた、 あの崩壊：スターレイルの <del>悩ましい</del> かわいい天才キャラー。",
+            "counter-descriptions": "全世界のクル再生数",
+            "counter-unit": "回",
+            "counter-button": "クル クル~!",
+            "credits-gif": "GIF作成者は",
+            "footer-repository-text": "こちはこのページGitHubリポジトリ:",
+            "footer-repository-text-2": "herta_kuru リポジトリ"
+        },
+        cardImage: "img/card_ja.jpg"
     }
-    // TODO Korean and Japanese (text&voice&card) support
+    // TODO Korean (text&voice&card) support
 };
 var current_language = localStorage.getItem("lang") || "en";
 if (current_language != "en") {
