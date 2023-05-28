@@ -91,11 +91,14 @@ function getGlobalCount(duration = null, callback = null) {
             // animate counter starting from current value to the updated value
             const startingCount = parseInt(globalCounter.textContent.replace(/,/g, ''));
             (animateCounter = () => {
-                const currentCount = parseInt(globalCounter.textContent.replace(/,/g, ''));
-                const step = (globalCount - startingCount) / (duration || 200);  // how many numbers it'll fly through, in 1ms
+                const k = 5;
+                var currentCount = parseInt(globalCounter.textContent.replace(/,/g, ''));
+                const step = (globalCount - startingCount) * 1.0 / (duration || 200) * k;  // how many numbers it'll fly through, in 1ms
+                console.log(duration, step)
                 if (currentCount < globalCount) {
-                    globalCounter.textContent = Math.ceil(currentCount + step).toLocaleString('en-US');
-                    setTimeout(animateCounter, 1);
+                    currentCount += step;
+                    globalCounter.textContent = Math.ceil(currentCount).toLocaleString('en-US');
+                    setTimeout(animateCounter, k);
                 } else {
                     globalCounter.textContent = globalCount.toLocaleString('en-US');
                     if (callback != null) {
@@ -113,15 +116,15 @@ let prevTime = 0;
 // update global count every 10 seconds when tab is visible
 const UPDATE_INTERVAL = 10000;
 function updateGlobalCount(first = false) {
-    if (document.hasFocus() && getTimestamp() - prevTime > 10000) {
+    if ((getTimestamp() - prevTime > UPDATE_INTERVAL) || first) {
         getGlobalCount(first ? 200 : UPDATE_INTERVAL, () => {
             updateGlobalCount();
         });
     } else {
-        setTimeout(updateGlobalCount, UPDATE_INTERVAL);
+        setTimeout(updateGlobalCount, 1000);  // check it 1sec later
     }
 }
-document.addEventListener("load", (e) => { updateGlobalCount(true); });
+updateGlobalCount(true);
 
 function update(e, resetCount = true) {
     // update global count
@@ -146,6 +149,7 @@ function update(e, resetCount = true) {
 }
 
 let timer;
+
 //counter button
 const counterButton = document.querySelector('#counter-button');
 counterButton.addEventListener('click', (e) => {
