@@ -67,7 +67,7 @@ function getLocalAudioList() {
 }
 //end language support
 
-const getTimePassed = () => Date.parse(new Date());
+const getTimestamp = () => Date.parse(new Date());
 
 const globalCounter = document.querySelector('#global-counter');
 const localCounter = document.querySelector('#local-counter');
@@ -76,7 +76,8 @@ let localCount = localStorage.getItem('count-v2') || 0;
 // stores counts from clicks until 5 seconds have passed without a click
 let heldCount = 0;
 
-function getGlobalCount() {
+function getGlobalCount(duration = null, callback = null) {
+    // duration: in milliseconds, how long will it take to animate the numbers, in total.
     fetch('https://kuru-kuru-count-api.onrender.com/sync', { method: 'GET' })
         .then((response) => response.json())
         .then((data) => {
@@ -85,29 +86,36 @@ function getGlobalCount() {
             const startingCount = parseInt(globalCounter.textContent.replace(/,/g, ''));
             (animateCounter = () => {
                 const currentCount = parseInt(globalCounter.textContent.replace(/,/g, ''));
-                const time = (globalCount - startingCount) / 200; // speed
+                const step = (globalCount - startingCount) / (duration || 200);  // how many numbers it'll fly through, in 1ms
                 if (currentCount < globalCount) {
-                    globalCounter.textContent = Math.ceil(currentCount + time).toLocaleString('en-US');
+                    globalCounter.textContent = Math.ceil(currentCount + step).toLocaleString('en-US');
                     setTimeout(animateCounter, 1);
                 } else {
                     globalCounter.textContent = globalCount.toLocaleString('en-US');
+                    if (callback != null) {
+                        callback();
+                    }
                 }
-            })()
+            })();
         })
         .catch((err) => console.error(err));
 }
 // initialize counters
 localCounter.textContent = localCount.toLocaleString('en-US');
-getGlobalCount();
 
 let prevTime = 0;
 // update global count every 10 seconds when tab is visible
-setInterval(() => {
-    if (document.hasFocus() && getTimePassed() - prevTime > 10000) {
-        getGlobalCount();
-        prevTime = getTimePassed();
+const UPDATE_INTERVAL = 10000;
+function updateGlobalCount(first = false) {
+    if (document.hasFocus() && getTimestamp() - prevTime > 10000) {
+        getGlobalCount(first ? 200 : UPDATE_INTERVAL, () => {
+            updateGlobalCount();
+        });
+    } else {
+        setTimeout(updateGlobalCount, UPDATE_INTERVAL);
     }
-}, 10000);
+}
+updateGlobalCount(true)
 
 function update(e, resetCount = true) {
     // update global count
@@ -135,7 +143,7 @@ let timer;
 //counter button
 const counterButton = document.querySelector('#counter-button');
 counterButton.addEventListener('click', (e) => {
-    prevTime = getTimePassed();
+    prevTime = getTimestamp();
 
     heldCount++;
     localCount++;
