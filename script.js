@@ -23,7 +23,8 @@ const LANGUAGES = {
             "footer-repository-text": "You can check out the GitHub repository here:",
             "footer-repository-text-2": "herta_kuru repo"
         },
-        cardImage: "img/card_en.jpg"    }, "cn": {
+        cardImage: "img/card_en.jpg"
+    }, "cn": {
         audioList: [
             new Audio("audio/cn/gululu.mp3"),
             new Audio("audio/cn/gururu.mp3"),
@@ -41,7 +42,7 @@ const LANGUAGES = {
             "footer-repository-text": "源代码在此：",
             "footer-repository-text-2": "herta_kuru 仓库"
         },
-        cardImage: "img/card_cn.jpg" 
+        cardImage: "img/card_cn.jpg"
     }
     // TODO Korean and Japanese (text&voice&card) support
 };
