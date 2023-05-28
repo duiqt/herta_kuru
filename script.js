@@ -13,7 +13,7 @@ const LANGUAGES = {
             "audio/ja/kuru2.mp3",
         ],
         texts: {
-            "page-title": "Welcome to herta kuru",
+            "page-title": "Welcome to herta kuru~",
             "doc-title": "Kuru Kuru~",
             "page-descriptions": "The website for Herta, the <del>annoying</del> cutest genius Honkai: Star Rail character out there.",
             "counter-descriptions": "The kuru~ has been squished",
@@ -34,7 +34,7 @@ const LANGUAGES = {
         texts: {
             "page-title": "黑塔转圈圈~",
             "doc-title": "咕噜噜~",
-            "page-descriptions": "给黑塔酱写的小网站，欸对，就是那个最<del>吵闹的</del>可爱的《崩坏：星穹铁道》角色！",
+            "page-descriptions": "给黑塔酱写的小网站，对，就是那个<del>烦人的</del>最可爱的《崩坏：星穹铁道》角色！",
             "counter-descriptions": "黑塔已经咕噜~了",
             "counter-unit": "次",
             "counter-button": "转圈圈~",
