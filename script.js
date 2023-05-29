@@ -264,7 +264,7 @@ function animateHerta() {
 
     const random = Math.floor(Math.random() * 2) + 1;
     const elem = document.createElement("img");
-    elem.src = `img/hertaa${random}.gif`;
+    elem.src = tryCachedObject(`img/hertaa${random}.gif`);
     elem.style.position = "absolute";
     elem.style.right = "-500px";
     elem.style.top = counterButton.getClientRects()[0].bottom + scrollY - 430 + "px"
