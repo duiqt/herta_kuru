@@ -106,7 +106,8 @@ function multiLangMutation() {
     let localTexts = curLang.texts;
     Object.entries(localTexts).forEach(([textId, value]) => {
         if (!(value instanceof Array))
-            document.getElementById(textId).innerHTML = value;
+            if (document.getElementById(textId) != undefined)
+                document.getElementById(textId).innerHTML = value;
     });
     refreshDynamicTexts()
     document.getElementById("herta-card").src = curLang.cardImage;
@@ -342,15 +343,16 @@ function refreshDynamicTexts() {
     let localTexts = curLang.texts;
     Object.entries(localTexts).forEach(([textId, value]) => {
         if (value instanceof Array)
-            document.getElementById(textId).innerHTML = randomChoice(value);
+            if (document.getElementById(textId) != undefined)
+                document.getElementById(textId).innerHTML = randomChoice(value);
     });
 };
 
 // CN mirror check
 if (location.hostname == "herta.ft2.ltd" || location.hostname == "hertakuru.netlify.app") {
-    document.getElementById("footer-text").innerHTML += "<p id='access-via-mirror'>Congratulations! You are using a mirror site, which should speed up access within China (Mainland) and some regions. Click here to <a href='https://duiqt.github.io/herta_kuru/'>visit the source site on GitHub Pages</a>.</p>";
+    document.getElementById("footer").innerHTML += "<p id='access-via-mirror'>Congratulations! You are using a mirror site, which should speed up access within China (Mainland) and some regions. Click here to <a href='https://duiqt.github.io/herta_kuru/'>visit the source site on GitHub Pages</a>.</p>";
     multiLangMutation();
 } else {
-    document.getElementById("footer-text").innerHTML += "<p id='access-via-pages'>You're currently accessing via GitHub Pages. For users in China (Mainland) or some regions, click <a href='https://duiqt.github.io/herta_kuru/'>here to access the mirror on Netlify</a>.</p>";
+    document.getElementById("footer").innerHTML += "<p id='access-via-pages'>You're currently accessing via GitHub Pages. For users in China (Mainland) or some regions, click <a href='https://duiqt.github.io/herta_kuru/'>here to access the mirror on Netlify</a>.</p>";
     multiLangMutation();
 }
