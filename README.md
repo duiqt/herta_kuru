@@ -7,7 +7,7 @@
 
 # Herta Kuru | 黑塔转圈圈 | ヘルタクルへ
 [Home Page | 主页 | ホーム ページ (Netlify)](https://herta.ft2.ltd/)
-[Home Page | 主页 | ホーム ページ (GitHub Pages)](https://duiqt.github.io/herta_kuru/)
+[(BACKUP: via GitHub Pages)](https://duiqt.github.io/herta_kuru/)
 
 Herta gif and art made by | 黑塔 gif 绘画者 : [@Seseren_kr](https://twitter.com/Seseren_kr) 
 
