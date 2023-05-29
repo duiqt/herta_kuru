@@ -67,10 +67,10 @@ const LANGUAGES = {
     },
     "kr": {
         audioList: [
-            "audio/kr/kuruto.mp3",
-            "audio/kr/kuru1.mp3",
-            "audio/kr/kuru2.mp3",
-        ], 
+            "audio/ja/kuruto.mp3",
+            "audio/ja/kuru1.mp3",
+            "audio/ja/kuru2.mp3",
+        ],
         texts: {
             "page-title": "헤르타빙글 환영합니다~",
             "doc-title": "빙글 빙글~",
