@@ -6,6 +6,7 @@ let firstSquish = true;
 
 //language support
 const LANGUAGES = {
+    "_": { fallbackLanguage: "en" },
     "en": {
         audioList: [
             "audio/ja/kuruto.mp3",
@@ -16,13 +17,15 @@ const LANGUAGES = {
             "page-title": "Welcome to herta kuru~",
             "doc-title": "Kuru Kuru~",
             "page-descriptions": "The website for Herta, the <del>annoying</del> cutest genius Honkai: Star Rail character out there.",
-            //dynamic texts
+            // dynamic texts
             "counter-descriptions": ["The kuru~ has been squished for", "Herta has been kuru~ed for"],
             "counter-unit": "times",
             "counter-button": ["Squish the kuru~!", "Kuru kuru~!"],
             "credits-gif": "Herta gif made by",
             "footer-repository-text": "You can check out the GitHub repository here:",
-            "footer-repository-text-2": "herta_kuru repo"
+            "footer-repository-text-2": "herta_kuru repo",
+            "access-via-pages": "You're currently accessing via GitHub Pages. For users in China (Mainland) or some other regions, click <a href='https://duiqt.github.io/herta_kuru/'>here to access the mirror on Netlify</a>. ",
+            "access-via-mirror": "Congratulations! You are using a mirror site, which should speed up access within China (Mainland) and some regions. Click here to <a href='https://duiqt.github.io/herta_kuru/'>visit the source site on GitHub Pages</a>."
         },
         cardImage: "img/card_en.jpg"
     }, "cn": {
@@ -41,7 +44,9 @@ const LANGUAGES = {
             "counter-button": ["转圈圈~", "咕噜噜！"],
             "credits-gif": "黑塔GIF作者：",
             "footer-repository-text": "源代码在此：",
-            "footer-repository-text-2": "herta_kuru 仓库"
+            "footer-repository-text-2": "herta_kuru 仓库",
+            "access-via-pages": "您目前是通过 GitHub Pages 访问。对于中国大陆或其他一些地区的用户，请<a href='https://duiqt.github.io/herta_kuru/'>单击此处访问 Netlify 上的镜像</a>。",
+            "access-via-mirror": "恭喜！你正在使用镜像站，这应当会加速在中国大陆及部分地区境内的访问。点此<a href='https://duiqt.github.io/herta_kuru/'>访问 GitHub Pages 上的源站</a>。"
         },
         cardImage: "img/card_cn.jpg"
     },
@@ -61,16 +66,18 @@ const LANGUAGES = {
             "counter-button": "クル クル~!",
             "credits-gif": "GIF作成者は",
             "footer-repository-text": "こちらはこのページGitHubリポジトリ:",
-            "footer-repository-text-2": "herta_kuru リポジトリ"
+            "footer-repository-text-2": "herta_kuru リポジトリ",
+            "access-via-pages": "You're currently accessing via GitHub Pages. For users in China (Mainland) or some other regions, click <a href='https://duiqt.github.io/herta_kuru/'>here to access the mirror on Netlify</a>. ",
+            "access-via-mirror": "Congratulations! You are using a mirror site, which should speed up access within China (Mainland) and some regions. Click here to <a href='https://duiqt.github.io/herta_kuru/'>visit the source site on GitHub Pages</a>."
         },
         cardImage: "img/card_ja.jpg"
     },
     "kr": {
         audioList: [
-            "audio/kr/kuruto.mp3",
-            "audio/kr/kuru1.mp3",
-            "audio/kr/kuru2.mp3",
-        ], 
+            "audio/ja/kuruto.mp3",
+            "audio/ja/kuru1.mp3",
+            "audio/ja/kuru2.mp3",
+        ],
         texts: {
             "page-title": "헤르타빙글 환영합니다~",
             "doc-title": "빙글 빙글~",
@@ -81,7 +88,9 @@ const LANGUAGES = {
             "counter-button": "빙글 빙글~!",
             "credits-gif": "gif의 제작자입니다",
             "footer-repository-text": "여기 github 리 포지 토리가 있습니다:",
-            "footer-repository-text-2": "herta_kuru 리 포지 토리"
+            "footer-repository-text-2": "herta_kuru 리 포지 토리",
+            "access-via-pages": "You're currently accessing via GitHub Pages. For users in China (Mainland) or some other regions, click <a href='https://duiqt.github.io/herta_kuru/'>here to access the mirror on Netlify</a>. ",
+            "access-via-mirror": "Congratulations! You are using a mirror site, which should speed up access within China (Mainland) and some regions. Click here to <a href='https://duiqt.github.io/herta_kuru/'>visit the source site on GitHub Pages</a>."
         },
         cardImage: "img/card_kr.jpg"
     }
@@ -92,7 +101,7 @@ if (current_language != "en") {
     document.getElementById("language-selector").value = current_language;
 };
 
-function reload_language() {
+function multiLangMutation() {
     let curLang = LANGUAGES[current_language];
     let localTexts = curLang.texts;
     Object.entries(localTexts).forEach(([textId, value]) => {
@@ -103,11 +112,11 @@ function reload_language() {
     document.getElementById("herta-card").src = curLang.cardImage;
 };
 
-reload_language()
+multiLangMutation()
 document.getElementById("language-selector").addEventListener("change", (ev) => {
     current_language = ev.target.value;
     localStorage.setItem("lang", ev.target.value);
-    reload_language();
+    multiLangMutation();
 });
 
 function getLocalAudioList() {
@@ -336,3 +345,12 @@ function refreshDynamicTexts() {
             document.getElementById(textId).innerHTML = randomChoice(value);
     });
 };
+
+// CN mirror check
+if (location.hostname == "herta.ft2.ltd" || location.hostname == "hertakuru.netlify.app") {
+    document.getElementById("footer-text").innerHTML += "<p id='access-via-mirror'>Congratulations! You are using a mirror site, which should speed up access within China (Mainland) and some regions. Click here to <a href='https://duiqt.github.io/herta_kuru/'>visit the source site on GitHub Pages</a>.</p>";
+    multiLangMutation();
+} else {
+    document.getElementById("footer-text").innerHTML += "<p id='access-via-pages'>You're currently accessing via GitHub Pages. For users in China (Mainland) or some regions, click <a href='https://duiqt.github.io/herta_kuru/'>here to access the mirror on Netlify</a>.</p>";
+    multiLangMutation();
+}
