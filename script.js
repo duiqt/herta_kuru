@@ -24,7 +24,7 @@ const LANGUAGES = {
             "credits-gif": "Herta gif made by",
             "footer-repository-text": "You can check out the GitHub repository here:",
             "footer-repository-text-2": "herta_kuru repo",
-            "access-via-pages": "You're currently accessing via GitHub Pages. For users in China (Mainland) or some other regions, click <a href='https://duiqt.github.io/herta_kuru/'>here to access the mirror on Netlify</a>. ",
+            "access-via-pages": "You're currently accessing via GitHub Pages. For users in China (Mainland) or some other regions, click <a href='https://herta.ft2.ltd/'>here to access the mirror on Netlify</a>. ",
             "access-via-mirror": "Congratulations! You are using a mirror site, which should speed up access within China (Mainland) and some regions. Click here to <a href='https://duiqt.github.io/herta_kuru/'>visit the source site on GitHub Pages</a>."
         },
         cardImage: "img/card_en.jpg"
@@ -45,7 +45,7 @@ const LANGUAGES = {
             "credits-gif": "黑塔GIF作者：",
             "footer-repository-text": "源代码在此：",
             "footer-repository-text-2": "herta_kuru 仓库",
-            "access-via-pages": "您目前是通过 GitHub Pages 访问。对于中国大陆或其他一些地区的用户，请<a href='https://duiqt.github.io/herta_kuru/'>单击此处访问 Netlify 上的镜像</a>。",
+            "access-via-pages": "您目前是通过 GitHub Pages 访问。对于中国大陆或其他一些地区的用户，请<a href='https://herta.ft2.ltd/'>单击此处访问 Netlify 上的镜像</a>。",
             "access-via-mirror": "恭喜！你正在使用镜像站，这应当会加速在中国大陆及部分地区境内的访问。点此<a href='https://duiqt.github.io/herta_kuru/'>访问 GitHub Pages 上的源站</a>。"
         },
         cardImage: "img/card_cn.jpg"
@@ -67,7 +67,7 @@ const LANGUAGES = {
             "credits-gif": "GIF作成者は",
             "footer-repository-text": "こちらはこのページGitHubリポジトリ:",
             "footer-repository-text-2": "herta_kuru リポジトリ",
-            "access-via-pages": "You're currently accessing via GitHub Pages. For users in China (Mainland) or some other regions, click <a href='https://duiqt.github.io/herta_kuru/'>here to access the mirror on Netlify</a>. ",
+            "access-via-pages": "You're currently accessing via GitHub Pages. For users in China (Mainland) or some other regions, click <a href='https://herta.ft2.ltd/'>here to access the mirror on Netlify</a>. ",
             "access-via-mirror": "Congratulations! You are using a mirror site, which should speed up access within China (Mainland) and some regions. Click here to <a href='https://duiqt.github.io/herta_kuru/'>visit the source site on GitHub Pages</a>."
         },
         cardImage: "img/card_ja.jpg"
@@ -89,7 +89,7 @@ const LANGUAGES = {
             "credits-gif": "gif의 제작자입니다",
             "footer-repository-text": "여기 github 리 포지 토리가 있습니다:",
             "footer-repository-text-2": "herta_kuru 리 포지 토리",
-            "access-via-pages": "You're currently accessing via GitHub Pages. For users in China (Mainland) or some other regions, click <a href='https://duiqt.github.io/herta_kuru/'>here to access the mirror on Netlify</a>. ",
+            "access-via-pages": "You're currently accessing via GitHub Pages. For users in China (Mainland) or some other regions, click <a href='https://herta.ft2.ltd/'>here to access the mirror on Netlify</a>. ",
             "access-via-mirror": "Congratulations! You are using a mirror site, which should speed up access within China (Mainland) and some regions. Click here to <a href='https://duiqt.github.io/herta_kuru/'>visit the source site on GitHub Pages</a>."
         },
         cardImage: "img/card_kr.jpg"
