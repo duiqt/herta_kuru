@@ -67,8 +67,8 @@ const LANGUAGES = {
             "credits-gif": "GIF作成者は",
             "footer-repository-text": "こちらはこのページGitHubリポジトリ:",
             "footer-repository-text-2": "herta_kuru リポジトリ",
-            "access-via-pages": "You're currently accessing via GitHub Pages. For users in China (Mainland) or some other regions, click <a href='https://herta.ft2.ltd/'>here to access the mirror on Netlify</a>. ",
-            "access-via-mirror": "Congratulations! You are using a mirror site, which should speed up access within China (Mainland) and some regions. Click here to <a href='https://duiqt.github.io/herta_kuru/'>visit the source site on GitHub Pages</a>."
+            "access-via-pages": "今アクセスしてるページはぎGitHubです。中国大陸まだは他の地域のユーサーはNetlifyのミラーに入るために、<a href='https://herta.ft2.ltd/'>ここにクリックして</a>ください。",
+            "access-via-mirror": "おめでとうございます！今はもうミラーサイトを使っています、中国大陸まだは他の地域のアクセス速度が速くなります。サイトのソースを見たいなら、<a href='https://duiqt.github.io/herta_kuru/'>ここにクリックして</a>、GitHubページで見てください。"
         },
         cardImage: "img/card_ja.jpg"
     },
@@ -89,8 +89,8 @@ const LANGUAGES = {
             "credits-gif": "gif의 제작자입니다",
             "footer-repository-text": "여기 github 리 포지 토리가 있습니다:",
             "footer-repository-text-2": "herta_kuru 리 포지 토리",
-            "access-via-pages": "You're currently accessing via GitHub Pages. For users in China (Mainland) or some other regions, click <a href='https://herta.ft2.ltd/'>here to access the mirror on Netlify</a>. ",
-            "access-via-mirror": "Congratulations! You are using a mirror site, which should speed up access within China (Mainland) and some regions. Click here to <a href='https://duiqt.github.io/herta_kuru/'>visit the source site on GitHub Pages</a>."
+            "access-via-pages": "당신은 GitHub를 통해 액세스하고 있습니다. 중국 또는 기타 지역 사용자의 경우 여기를 <a href='https://herta.ft2.ltd/'>클릭하여 Netlify의 미러 액세스하십시오</a>. ",
+            "access-via-mirror": "축하합니다. 당신은 미러 웹 사이트를 통해 액세스하고 있습니다, 이렇게 하면 중국 및 일부 다른 지역에서의 액세스 속도가 빨라집니다. 여기를 <a href='https://duiqt.github.io/herta_kuru/'> 클릭하여 GitHub의 소스 페이지에 액세스하십시오</a>. "
         },
         cardImage: "img/card_kr.jpg"
     }
