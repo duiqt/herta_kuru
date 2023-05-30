@@ -356,3 +356,7 @@ if (location.hostname == "herta.ft2.ltd" || location.hostname == "hertakuru.netl
     document.getElementById("footer").innerHTML += "<p id='access-via-pages'>You're currently accessing via GitHub Pages. For users in China (Mainland) or some regions, click <a href='https://duiqt.github.io/herta_kuru/'>here to access the mirror on Netlify</a>.</p>";
     multiLangMutation();
 }
+
+fetch("credits.json").then(response => response.json()).then((data) => {
+    
+})
