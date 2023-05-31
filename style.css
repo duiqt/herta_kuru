@@ -131,6 +131,7 @@ hr {
 #global-counter {
     color: #574f84;
     font-size: 2em;
+    line-height: 38px;
 }
 
 #local-counter {
@@ -344,4 +345,8 @@ hr {
     width: 80px;
     height: 80px;
     border-radius: 50%;
+}
+
+.about-link {
+    color: black !important;
 }

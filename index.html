@@ -8,83 +8,85 @@
     <link rel="stylesheet" href="style.css" type="text/css" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet" />
-    <script src="https://code.iconify.design/iconify-icon/1.0.2/iconify-icon.min.js"></script>
+    <link rel="stylesheet" href="https://unpkg.com/ionicons@4.5.10-0/dist/css/ionicons.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/mdui@1.0.2/dist/css/mdui.min.css" />
+    <!-- <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet" /> -->
+    <!-- <script src="https://code.iconify.design/iconify-icon/1.0.2/iconify-icon.min.js"></script> -->
     <link href="img/favicon.ico" rel="shortcut icon">
 </head>
 
 <body>
-    <main class="wrapper">
-        <div id="wrapper-background-filter"></div>
-        <div id="wrapper-background"></div>
-        <img src="img/hertaa1.gif" class="preload" />
-        <img src="img/hertaa2.gif" class="preload" />
-        <div id="content">
-            <div id="title-container">
-                <h1 id="page-title">Welcome to herta kuru</h1>
-                <img id="title-img" alt="img of herta" src="img/favicon.ico">
-            </div>
-            <select id="language-selector">
-                <option value="en" selected>English</option>
-                <option value="cn">中文</option>
-                <option value="ja">日本語</option>
-                <option value="kr">한국어</option>
-            </select>
+    <div class="mdui-container-fluid">
+        <main class="wrapper">
+            <div id="wrapper-background-filter"></div>
+            <div id="wrapper-background"></div>
+            <img src="img/hertaa1.gif" class="preload" />
+            <img src="img/hertaa2.gif" class="preload" />
+            <div id="content">
+                <div id="title-container">
+                    <h1 id="page-title">Welcome to herta kuru</h1>
+                    <img id="title-img" alt="img of herta" src="img/favicon.ico">
+                </div>
+                <select id="language-selector">
+                    <option value="en" selected>English</option>
+                    <option value="cn">中文</option>
+                    <option value="ja">日本語</option>
+                    <option value="kr">한국어</option>
+                </select>
 
 
-            <hr id="subtitle-seperator" />
-            <h2 id="page-descriptions">
-                The website for Herta, the <del>annoying</del> cutest genius Honkai:
-                Star Rail character out there.
-            </h2>
-            <div id="counter-container">
-                <h3 id="counter-descriptions">The kuru~ has been squished</h3>
-                <br />
-                <br />
-                <p id="global-counter">0</p>
-                <p id="local-counter">0</p>
-                <br />
-                <br />
-                <p id="counter-unit">times</p>
-                <button id="counter-button">
-                    Squish the kuru~!
-                </button>
+                <hr id="subtitle-seperator" />
+                <h2 id="page-descriptions">
+                    The website for Herta, the <del>annoying</del> cutest genius Honkai:
+                    Star Rail character out there.
+                </h2>
+                <div id="counter-container">
+                    <h3 id="counter-descriptions">The kuru~ has been squished</h3>
+                    <br />
+                    <br />
+                    <p id="global-counter">0</p>
+                    <p id="local-counter">0</p>
+                    <br />
+                    <br />
+                    <p id="counter-unit">times</p>
+                    <button id="counter-button">
+                        Squish the kuru~!
+                    </button>
+                </div>
+                <hr />
+                <div id="grid">
+                    <noscript>Your browser does not support JavaScript or JavaScript has been
+                        disabled.<br />This website relies on JavaScript, so please enable it
+                        or use another browser.</noscript>
+                </div>
             </div>
-            <hr />
-            <div id="grid">
-                <noscript>Your browser does not support JavaScript or JavaScript has been
-                    disabled.<br />This website relies on JavaScript, so please enable it
-                    or use another browser.</noscript>
-            </div>
-        </div>
-    </main>
-    <div id="footer">
-        <img id="herta-card" loading="lazy" src="img/card.jpg" alt="" />
-        <div id="footer-text">
-            <p id="credits-gif">Herta gif made by</p>
-            <p>
-                <a href="https://twitter.com/Seseren_kr" target="_blank"><iconify-icon icon="mdi:twitter"
-                        id="twitter-footer-icon" class="footer-icon"></iconify-icon><span
-                        class="footer-icon-text">@Seseren_kr</span></a>
-            </p>
-            <p id="footer-repository-text">
-                You can check out the GitHub repository here:
-            </p>
-            <p>
-                <a href="https://github.com/duiqt/herta.kuru" target="_blank"><iconify-icon icon="mdi:github"
-                        id="github-footer-icon" class="footer-icon"></iconify-icon><span class="footer-icon-text"
-                        id="footer-repository-text-2">herta_kuru repo</span></a>
-            </p>
-            <p>
-                <a href="#" onclick="show_credits()" target="_blank"><span class="footer-icon-text"
-                        id="footer-show-credits-text">Show Credits</span></a>
-            </p>
-            <div id="credits-part">
-                
+        </main>
+        <div id="footer">
+            <img id="herta-card" loading="lazy" src="img/card_en.jpg" class="img-autocdn" alt="" />
+            <div id="footer-text">
+                <div class="mdui-list"><a href="https://twitter.com/Seseren_kr" target="_blank"
+                        class="mdui-list-item mdui-ripple">
+                        <i class="mdui-icon mdui-list-item-icon ion-logo-twitter mdui-text-color-light-blue"></i>
+                        <div class="mdui-list-item-content footer-icon-text about-link">Herta GIF - @Seseren_kr</div>
+                    </a><a href="https://github.com/duiqt/herta.kuru" target="_blank"
+                        class="mdui-list-item mdui-ripple">
+                        <i class="mdui-icon mdui-list-item-icon ion-logo-github mdui-text-color-black-icon"></i>
+                        <div class="mdui-list-item-content footer-icon-text about-link">GitHub Repo - duiqt/herta_kuru
+                        </div>
+                    </a>
+                </div>
+                <div class="mdui-typo">
+                    <!-- <button class="mdui-btn mdui-btn-raised mdui-ripple mdui-btn-block" onclick="show_credits();"
+                        id="footer-show-credits-text">Show Credits
+                    </button> -->
+                    <div id="access-via-tip-parent"></div>
+                </div>
             </div>
         </div>
     </div>
+    <script src="https://unpkg.com/mdui@1.0.2/dist/js/mdui.min.js"></script>
     <script src="script.js" async></script>
+
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-T303QPC9L9"></script>
     <script>
