@@ -1,0 +1,96 @@
+{
+    "contributors": [
+        {
+            "username": "duiqt",
+            "name": "Phúc Duy",
+            "thing": "Main Dev",
+            "socialmedia": {
+                "github": "duiqt"
+            },
+            "icon": "https://avatars.githubusercontent.com/u/90624125?v=4"
+        },
+        {
+            "username": "fred913",
+            "name": "Sheng Fan",
+            "thing": "Main Dev",
+            "socialmedia": {
+                "github": "fred913",
+                "bilibili": 496636524
+            },
+            "icon": "https://avatars.githubusercontent.com/u/41846047?v=4"
+        },
+        {
+            "username": "PencilCore",
+            "thing": "Code Contributor",
+            "socialmedia": {
+                "github": "PencilCore"
+            },
+            "icon": "https://avatars.githubusercontent.com/u/62322900?v=4"
+        },
+        {
+            "username": "risbi0",
+            "thing": "Code Contributor",
+            "socialmedia": {
+                "github": "risbi0"
+            },
+            "icon": "https://avatars.githubusercontent.com/u/81689588?v=4"
+        },
+        {
+            "username": "moepoi",
+            "thing": "Code Contributor",
+            "socialmedia": {
+                "github": "moepoi"
+            },
+            "icon": "https://avatars.githubusercontent.com/u/29736957?v=4"
+        },
+        {
+            "username": "rikarani",
+            "thing": "Code Contributor",
+            "socialmedia": {
+                "github": "rikarani"
+            },
+            "icon": "https://avatars.githubusercontent.com/u/46773591?v=4"
+        },
+        {
+            "username": "joulev",
+            "thing": "Code Contributor",
+            "socialmedia": {
+                "github": "joulev"
+            },
+            "icon": "https://avatars.githubusercontent.com/u/44609036?v=4"
+        },
+        {
+            "username": "RafadanaM",
+            "thing": "Code Contributor",
+            "socialmedia": {
+                "github": "RafadanaM"
+            },
+            "icon": "https://avatars.githubusercontent.com/u/7974643?v=4"
+        },
+        {
+            "username": "vgwik",
+            "thing": "Localization Contributor",
+            "socialmedia": {
+                "github": "vgwik",
+                "bilibili": 38120922
+            },
+            "icon": "https://avatars.githubusercontent.com/u/52212950?v=4"
+        },
+        {
+            "username": "提灯书梦",
+            "thing": "Korean Translation",
+            "socialmedia": {
+                "bilibili": 6318620
+            },
+            "icon": "https://i2.hdslb.com/bfs/face/d3f6572157f3c51497cff1d58dd925632477faf5.jpg"
+        },
+        {
+            "username": "二次元のリア充",
+            "thing": "Japanese Translation",
+            "socialmedia": {
+                "bilibili": 7885894
+            },
+            "icon": "https://i1.hdslb.com/bfs/face/5772af8e0ad4067323e1f082f887a220b92dbf71.jpg"
+        }
+    ]
+}

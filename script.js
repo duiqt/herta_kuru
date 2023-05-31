@@ -22,8 +22,7 @@ const LANGUAGES = {
             "counter-unit": "times",
             "counter-button": ["Squish the kuru~!", "Kuru kuru~!"],
             "credits-gif": "Herta gif made by",
-            "footer-repository-text": "You can check out the GitHub repository here:",
-            "footer-repository-text-2": "herta_kuru repo",
+            "footer-repository-text": "GitHub Repo",
             "access-via-pages": "You're currently accessing via GitHub Pages. For users in China (Mainland) or some other regions, click <a href='https://herta.ft2.ltd/'>here to access the mirror on Netlify</a>. ",
             "access-via-mirror": "Congratulations! You are using a mirror site, which should speed up access within China (Mainland) and some regions. Click here to <a href='https://duiqt.github.io/herta_kuru/'>visit the source site on GitHub Pages</a>.",
             "footer-show-credits-text": "Show Credits"
@@ -44,8 +43,7 @@ const LANGUAGES = {
             "counter-unit": ["次", "次圈圈"],
             "counter-button": ["转圈圈~", "咕噜噜！"],
             "credits-gif": "黑塔GIF作者：",
-            "footer-repository-text": "源代码在此：",
-            "footer-repository-text-2": "herta_kuru 仓库",
+            "footer-repository-text": "GitHub 仓库",
             "access-via-pages": "您目前是通过 GitHub Pages 访问。对于中国大陆或其他一些地区的用户，请<a href='https://herta.ft2.ltd/'>单击此处访问 Netlify 上的镜像</a>。",
             "access-via-mirror": "恭喜！你正在使用镜像站，这应当会加速在中国大陆及部分地区境内的访问。点此<a href='https://duiqt.github.io/herta_kuru/'>访问 GitHub Pages 上的源站</a>。",
             "footer-show-credits-text": "查看感谢页"
@@ -68,7 +66,6 @@ const LANGUAGES = {
             "counter-button": "クル クル~!",
             "credits-gif": "GIF作成者は",
             "footer-repository-text": "こちらはこのページGitHubリポジトリ:",
-            "footer-repository-text-2": "herta_kuru リポジトリ",
             "access-via-pages": "今アクセスしてるページはぎGitHubです。中国大陸まだは他の地域のユーサーはNetlifyのミラーに入るために、<a href='https://herta.ft2.ltd/'>ここにクリックして</a>ください。",
             "access-via-mirror": "おめでとうございます！今はもうミラーサイトを使っています、中国大陸まだは他の地域のアクセス速度が速くなります。サイトのソースを見たいなら、<a href='https://duiqt.github.io/herta_kuru/'>ここにクリックして</a>、GitHubページで見てください。",
             "footer-show-credits-text": "Show Credits"
@@ -91,7 +88,6 @@ const LANGUAGES = {
             "counter-button": "빙글 빙글~!",
             "credits-gif": "gif의 제작자입니다",
             "footer-repository-text": "여기 github 리 포지 토리가 있습니다:",
-            "footer-repository-text-2": "herta_kuru 리 포지 토리",
             "access-via-pages": "당신은 GitHub를 통해 액세스하고 있습니다. 중국 또는 기타 지역 사용자의 경우 여기를 <a href='https://herta.ft2.ltd/'>클릭하여 Netlify의 미러 액세스하십시오</a>. ",
             "access-via-mirror": "축하합니다. 당신은 미러 웹 사이트를 통해 액세스하고 있습니다, 이렇게 하면 중국 및 일부 다른 지역에서의 액세스 속도가 빨라집니다. 여기를 <a href='https://duiqt.github.io/herta_kuru/'> 클릭하여 GitHub의 소스 페이지에 액세스하십시오</a>. ",
             "footer-show-credits-text": "Show Credits"
@@ -354,20 +350,22 @@ function refreshDynamicTexts() {
 
 // CN mirror check
 if (location.hostname == "herta.ft2.ltd" || location.hostname == "hertakuru.netlify.app") {
-    document.getElementById("footer").innerHTML += "<p id='access-via-mirror'>Congratulations! You are using a mirror site, which should speed up access within China (Mainland) and some regions. Click here to <a href='https://duiqt.github.io/herta_kuru/'>visit the source site on GitHub Pages</a>.</p>";
+    document.getElementById("access-via-tip-parent").innerHTML = "<p id='access-via-mirror'>Congratulations! You are using a mirror site, which should speed up access within China (Mainland) and some regions. Click here to <a href='https://duiqt.github.io/herta_kuru/'>visit the source site on GitHub Pages</a>.</p>";
     multiLangMutation();
 } else {
-    document.getElementById("footer").innerHTML += "<p id='access-via-pages'>You're currently accessing via GitHub Pages. For users in China (Mainland) or some regions, click <a href='https://duiqt.github.io/herta_kuru/'>here to access the mirror on Netlify</a>.</p>";
+    document.getElementById("access-via-tip-parent").innerHTML = "<p id='access-via-pages'>You're currently accessing via GitHub Pages. For users in China (Mainland) or some regions, click <a href='https://duiqt.github.io/herta_kuru/'>here to access the mirror on Netlify</a>.</p>";
     multiLangMutation();
 }
 
-document.getElementById("credits-part").style.display = "none";
+// document.getElementById("credits-dialog").style.display = "none";
 fetch("credits.json").then(response => response.json()).then((data) => {
     for (let i = 0; i < data.contributors.length; i++) {
         var current = data.contributors[i];
-        document.getElementById("credits-part").innerHTML += `<div class="credit"><img src="${current.icon}" class="credits-head-img" /><div class="credit-usr-info"><p></p></div></div>`;
+        document.getElementById("credits-dialog").innerHTML += `<div class="credit"><img src="${current.icon}" class="credits-head-img" /><div class="credit-usr-info"><p></p></div></div>`;
     }
 });
 function show_credits() {
+    let myDialog = document.getElementById('credits-dialog');
 
+    myDialog.showModal();
 }
