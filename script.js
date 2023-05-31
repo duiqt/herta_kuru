@@ -236,26 +236,32 @@ counterButton.addEventListener('click', (e) => {
 
 var cachedObjects = {};
 
-function tryCachedObject(origUrl) {
+function tryCacheUrl(origUrl) {
     // check if the object is already cached
     if (cachedObjects[origUrl]) {
         return cachedObjects[origUrl];
     } else {
         // start caching it
-        fetch(origUrl)
-            .then((response) => response.blob())
-            .then((blob) => {
-                // Create a blob URL for the object
-                const blobUrl = URL.createObjectURL(blob);
-                // get the object cached by storing the blob URL in the cachedObjects object
-                cachedObjects[origUrl] = blobUrl;
-            })
-            .catch((error) => {
-                console.error(`Error caching object from ${origUrl}: ${error}`);
-            });
+        setTimeout(() => {
+            fetch(origUrl)
+                .then((response) => response.blob())
+                .then((blob) => {
+                    // Create a blob URL for the object
+                    const blobUrl = URL.createObjectURL(blob);
+                    // get the object cached by storing the blob URL in the cachedObjects object
+                    cachedObjects[origUrl] = blobUrl;
+                })
+                .catch((error) => {
+                    console.error(`Error caching object from ${origUrl}: ${error}`);
+                });
+        }, 1);
         return origUrl;
     }
 };
+
+
+tryCacheUrl("img/hertaa1.gif");
+tryCacheUrl("img/hertaa2.gif");
 
 function randomChoice(myArr) {
     const randomIndex = Math.floor(Math.random() * myArr.length);
@@ -285,7 +291,7 @@ function playKuru() {
         audioUrl = getRandomAudioUrl();
     }
 
-    let audio = new Audio(tryCachedObject(audioUrl));
+    let audio = new Audio(tryCacheUrl(audioUrl));
 
     audio.play();
 
@@ -299,7 +305,7 @@ function animateHerta() {
 
     const random = Math.floor(Math.random() * 2) + 1;
     const elem = document.createElement("img");
-    elem.src = tryCachedObject(`img/hertaa${random}.gif`);
+    elem.src = tryCacheUrl(`img/hertaa${random}.gif`);
     elem.style.position = "absolute";
     elem.style.right = "-500px";
     elem.style.top = counterButton.getClientRects()[0].bottom + scrollY - 430 + "px"
