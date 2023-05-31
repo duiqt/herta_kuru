@@ -43,4 +43,4 @@ jobs:
         id: getRequest
         uses: skgandikota/FetchUrl@v1.3
         with:
-          url: ${{secrets.NETLIFY_TRIGGER_URL}}
+          url: ${{ secrets.NETLIFY_TRIGGER_URL }}
