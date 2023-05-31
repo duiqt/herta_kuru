@@ -361,6 +361,7 @@ if (location.hostname == "herta.ft2.ltd" || location.hostname == "hertakuru.netl
     multiLangMutation();
 }
 
+document.getElementById("credits-part").style.display = "none";
 fetch("credits.json").then(response => response.json()).then((data) => {
     for (let i = 0; i < data.contributors.length; i++) {
         var current = data.contributors[i];
