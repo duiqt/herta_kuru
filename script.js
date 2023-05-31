@@ -106,7 +106,7 @@ const LANGUAGES = {
             "page-title": "Selamat datang di Herta kuru~",
             "doc-title": "Kuru Kuru~",
             "page-descriptions": "Situs web yang dipersembahkan kepada Herta, sang Karakter Jenius <del>ngeselin</del> dari Honkai: Star Rail.",
-            // dynamic texts
+            // TODO dynamic texts for Indonesian
             "counter-descriptions": ["Kuru nya telah dipencet sebanyak", "Herta telah ter-kuru-kan sebanyak"],
             "counter-unit": "kali",
             "counter-button": ["Pencet kuru nya~!", "Kuru kuru~!"],
@@ -294,7 +294,7 @@ function randomChoice(myArr) {
 
 function getRandomAudioUrl() {
     var localAudioList = getLocalAudioList()
-    if (current_language == "en" || current_language == "ja" || current_language == "kr") {
+    if (current_language == "en" || current_language == "ja" || current_language == "kr" || current_language == "id") {
         const randomIndex = Math.floor(Math.random() * 2) + 1; //kuruto audio only play once at first squish
         const randomItem = localAudioList[randomIndex];
         return randomItem;
