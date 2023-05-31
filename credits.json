@@ -1,96 +1,96 @@
 {
-    "contributors": [
-        {
-            "username": "duiqt",
-            "name": "Phúc Duy",
-            "thing": "Main Dev",
-            "socialmedia": {
-                "github": "duiqt"
-            },
-            "icon": "https://avatars.githubusercontent.com/u/90624125?v=4"
-        },
-        {
-            "username": "fred913",
-            "name": "Sheng Fan",
-            "thing": "Main Dev",
-            "socialmedia": {
-                "github": "fred913",
-                "bilibili": 496636524
-            },
-            "icon": "https://avatars.githubusercontent.com/u/41846047?v=4"
-        },
-        {
-            "username": "PencilCore",
-            "thing": "Code Contributor",
-            "socialmedia": {
-                "github": "PencilCore"
-            },
-            "icon": "https://avatars.githubusercontent.com/u/62322900?v=4"
-        },
-        {
-            "username": "risbi0",
-            "thing": "Code Contributor",
-            "socialmedia": {
-                "github": "risbi0"
-            },
-            "icon": "https://avatars.githubusercontent.com/u/81689588?v=4"
-        },
-        {
-            "username": "moepoi",
-            "thing": "Code Contributor",
-            "socialmedia": {
-                "github": "moepoi"
-            },
-            "icon": "https://avatars.githubusercontent.com/u/29736957?v=4"
-        },
-        {
-            "username": "rikarani",
-            "thing": "Code Contributor",
-            "socialmedia": {
-                "github": "rikarani"
-            },
-            "icon": "https://avatars.githubusercontent.com/u/46773591?v=4"
-        },
-        {
-            "username": "joulev",
-            "thing": "Code Contributor",
-            "socialmedia": {
-                "github": "joulev"
-            },
-            "icon": "https://avatars.githubusercontent.com/u/44609036?v=4"
-        },
-        {
-            "username": "RafadanaM",
-            "thing": "Code Contributor",
-            "socialmedia": {
-                "github": "RafadanaM"
-            },
-            "icon": "https://avatars.githubusercontent.com/u/7974643?v=4"
-        },
-        {
-            "username": "vgwik",
-            "thing": "Localization Contributor",
-            "socialmedia": {
-                "github": "vgwik",
-                "bilibili": 38120922
-            },
-            "icon": "https://avatars.githubusercontent.com/u/52212950?v=4"
-        },
-        {
-            "username": "提灯书梦",
-            "thing": "Korean Translation",
-            "socialmedia": {
-                "bilibili": 6318620
-            },
-            "icon": "https://i2.hdslb.com/bfs/face/d3f6572157f3c51497cff1d58dd925632477faf5.jpg@240w_240h_1c_1s_!web-avatar-space-header.webp"
-        },
-        {
-            "username": "二次元のリア充",
-            "thing": "Japanese Translation",
-            "socialmedia": {
-                "bilibili": 7885894
-            },
-            "icon": "https://i1.hdslb.com/bfs/face/5772af8e0ad4067323e1f082f887a220b92dbf71.jpg@240w_240h_1c_1s_!web-avatar-space-header.webp"
-        }
-    ]
+  "contributors": [
+    {
+      "username": "duiqt",
+      "name": "Ph\u00fac Duy",
+      "thing": "Main Dev",
+      "socialmedia": {
+        "github": "duiqt"
+      },
+      "icon": "credits/images/93a7f481e5a39e10c47c196afacf13a68e2037f0.jpg"
+    },
+    {
+      "username": "fred913",
+      "name": "Sheng Fan",
+      "thing": "Main Dev",
+      "socialmedia": {
+        "github": "fred913",
+        "bilibili": 496636524
+      },
+      "icon": "credits/images/5f6a01f9a9a75d6db4cda0a6af0f64668035c408.jpg"
+    },
+    {
+      "username": "PencilCore",
+      "thing": "Code Contributor",
+      "socialmedia": {
+        "github": "PencilCore"
+      },
+      "icon": "credits/images/154915e50f36cd01283127ff1edd4b77d679c3a1.jpg"
+    },
+    {
+      "username": "risbi0",
+      "thing": "Code Contributor",
+      "socialmedia": {
+        "github": "risbi0"
+      },
+      "icon": "credits/images/71c4726c2704ca7397a23ff8dfee50eb460622e7.jpg"
+    },
+    {
+      "username": "moepoi",
+      "thing": "Code Contributor",
+      "socialmedia": {
+        "github": "moepoi"
+      },
+      "icon": "credits/images/785c87bcadbdd8a8b55278746561ff835ceb9565.jpg"
+    },
+    {
+      "username": "rikarani",
+      "thing": "Code Contributor",
+      "socialmedia": {
+        "github": "rikarani"
+      },
+      "icon": "credits/images/6387ed3947711ace1d350b806990a9640eb52757.jpg"
+    },
+    {
+      "username": "joulev",
+      "thing": "Code Contributor",
+      "socialmedia": {
+        "github": "joulev"
+      },
+      "icon": "credits/images/05f43cf0c42c4b55db91a1f258beeb1b249d747e.jpg"
+    },
+    {
+      "username": "RafadanaM",
+      "thing": "Code Contributor",
+      "socialmedia": {
+        "github": "RafadanaM"
+      },
+      "icon": "credits/images/9882e0e4562cac10e2f1e4f3021ebbdacb299210.jpg"
+    },
+    {
+      "username": "vgwik",
+      "thing": "Localization Contributor",
+      "socialmedia": {
+        "github": "vgwik",
+        "bilibili": 38120922
+      },
+      "icon": "credits/images/1324cb8ee772fe67f44ccc67ee002bdca3242064.jpg"
+    },
+    {
+      "username": "\u63d0\u706f\u4e66\u68a6",
+      "thing": "Korean Translation",
+      "socialmedia": {
+        "bilibili": 6318620
+      },
+      "icon": "credits/images/cee4acdeb90c016909e531ecbdfab2fe3eb6f65f.jpg"
+    },
+    {
+      "username": "\u4e8c\u6b21\u5143\u306e\u30ea\u30a2\u5145",
+      "thing": "Japanese Translation",
+      "socialmedia": {
+        "bilibili": 7885894
+      },
+      "icon": "credits/images/68f10e69275761caab0892eea60589997bffa6b5.jpg"
+    }
+  ]
 }
