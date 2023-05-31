@@ -1,3 +1,5 @@
+const $ = mdui.$;
+
 //varible
 var audioList = [];  // will be loaded later
 
@@ -358,12 +360,12 @@ if (location.hostname == "herta.ft2.ltd" || location.hostname == "hertakuru.netl
 }
 
 // document.getElementById("credits-dialog").style.display = "none";
-fetch("credits.json").then(response => response.json()).then((data) => {
-    for (let i = 0; i < data.contributors.length; i++) {
-        var current = data.contributors[i];
-        document.getElementById("credits-dialog").innerHTML += `<div class="credit"><img src="${current.icon}" class="credits-head-img" /><div class="credit-usr-info"><p></p></div></div>`;
-    }
-});
+// fetch("credits.json").then(response => response.json()).then((data) => {
+//     for (let i = 0; i < data.contributors.length; i++) {
+//         var current = data.contributors[i];
+//         document.getElementById("credits-dialog").innerHTML += `<div class="credit"><img src="${current.icon}" class="credits-head-img" /><div class="credit-usr-info"><p></p></div></div>`;
+//     }
+// });
 function show_credits() {
     let myDialog = document.getElementById('credits-dialog');
 
