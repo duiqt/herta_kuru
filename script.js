@@ -95,6 +95,29 @@ const LANGUAGES = {
             "footer-show-credits-text": "Show Credits"
         },
         cardImage: "img/card_kr.jpg"
+    },
+    "id": {
+        audioList: [
+            "audio/ja/kuruto.mp3",
+            "audio/ja/kuru1.mp3",
+            "audio/ja/kuru2.mp3",
+        ],
+        texts: {
+            "page-title": "Selamat datang di Herta kuru~",
+            "doc-title": "Kuru Kuru~",
+            "page-descriptions": "Situs web yang dipersembahkan kepada Herta, sang Karakter Jenius <del>ngeselin</del> dari Honkai: Star Rail.",
+            // TODO dynamic texts for Indonesian
+            "counter-descriptions": ["Kuru nya telah dipencet sebanyak", "Herta telah ter-kuru-kan sebanyak"],
+            "counter-unit": "kali",
+            "counter-button": ["Pencet kuru nya~!", "Kuru kuru~!"],
+            "credits-gif": "Gif Herta dibuat oleh",
+            "footer-repository-text": "Kamu dapat memeriksa repository Github nya di sini:",
+            "footer-repository-text-2": "herta_kuru repo",
+            "access-via-pages": "Kamu saat ini sedang mengakses melalui Laman GitHub. Untuk pengguna berdomisili di Tiongkok (Daratan) dan wilayah lainnya, silakan klik <a href='https://herta.ft2.ltd/'> di sini untuk mengakses mirror nya di Netlify</a>. ",
+            "access-via-mirror": "Selamat! Kamu sedang menggunakan situs mirror, yang mana seharusnya mempercepat akses untuk wilayah sekitar Tiongkok (daratan) dan wilayah lainnya . Silakan klik <a href='https://duiqt.github.io/herta_kuru/'> di sini untuk mengunjungi situs sumbernya pada Laman Github</a>.",
+            "footer-show-credits-text": "Tampilkan Credit"
+        },
+        cardImage: "img/card_id.jpg"
     }
 };
 
@@ -271,7 +294,7 @@ function randomChoice(myArr) {
 
 function getRandomAudioUrl() {
     var localAudioList = getLocalAudioList()
-    if (current_language == "en" || current_language == "ja" || current_language == "kr") {
+    if (current_language == "en" || current_language == "ja" || current_language == "kr" || current_language == "id") {
         const randomIndex = Math.floor(Math.random() * 2) + 1; //kuruto audio only play once at first squish
         const randomItem = localAudioList[randomIndex];
         return randomItem;
