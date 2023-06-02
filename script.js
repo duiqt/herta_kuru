@@ -408,7 +408,7 @@ function showCredits() {
                 renderedName += " (" + current.name + ")";
             }
             creditsHtmlContent += `<li class="mdui-list-item mdui-ripple">
-    <div class="mdui-list-item-avatar">
+    <div class="mdui-list-item-avatar mdlist-ava-fix">
       <img src="${current.icon}"/>
     </div>
     <div class="mdui-list-item-content">
@@ -426,13 +426,7 @@ function showCredits() {
             content: creditsHtmlContent,
             buttons: [
                 {
-                    text: '取消'
-                },
-                {
-                    text: '确认',
-                    onClick: function (inst) {
-                        mdui.alert('点击确认按钮的回调');
-                    }
+                    text: 'Close'
                 }
             ]
         });
