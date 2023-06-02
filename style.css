@@ -354,3 +354,9 @@ hr {
 .mdlist-ava-fix {
     overflow: hidden !important;
 }
+
+.mdlist-ava-fix img {
+    /* position: absolute; */
+    top: 0px;
+    left: 0px;
+}
