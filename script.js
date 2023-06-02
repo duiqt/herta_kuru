@@ -424,7 +424,8 @@ function showCredits() {
                 {
                     text: 'Close'
                 }
-            ]
+            ],
+            history: false
         });
     });
 }
