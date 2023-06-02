@@ -350,3 +350,7 @@ hr {
 .about-link {
     color: black !important;
 }
+
+.mdlist-ava-fix {
+    overflow: hidden !important;
+}
