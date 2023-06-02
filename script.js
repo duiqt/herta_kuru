@@ -19,7 +19,6 @@ const LANGUAGES = {
             "page-title": "Welcome to herta kuru~",
             "doc-title": "Kuru Kuru~",
             "page-descriptions": "The website for Herta, the <del>annoying</del> cutest genius Honkai: Star Rail character out there.",
-            // dynamic texts
             "counter-descriptions": ["The kuru~ has been squished for", "Herta has been kuru~ed for"],
             "counter-unit": "times",
             "counter-button": ["Squish the kuru~!", "Kuru kuru~!"],
@@ -62,7 +61,6 @@ const LANGUAGES = {
             "page-title": "ヘルタクルへようこそ~",
             "doc-title": "クル クル~",
             "page-descriptions": "このサイトはヘルタのために作られた、 あの崩壊：スターレイルの <del>悩ましい</del> かわいい天才キャラー。",
-            // TODO dynamic texts for Japanese
             "counter-descriptions": "全世界のクル再生数",
             "counter-unit": "回",
             "counter-button": "クル クル~!",
@@ -84,7 +82,6 @@ const LANGUAGES = {
             "page-title": "헤르타빙글 환영합니다~",
             "doc-title": "빙글 빙글~",
             "page-descriptions": "이 웹사이트는 헤르타를 위해 만들어졌습니다, 붕괴: 스타레일 의 <del>귀찮은</del> 귀여운 천재 ",
-            // TODO dynamic texts for Korean
             "counter-descriptions": "전 세계 빙글 조회수",
             "counter-unit": "번",
             "counter-button": "빙글 빙글~!",
@@ -106,7 +103,6 @@ const LANGUAGES = {
             "page-title": "Selamat datang di Herta kuru~",
             "doc-title": "Kuru Kuru~",
             "page-descriptions": "Situs web yang dipersembahkan kepada Herta, sang Karakter Jenius <del>ngeselin</del> dari Honkai: Star Rail.",
-            // TODO dynamic texts for Indonesian
             "counter-descriptions": ["Kuru nya telah dipencet sebanyak", "Herta telah ter-kuru-kan sebanyak"],
             "counter-unit": "kali",
             "counter-button": ["Pencet kuru nya~!", "Kuru kuru~!"],
