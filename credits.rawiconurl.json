@@ -68,6 +68,14 @@
             "icon": "https://avatars.githubusercontent.com/u/7974643?v=4"
         },
         {
+            "username": "Seseren_kr",
+            "thing": "Artist of the Herta GIF",
+            "socialmedia": {
+                "twitter": "Seseren_kr"
+            },
+            "icon": "https://pbs.twimg.com/profile_images/835117601676144641/mYxxpLOk_400x400.jpg"
+        },
+        {
             "username": "vgwik",
             "thing": "Localization Contributor",
             "socialmedia": {
@@ -91,6 +99,14 @@
                 "bilibili": 7885894
             },
             "icon": "https://i1.hdslb.com/bfs/face/5772af8e0ad4067323e1f082f887a220b92dbf71.jpg"
+        },
+        {
+            "username": "KawaiiShadowii",
+            "thing": "Original Inspiration",
+            "socialmedia": {
+                "github": "KawaiiShadowii"
+            },
+            "icon": "https://avatars.githubusercontent.com/u/33539431?v=4"
         }
     ]
 }
