@@ -19,7 +19,6 @@ const LANGUAGES = {
             "page-title": "Welcome to herta kuru~",
             "doc-title": "Kuru Kuru~",
             "page-descriptions": "The website for Herta, the <del>annoying</del> cutest genius Honkai: Star Rail character out there.",
-            // dynamic texts
             "counter-descriptions": ["The kuru~ has been squished for", "Herta has been kuru~ed for"],
             "counter-unit": "times",
             "counter-button": ["Squish the kuru~!", "Kuru kuru~!"],
@@ -62,7 +61,6 @@ const LANGUAGES = {
             "page-title": "ヘルタクルへようこそ~",
             "doc-title": "クル クル~",
             "page-descriptions": "このサイトはヘルタのために作られた、 あの崩壊：スターレイルの <del>悩ましい</del> かわいい天才キャラー。",
-            // TODO dynamic texts for Japanese
             "counter-descriptions": "全世界のクル再生数",
             "counter-unit": "回",
             "counter-button": "クル クル~!",
@@ -84,7 +82,6 @@ const LANGUAGES = {
             "page-title": "헤르타빙글 환영합니다~",
             "doc-title": "빙글 빙글~",
             "page-descriptions": "이 웹사이트는 헤르타를 위해 만들어졌습니다, 붕괴: 스타레일 의 <del>귀찮은</del> 귀여운 천재 ",
-            // TODO dynamic texts for Korean
             "counter-descriptions": "전 세계 빙글 조회수",
             "counter-unit": "번",
             "counter-button": "빙글 빙글~!",
@@ -106,7 +103,6 @@ const LANGUAGES = {
             "page-title": "Selamat datang di Herta kuru~",
             "doc-title": "Kuru Kuru~",
             "page-descriptions": "Situs web yang dipersembahkan kepada Herta, sang Karakter Jenius <del>ngeselin</del> dari Honkai: Star Rail.",
-            // TODO dynamic texts for Indonesian
             "counter-descriptions": ["Kuru nya telah dipencet sebanyak", "Herta telah ter-kuru-kan sebanyak"],
             "counter-unit": "kali",
             "counter-button": ["Pencet kuru nya~!", "Kuru kuru~!"],
@@ -125,6 +121,21 @@ var current_language = localStorage.getItem("lang") || "en";
 if (current_language != "en") {
     document.getElementById("language-selector").value = current_language;
 };
+
+function getLocalText(textId, language = null, fallback = true) {
+    let curLang = LANGUAGES[language || current_language];
+    let localTexts = curLang.texts;
+    if (localTexts[textId] != undefined) {
+        let value = localTexts[textId];
+        if (value instanceof Array) {
+            return randomChoice(value);
+        } else {
+            return value;
+        }
+    }
+    if (fallback) return getLocalText(textId, language = "en", fallback = false);
+    else return null;
+}
 
 function multiLangMutation() {
     let curLang = LANGUAGES[current_language];
@@ -386,8 +397,46 @@ if (location.hostname == "herta.ft2.ltd" || location.hostname == "hertakuru.netl
 //         document.getElementById("credits-dialog").innerHTML += `<div class="credit"><img src="${current.icon}" class="credits-head-img" /><div class="credit-usr-info"><p></p></div></div>`;
 //     }
 // });
-function show_credits() {
-    let myDialog = document.getElementById('credits-dialog');
+function showCredits() {
+    fetch("credits.json").then(response => response.json()).then((data) => {
+        var creditsHtmlContent = "";
+        creditsHtmlContent += `<ul class="mdui-list">`;
+        for (let i = 0; i < data.contributors.length; i++) {
+            var current = data.contributors[i];
+            let renderedName = current.username;
+            if (current.name != undefined) {
+                renderedName += " (" + current.name + ")";
+            }
+            creditsHtmlContent += `<li class="mdui-list-item mdui-ripple">
+    <div class="mdui-list-item-avatar">
+      <img src="${current.icon}"/>
+    </div>
+    <div class="mdui-list-item-content">
+      <div class="mdui-list-item-title">${renderedName}</div>
+      <div class="mdui-list-item-text mdui-list-item-one-line">
+        <span class="mdui-text-color-theme-text">${current.thing}</span>
+      </div>
+    </div>
+  </li>`;
+        }
+        creditsHtmlContent += `</ul>`;
 
-    myDialog.showModal();
+        mdui.dialog({
+            title: 'Credits',
+            content: creditsHtmlContent,
+            buttons: [
+                {
+                    text: '取消'
+                },
+                {
+                    text: '确认',
+                    onClick: function (inst) {
+                        mdui.alert('点击确认按钮的回调');
+                    }
+                }
+            ]
+        });
+    });
 }
+
+$("#show-credits-opt").on("click", e => showCredits())
