@@ -352,5 +352,5 @@ hr {
 }
 
 .mdlist-ava-fix {
-    overflow-y: hidden;
+    overflow: hidden !important;
 }
