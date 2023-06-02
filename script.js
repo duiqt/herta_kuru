@@ -122,6 +122,21 @@ if (current_language != "en") {
     document.getElementById("language-selector").value = current_language;
 };
 
+function getLocalText(textId, language = null, fallback = true) {
+    let curLang = LANGUAGES[language || current_language];
+    let localTexts = curLang.texts;
+    if (localTexts[textId] != undefined) {
+        let value = localTexts[textId];
+        if (value instanceof Array) {
+            return randomChoice(value);
+        } else {
+            return value;
+        }
+    }
+    if (fallback) return getLocalText(textId, language = "en", fallback = false);
+    else return null;
+}
+
 function multiLangMutation() {
     let curLang = LANGUAGES[current_language];
     let localTexts = curLang.texts;
@@ -382,8 +397,46 @@ if (location.hostname == "herta.ft2.ltd" || location.hostname == "hertakuru.netl
 //         document.getElementById("credits-dialog").innerHTML += `<div class="credit"><img src="${current.icon}" class="credits-head-img" /><div class="credit-usr-info"><p></p></div></div>`;
 //     }
 // });
-function show_credits() {
-    let myDialog = document.getElementById('credits-dialog');
+function showCredits() {
+    fetch("credits.json").then(response => response.json()).then((data) => {
+        var creditsHtmlContent = "";
+        creditsHtmlContent += `<ul class="mdui-list">`;
+        for (let i = 0; i < data.contributors.length; i++) {
+            var current = data.contributors[i];
+            let renderedName = current.username;
+            if (current.name != undefined) {
+                renderedName += " (" + current.name + ")";
+            }
+            creditsHtmlContent += `<li class="mdui-list-item mdui-ripple">
+    <div class="mdui-list-item-avatar">
+      <img src="${current.icon}"/>
+    </div>
+    <div class="mdui-list-item-content">
+      <div class="mdui-list-item-title">${renderedName}</div>
+      <div class="mdui-list-item-text mdui-list-item-one-line">
+        <span class="mdui-text-color-theme-text">${current.thing}</span>
+      </div>
+    </div>
+  </li>`;
+        }
+        creditsHtmlContent += `</ul>`;
 
-    myDialog.showModal();
+        mdui.dialog({
+            title: 'Credits',
+            content: creditsHtmlContent,
+            buttons: [
+                {
+                    text: '取消'
+                },
+                {
+                    text: '确认',
+                    onClick: function (inst) {
+                        mdui.alert('点击确认按钮的回调');
+                    }
+                }
+            ]
+        });
+    });
 }
+
+$("#show-credits-opt").on("click", e => showCredits())

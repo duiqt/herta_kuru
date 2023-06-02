@@ -10,6 +10,14 @@
             "icon": "https://avatars.githubusercontent.com/u/90624125?v=4"
         },
         {
+            "username": "risbi0",
+            "thing": "Main Dev",
+            "socialmedia": {
+                "github": "risbi0"
+            },
+            "icon": "https://avatars.githubusercontent.com/u/81689588?v=4"
+        },
+        {
             "username": "fred913",
             "name": "Sheng Fan",
             "thing": "Main Dev",
@@ -26,14 +34,6 @@
                 "github": "PencilCore"
             },
             "icon": "https://avatars.githubusercontent.com/u/62322900?v=4"
-        },
-        {
-            "username": "risbi0",
-            "thing": "Code Contributor",
-            "socialmedia": {
-                "github": "risbi0"
-            },
-            "icon": "https://avatars.githubusercontent.com/u/81689588?v=4"
         },
         {
             "username": "moepoi",
