@@ -288,7 +288,16 @@ function randomChoice(myArr) {
     const randomIndex = Math.floor(Math.random() * myArr.length);
     const randomItem = myArr[randomIndex];
     return randomItem;
-};
+}
+
+function randomShuffle(myArr) {
+    for (let i = myArr.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [myArr[i], myArr[j]] = [myArr[j], myArr[i]];
+    }
+    return myArr;
+}
+
 
 function getRandomAudioUrl() {
     var localAudioList = getLocalAudioList()
@@ -395,10 +404,12 @@ if (location.hostname == "herta.ft2.ltd" || location.hostname == "hertakuru.netl
 // });
 function showCredits() {
     fetch("credits.json").then(response => response.json()).then((data) => {
-        var creditsHtmlContent = "";
+        var contributors = data.contributors;
+        contributors = randomShuffle(contributors);
+        var creditsHtmlContent = `<p>in no specific order</p>`;
         creditsHtmlContent += `<ul class="mdui-list">`;
-        for (let i = 0; i < data.contributors.length; i++) {
-            var current = data.contributors[i];
+        for (let i = 0; i < contributors.length; i++) {
+            var current = contributors[i];
             let renderedName = current.username;
             if (current.name != undefined) {
                 renderedName += " (" + current.name + ")";
