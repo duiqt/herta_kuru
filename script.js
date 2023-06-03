@@ -18,8 +18,8 @@
                 "counter-descriptions": ["The kuru~ has been squished for", "Herta has been kuru~ed for"],
                 "counter-unit": "times",
                 "counter-button": ["Squish the kuru~!", "Kuru kuru~!"],
-                "access-via-pages": "You're currently accessing via GitHub Pages. For users in China (Mainland) or some other regions, click <a href='https:// herta.ft2.ltd/'>here to access the mirror on Netlify</a>. ",
-                "access-via-mirror": "Congratulations! You are using a mirror site, which should speed up access within China (Mainland) and some regions. Click here to <a href='https:// duiqt.github.io/herta_kuru/'>visit the source site on GitHub Pages</a>.",
+                "access-via-pages": "You're currently accessing via GitHub Pages. For users in China (Mainland) or some other regions, click <a href='https://herta.ft2.ltd/'>here to access the mirror on Netlify</a>. ",
+                "access-via-mirror": "Congratulations! You are using a mirror site, which should speed up access within China (Mainland) and some regions. Click here to <a href='https://duiqt.github.io/herta_kuru/'>visit the source site on GitHub Pages</a>.",
                 "show-credits-text": "Show Credits",
                 "repository-desc": "GitHub Repo"
             },
@@ -40,8 +40,8 @@
                 "counter-descriptions": ["黑塔已经咕噜噜~了", "黑塔已经转了"],
                 "counter-unit": ["次", "次圈圈"],
                 "counter-button": ["转圈圈~", "咕噜噜！"],
-                "access-via-pages": "您目前是通过 GitHub Pages 访问。对于中国大陆或其他一些地区的用户，请<a href='https:// herta.ft2.ltd/'>单击此处访问 Netlify 上的镜像</a>。",
-                "access-via-mirror": "恭喜！你正在使用镜像站，这应当会加速在中国大陆及部分地区境内的访问。点此<a href='https:// duiqt.github.io/herta_kuru/'>访问 GitHub Pages 上的源站</a>。",
+                "access-via-pages": "您目前是通过 GitHub Pages 访问。对于中国大陆或其他一些地区的用户，请<a href='https://herta.ft2.ltd/'>单击此处访问 Netlify 上的镜像</a>。",
+                "access-via-mirror": "恭喜！你正在使用镜像站，这应当会加速在中国大陆及部分地区境内的访问。点此<a href='https://duiqt.github.io/herta_kuru/'>访问 GitHub Pages 上的源站</a>。",
                 "show-credits-text": "查看感谢页",
                 "repository-desc": "GitHub 仓库"
             },
@@ -60,8 +60,8 @@
                 "counter-descriptions": "全世界のクル再生数",
                 "counter-unit": "回",
                 "counter-button": "クル クル~!",
-                "access-via-pages": "今アクセスしてるページはぎGitHubです。中国大陸まだは他の地域のユーサーはNetlifyのミラーに入るために、<a href='https:// herta.ft2.ltd/'>ここにクリックして</a>ください。",
-                "access-via-mirror": "おめでとうございます！今はもうミラーサイトを使っています、中国大陸まだは他の地域のアクセス速度が速くなります。サイトのソースを見たいなら、<a href='https:// duiqt.github.io/herta_kuru/'>ここにクリックして</a>、GitHubページで見てください。",
+                "access-via-pages": "今アクセスしてるページはぎGitHubです。中国大陸まだは他の地域のユーサーはNetlifyのミラーに入るために、<a href='https://herta.ft2.ltd/'>ここにクリックして</a>ください。",
+                "access-via-mirror": "おめでとうございます！今はもうミラーサイトを使っています、中国大陸まだは他の地域のアクセス速度が速くなります。サイトのソースを見たいなら、<a href='https://duiqt.github.io/herta_kuru/'>ここにクリックして</a>、GitHubページで見てください。",
                 "show-credits-text": "Show Credits",
                 "repository-desc": "GitHub Repo"
             },
@@ -80,8 +80,8 @@
                 "counter-descriptions": "전 세계 빙글 조회수",
                 "counter-unit": "번",
                 "counter-button": "빙글 빙글~!",
-                "access-via-pages": "당신은 GitHub를 통해 액세스하고 있습니다. 중국 또는 기타 지역 사용자의 경우 여기를 <a href='https:// herta.ft2.ltd/'>클릭하여 Netlify의 미러 액세스하십시오</a>. ",
-                "access-via-mirror": "축하합니다. 당신은 미러 웹 사이트를 통해 액세스하고 있습니다, 이렇게 하면 중국 및 일부 다른 지역에서의 액세스 속도가 빨라집니다. 여기를 <a href='https:// duiqt.github.io/herta_kuru/'> 클릭하여 GitHub의 소스 페이지에 액세스하십시오</a>. ",
+                "access-via-pages": "당신은 GitHub를 통해 액세스하고 있습니다. 중국 또는 기타 지역 사용자의 경우 여기를 <a href='https://herta.ft2.ltd/'>클릭하여 Netlify의 미러 액세스하십시오</a>. ",
+                "access-via-mirror": "축하합니다. 당신은 미러 웹 사이트를 통해 액세스하고 있습니다, 이렇게 하면 중국 및 일부 다른 지역에서의 액세스 속도가 빨라집니다. 여기를 <a href='https://duiqt.github.io/herta_kuru/'> 클릭하여 GitHub의 소스 페이지에 액세스하십시오</a>. ",
                 "show-credits-text": "Show Credits",
                 "repository-desc": "GitHub Repo"
             },
@@ -100,8 +100,8 @@
                 "counter-descriptions": ["Kuru nya telah dipencet sebanyak", "Herta telah ter-kuru-kan sebanyak"],
                 "counter-unit": "kali",
                 "counter-button": ["Pencet kuru nya~!", "Kuru kuru~!"],
-                "access-via-pages": "Kamu saat ini sedang mengakses melalui Laman GitHub. Untuk pengguna berdomisili di Tiongkok (Daratan) dan wilayah lainnya, silakan klik <a href='https:// herta.ft2.ltd/'> di sini untuk mengakses mirror nya di Netlify</a>. ",
-                "access-via-mirror": "Selamat! Kamu sedang menggunakan situs mirror, yang mana seharusnya mempercepat akses untuk wilayah sekitar Tiongkok (daratan) dan wilayah lainnya . Silakan klik <a href='https:// duiqt.github.io/herta_kuru/'> di sini untuk mengunjungi situs sumbernya pada Laman Github</a>.",
+                "access-via-pages": "Kamu saat ini sedang mengakses melalui Laman GitHub. Untuk pengguna berdomisili di Tiongkok (Daratan) dan wilayah lainnya, silakan klik <a href='https://herta.ft2.ltd/'> di sini untuk mengakses mirror nya di Netlify</a>. ",
+                "access-via-mirror": "Selamat! Kamu sedang menggunakan situs mirror, yang mana seharusnya mempercepat akses untuk wilayah sekitar Tiongkok (daratan) dan wilayah lainnya . Silakan klik <a href='https://duiqt.github.io/herta_kuru/'> di sini untuk mengunjungi situs sumbernya pada Laman Github</a>.",
                 "show-credits-text": "Tampilkan Credit",
                 "repository-desc": "GitHub Repo"
             },
@@ -111,6 +111,7 @@
 
     // This code tries to retrieve the saved language 'lang' from localStorage. If it is not found or if its value is null, then it defaults to "en". 
     var current_language = localStorage.getItem("lang") || "en";
+    var current_vo_language = localStorage.getItem("volang") || "en";
     if (current_language != "en") {
         // sets the user interface language selection to the previously selected language which was stored in localStorage
         document.getElementById("language-selector").value = current_language;
@@ -175,7 +176,7 @@
 
     // function to fetch global count from the API and update the globalCounter element
     function getGlobalCount() {
-        fetch('https:// kuru-kuru-count-api.onrender.com/sync', { method: 'GET' })
+        fetch('https://kuru-kuru-count-api.onrender.com/sync', { method: 'GET' })
             .then((response) => response.json())
             .then((data) => {
                 // update globalCount with the data received from the API
@@ -218,7 +219,7 @@
             e: e
         };
 
-        fetch('https:// kuru-kuru-count-api.onrender.com/update', {
+        fetch('https://kuru-kuru-count-api.onrender.com/update', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -393,10 +394,10 @@
 
     // This block dynamically displays different messages depending on which hostname the website is being loaded from.
     if (location.hostname == "herta.ft2.ltd" || location.hostname == "hertakuru.netlify.app") {
-        document.getElementById("access-via-tip-parent").innerHTML = "<p id='access-via-mirror'>Congratulations! You are using a mirror site, which should speed up access within China (Mainland) and some regions. Click here to <a href='https:// duiqt.github.io/herta_kuru/'>visit the source site on GitHub Pages</a>.</p>";
+        document.getElementById("access-via-tip-parent").innerHTML = "<p id='access-via-mirror'>Congratulations! You are using a mirror site, which should speed up access within China (Mainland) and some regions. Click here to <a href='https://duiqt.github.io/herta_kuru/'>visit the source site on GitHub Pages</a>.</p>";
         multiLangMutation();
     } else {
-        document.getElementById("access-via-tip-parent").innerHTML = "<p id='access-via-pages'>You're currently accessing via GitHub Pages. For users in China (Mainland) or some regions, click <a href='https:// duiqt.github.io/herta_kuru/'>here to access the mirror on Netlify</a>.</p>";
+        document.getElementById("access-via-tip-parent").innerHTML = "<p id='access-via-pages'>You're currently accessing via GitHub Pages. For users in China (Mainland) or some regions, click <a href='https://duiqt.github.io/herta_kuru/'>here to access the mirror on Netlify</a>.</p>";
         multiLangMutation();
     }
 
