@@ -238,28 +238,28 @@
 
     // initialize timer variable and add event listener to the counter button element 
     let timer;
-const counterButton = document.querySelector('#counter-button');
-counterButton.addEventListener('click', (e) => {
-    prevTime = getTimestamp();
+    const counterButton = document.querySelector('#counter-button');
+    counterButton.addEventListener('click', (e) => {
+        prevTime = getTimestamp();
 
-    heldCount++;
-    localCount++;
-    globalCount++;
+        heldCount++;
+        localCount++;
+        globalCount++;
 
-    if (heldCount === 60) {
-        // update on 60 clicks
-        update(e, false);
-        heldCount -= 60;
-    } else {
-        // update 10 seconds after last click
-        clearTimeout(timer);
-        timer = setTimeout(() => update(e), 10000);
-    }
+        if (heldCount === 60) {
+            // update on 60 clicks
+            update(e, false);
+            heldCount -= 60;
+        } else {
+            // update 10 seconds after last click
+            clearTimeout(timer);
+            timer = setTimeout(() => update(e), 10000);
+        }
 
-    localCounter.textContent = localCount.toLocaleString('en-US');
-    globalCounter.textContent = globalCount.toLocaleString('en-US');
+        localCounter.textContent = localCount.toLocaleString('en-US');
+        globalCounter.textContent = globalCount.toLocaleString('en-US');
 
-    triggerRipple(e);
+        triggerRipple(e);
 
         playKuru();
         animateHerta();
