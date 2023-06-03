@@ -112,7 +112,8 @@ h2 {
 
 #local-counter {
     color: #574f84;
-    font-size: 0.75em;
+    /* font-size: 0.75em; */
+    font-size: 2em;
 }
 
 #counter-button {
