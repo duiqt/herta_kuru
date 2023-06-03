@@ -238,30 +238,29 @@
 
     // initialize timer variable and add event listener to the counter button element 
     let timer;
-    $('#counter-button').on('click', (ev) => {
-        prevTime = getTimestamp();
+const counterButton = document.querySelector('#counter-button');
+counterButton.addEventListener('click', (e) => {
+    prevTime = getTimestamp();
 
-        // increment the counts and heldCount on button click
-        heldCount++;
-        localCount++;
-        globalCount++;
+    heldCount++;
+    localCount++;
+    globalCount++;
 
-        // check if heldCount has reached 10 and call update function with resetCount equals false
-        // else reset the heldCount after 5 seconds using setTimeout and timer 
-        if (heldCount === 10) {
-            update(ev, false);
-            heldCount -= 10;
-        } else {
-            clearTimeout(timer);
-            timer = setTimeout(() => update(ev), 5000);
-        }
+    if (heldCount === 60) {
+        // update on 60 clicks
+        update(e, false);
+        heldCount -= 60;
+    } else {
+        // update 10 seconds after last click
+        clearTimeout(timer);
+        timer = setTimeout(() => update(e), 10000);
+    }
 
-        // update the localCounter and globalCounter elements text contents 
-        localCounter.textContent = localCount.toLocaleString('en-US');
-        globalCounter.textContent = globalCount.toLocaleString('en-US');
+    localCounter.textContent = localCount.toLocaleString('en-US');
+    globalCounter.textContent = globalCount.toLocaleString('en-US');
 
-        // trigger a ripple effect on the button, play audio and refresh dynamic texts
-        triggerRipple(ev);
+    triggerRipple(e);
+
         playKuru();
         animateHerta();
         refreshDynamicTexts();
