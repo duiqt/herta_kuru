@@ -235,14 +235,14 @@ counterButton.addEventListener('click', (e) => {
     localCount++;
     globalCount++;
 
-    if (heldCount === 10) {
-        // update on 10 counts
+    if (heldCount === 60) {
+        // update on 60 clicks
         update(e, false);
-        heldCount -= 10;
+        heldCount -= 60;
     } else {
-        // update 5 seconds after last click
+        // update 10 seconds after last click
         clearTimeout(timer);
-        timer = setTimeout(() => update(e), 5000);
+        timer = setTimeout(() => update(e), 10000);
     }
 
     localCounter.textContent = localCount.toLocaleString('en-US');
