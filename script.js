@@ -1,16 +1,11 @@
 (() => {
     const $ = mdui.$;
-    var audioList = [];
     let firstSquish = true;
 
     const LANGUAGES = {
-        "_": { fallbackLanguage: "en" },
+        "_": { defaultLanguage: "en", defaultVOLanguage: "ja" },
         "en": {
-            audioList: [
-                "audio/ja/kuruto.mp3",
-                "audio/ja/kuru1.mp3",
-                "audio/ja/kuru2.mp3",
-            ],
+            audioList: null,
             texts: {
                 "page-title": "Welcome to herta kuru~",
                 "doc-title": "Kuru Kuru~",
@@ -21,7 +16,11 @@
                 "access-via-pages": "You're currently accessing via GitHub Pages. For users in China (Mainland) or some other regions, click <a href='https://herta.ft2.ltd/'>here to access the mirror on Netlify</a>. ",
                 "access-via-mirror": "Congratulations! You are using a mirror site, which should speed up access within China (Mainland) and some regions. Click here to <a href='https://duiqt.github.io/herta_kuru/'>visit the source site on GitHub Pages</a>.",
                 "show-credits-text": "Show Credits",
-                "repository-desc": "GitHub Repo"
+                "repository-desc": "GitHub Repo",
+                "options-txt-vo-lang": "Voice-Over Language",
+                "options-txt-lang": "Page Language",
+                "dialogs-close": "Close",
+                "dialogs-credits-title": "Credits"
             },
             cardImage: "img/card_en.jpg"
         }, "cn": {
@@ -43,7 +42,11 @@
                 "access-via-pages": "您目前是通过 GitHub Pages 访问。对于中国大陆或其他一些地区的用户，请<a href='https://herta.ft2.ltd/'>单击此处访问 Netlify 上的镜像</a>。",
                 "access-via-mirror": "恭喜！你正在使用镜像站，这应当会加速在中国大陆及部分地区境内的访问。点此<a href='https://duiqt.github.io/herta_kuru/'>访问 GitHub Pages 上的源站</a>。",
                 "show-credits-text": "查看感谢页",
-                "repository-desc": "GitHub 仓库"
+                "repository-desc": "GitHub 仓库",
+                "options-txt-vo-lang": "语音语言",
+                "options-txt-lang": "界面语言",
+                "dialogs-close": "关闭",
+                "dialogs-credits-title": "制作人员名单"
             },
             cardImage: "img/card_cn.jpg"
         },
@@ -63,16 +66,16 @@
                 "access-via-pages": "今アクセスしてるページはぎGitHubです。中国大陸まだは他の地域のユーサーはNetlifyのミラーに入るために、<a href='https://herta.ft2.ltd/'>ここにクリックして</a>ください。",
                 "access-via-mirror": "おめでとうございます！今はもうミラーサイトを使っています、中国大陸まだは他の地域のアクセス速度が速くなります。サイトのソースを見たいなら、<a href='https://duiqt.github.io/herta_kuru/'>ここにクリックして</a>、GitHubページで見てください。",
                 "show-credits-text": "Show Credits",
-                "repository-desc": "GitHub Repo"
+                "repository-desc": "GitHub Repo",
+                "options-txt-vo-lang": "Voice-Over Language",
+                "options-txt-lang": "Page Language",
+                "dialogs-close": "Close",
+                "dialogs-credits-title": "Credits"
             },
             cardImage: "img/card_ja.jpg"
         },
         "kr": {
-            audioList: [
-                "audio/ja/kuruto.mp3",
-                "audio/ja/kuru1.mp3",
-                "audio/ja/kuru2.mp3",
-            ],
+            audioList: null,
             texts: {
                 "page-title": "헤르타빙글 환영합니다~",
                 "doc-title": "빙글 빙글~",
@@ -83,16 +86,16 @@
                 "access-via-pages": "당신은 GitHub를 통해 액세스하고 있습니다. 중국 또는 기타 지역 사용자의 경우 여기를 <a href='https://herta.ft2.ltd/'>클릭하여 Netlify의 미러 액세스하십시오</a>. ",
                 "access-via-mirror": "축하합니다. 당신은 미러 웹 사이트를 통해 액세스하고 있습니다, 이렇게 하면 중국 및 일부 다른 지역에서의 액세스 속도가 빨라집니다. 여기를 <a href='https://duiqt.github.io/herta_kuru/'> 클릭하여 GitHub의 소스 페이지에 액세스하십시오</a>. ",
                 "show-credits-text": "Show Credits",
-                "repository-desc": "GitHub Repo"
+                "repository-desc": "GitHub Repo",
+                "options-txt-vo-lang": "Voice-Over Language",
+                "options-txt-lang": "Page Language",
+                "dialogs-close": "Close",
+                "dialogs-credits-title": "Credits"
             },
             cardImage: "img/card_kr.jpg"
         },
         "id": {
-            audioList: [
-                "audio/ja/kuruto.mp3",
-                "audio/ja/kuru1.mp3",
-                "audio/ja/kuru2.mp3",
-            ],
+            audioList: null,
             texts: {
                 "page-title": "Selamat datang di Herta kuru~",
                 "doc-title": "Kuru Kuru~",
@@ -103,19 +106,19 @@
                 "access-via-pages": "Kamu saat ini sedang mengakses melalui Laman GitHub. Untuk pengguna berdomisili di Tiongkok (Daratan) dan wilayah lainnya, silakan klik <a href='https://herta.ft2.ltd/'> di sini untuk mengakses mirror nya di Netlify</a>. ",
                 "access-via-mirror": "Selamat! Kamu sedang menggunakan situs mirror, yang mana seharusnya mempercepat akses untuk wilayah sekitar Tiongkok (daratan) dan wilayah lainnya . Silakan klik <a href='https://duiqt.github.io/herta_kuru/'> di sini untuk mengunjungi situs sumbernya pada Laman Github</a>.",
                 "show-credits-text": "Tampilkan Credit",
-                "repository-desc": "GitHub Repo"
+                "repository-desc": "GitHub Repo",
+                "options-txt-vo-lang": "Voice-Over Language",
+                "options-txt-lang": "Page Language",
+                "dialogs-close": "Close",
+                "dialogs-credits-title": "Credits"
             },
             cardImage: "img/card_id.jpg"
         }
     };
 
     // This code tries to retrieve the saved language 'lang' from localStorage. If it is not found or if its value is null, then it defaults to "en". 
-    var current_language = localStorage.getItem("lang") || "en";
-    var current_vo_language = localStorage.getItem("volang") || "en";
-    if (current_language != "en") {
-        // sets the user interface language selection to the previously selected language which was stored in localStorage
-        document.getElementById("language-selector").value = current_language;
-    };
+    var current_language = localStorage.getItem("lang") || LANGUAGES._.defaultLanguage;
+    var current_vo_language = localStorage.getItem("volang") || LANGUAGES._.defaultVOLanguage;
 
     // function that takes a textId, optional language and whether to use fallback/ default language for translation. It returns the translated text in the given language or if it cannot find the translation, in the default fallback language.
     function getLocalText(textId, language = null, fallback = true) {
@@ -149,15 +152,15 @@
     multiLangMutation() // the function multiLangMutation is called initially when the page loads.
 
     // This adds an event listener on the language-selector element which updates the selected interface language, saves it on the localStorage and calls multiLangMutation to update all translations accordingly.
-    document.getElementById("language-selector").addEventListener("change", (ev) => {
-        current_language = ev.target.value;
-        localStorage.setItem("lang", ev.target.value);
-        multiLangMutation();
-    });
+    // $("#language-selector").on("change", (ev) => {
+    //     current_language = ev.target.value;
+    //     localStorage.setItem("lang", ev.target.value);
+    //     multiLangMutation();
+    // });
 
     // function that returns the list of audio files for the selected language
     function getLocalAudioList() {
-        return LANGUAGES[current_language].audioList;
+        return LANGUAGES[current_vo_language].audioList;
     }
 
     // function to get the timestamp
@@ -235,8 +238,7 @@
 
     // initialize timer variable and add event listener to the counter button element 
     let timer;
-    const counterButton = document.querySelector('#counter-button');
-    counterButton.addEventListener('click', (e) => {
+    $('#counter-button').on('click', (ev) => {
         prevTime = getTimestamp();
 
         // increment the counts and heldCount on button click
@@ -247,11 +249,11 @@
         // check if heldCount has reached 10 and call update function with resetCount equals false
         // else reset the heldCount after 5 seconds using setTimeout and timer 
         if (heldCount === 10) {
-            update(e, false);
+            update(ev, false);
             heldCount -= 10;
         } else {
             clearTimeout(timer);
-            timer = setTimeout(() => update(e), 5000);
+            timer = setTimeout(() => update(ev), 5000);
         }
 
         // update the localCounter and globalCounter elements text contents 
@@ -259,7 +261,7 @@
         globalCounter.textContent = globalCount.toLocaleString('en-US');
 
         // trigger a ripple effect on the button, play audio and refresh dynamic texts
-        triggerRipple(e);
+        triggerRipple(ev);
         playKuru();
         animateHerta();
         refreshDynamicTexts();
@@ -311,7 +313,7 @@
 
     function getRandomAudioUrl() {
         var localAudioList = getLocalAudioList();
-        if (current_language == "en" || current_language == "ja" || current_language == "kr" || current_language == "id") {
+        if (current_vo_language == "ja") {
             const randomIndex = Math.floor(Math.random() * 2) + 1;
             return localAudioList[randomIndex];
         }
@@ -429,11 +431,11 @@
             creditsHtmlContent += `</ul>`;
 
             mdui.dialog({
-                title: 'Credits',
+                title: getLocalText("dialogs-credits-title"),
                 content: creditsHtmlContent,
                 buttons: [
                     {
-                        text: 'Close'
+                        text: getLocalText("dialogs-close")
                     }
                 ],
                 history: false
@@ -441,6 +443,53 @@
         });
     }
 
-    // This listens for a click event on an element with id 'show-credits-opt' and invokes the showCredits function once clicked.
     $("#show-credits-opt").on("click", e => showCredits())
+
+    function showOptions() {
+        mdui.dialog({
+            title: 'Options',
+            content: `<div style="min-height: 350px;" class="mdui-typo">
+    <label id="options-txt-lang">Page Language</label>
+    <select id="language-selector" class="mdui-select" mdui-select='{"position": "bottom"}'>
+        <option value="en">English</option>
+        <option value="cn">中文</option>
+        <option value="ja">日本語</option>
+        <option value="kr">한국어</option>
+        <option value="id">Bahasa Indonesia</option>
+    </select>
+    <br />
+    <label id="options-txt-vo-lang">Voice-Over Language</label>
+    <select id="vo-language-selector" class="mdui-select" mdui-select='{"position": "bottom"}'>
+        <option value="ja">日本語</option>
+        <option value="cn">中文</option>
+    </select>
+</div>`,
+            buttons: [
+                {
+                    text: getLocalText("dialogs-close")
+                }
+            ],
+            history: false,
+            onOpen: (inst) => {
+                $("#vo-language-selector").val(current_vo_language);
+                $("#language-selector").val(current_language);
+
+                $("#language-selector").on("change", (ev) => {
+                    current_language = ev.target.value;
+                    localStorage.setItem("lang", ev.target.value);
+                    multiLangMutation();
+                });
+
+                $("#vo-language-selector").on("change", (ev) => {
+                    current_vo_language = ev.target.value;
+                    localStorage.setItem("volang", ev.target.value);
+                });
+
+                multiLangMutation();
+                mdui.mutation();
+            }
+        });
+    }
+
+    $("#show-options-opt").on("click", e => showOptions())
 })(); 

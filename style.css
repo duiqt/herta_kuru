@@ -5,7 +5,7 @@
     -ms-touch-action: manipulation;
     touch-action: manipulation;
     /* strange margin-right occurs when vw<500px */
-    overflow-x: hidden;
+    /* overflow-x: hidden; */
 }
 
 body {
