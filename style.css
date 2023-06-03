@@ -62,13 +62,6 @@ h2 {
     font-size: 1.5em;
 }
 
-hr {
-    border-bottom: 6px dashed white;
-    border-top: none;
-    border-left: none;
-    border-right: none;
-}
-
 #title-container {
     display: flex;
     justify-content: center;
