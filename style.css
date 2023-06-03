@@ -5,7 +5,7 @@
     -ms-touch-action: manipulation;
     touch-action: manipulation;
     /* strange margin-right occurs when vw<500px */
-    overflow-x: hidden;
+    /* overflow-x: hidden; */
 }
 
 body {
@@ -62,13 +62,6 @@ h2 {
     font-size: 1.5em;
 }
 
-hr {
-    border-bottom: 6px dashed white;
-    border-top: none;
-    border-left: none;
-    border-right: none;
-}
-
 #title-container {
     display: flex;
     justify-content: center;
@@ -82,36 +75,18 @@ hr {
     height: 4em;
 }
 
-#language-selector {
+#language-selector-container {
     position: relative;
     left: 50%;
-    transform: translateX(-50%);
-    width: 200px;
-    height: 40px;
-    background-color: #d1bdff;
-    border: none;
-    border-radius: 5px;
-    font-size: 16px;
-    text-align: center;
-    text-align-last: center;
+    width: 400px;
+    height: fit-content;
     padding: 10px;
-    margin: 20px 0;
-    color: rgb(38, 0, 63);
-    appearance: none;
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    cursor: pointer;
-    outline: none;
+    align-content: center;
+    transform: translateX(-50%);
 }
 
-#language-selector:hover {
-    box-shadow: 0 0 10px #719ECE;
-}
-
-#language-selector option {
-    text-align: center;
-    background-color: #fff;
-    color: #333;
+#language-selector-placeholder {
+    height: 60px;
 }
 
 #subtitle-seperator {
