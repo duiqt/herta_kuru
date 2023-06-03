@@ -163,101 +163,19 @@
         return LANGUAGES[current_vo_language].audioList;
     }
 
-    // function to get the timestamp
-    function getTimestamp() {
-        return Date.parse(new Date());
-    }
-
-    // get global and local counter elements and initialize their respective counts
-    const globalCounter = document.querySelector('#global-counter');
+    // get global counter element and initialize its respective counts
     const localCounter = document.querySelector('#local-counter');
-    let globalCount = 0;
     let localCount = localStorage.getItem('count-v2') || 0;
 
-    // initialize heldCount for storing clicks until 5 seconds have passed without a click
-    let heldCount = 0;
-
-    // function to fetch global count from the API and update the globalCounter element
-    function getGlobalCount() {
-        fetch('https://kuru-kuru-count-api.onrender.com/sync', { method: 'GET' })
-            .then((response) => response.json())
-            .then((data) => {
-                // update globalCount with the data received from the API
-                globalCount = data.count;
-
-                // animate the globalCounter element by incrementing it up to globalCount
-                const startingCount = parseInt(globalCounter.textContent.replace(/,/g, ''));
-                (animateCounter = () => {
-                    const currentCount = parseInt(globalCounter.textContent.replace(/,/g, ''));
-                    const speed = 200;
-                    const step = (globalCount - startingCount) / speed;
-                    if (currentCount < globalCount) {
-                        globalCounter.textContent = Math.ceil(currentCount + step).toLocaleString('en-US');
-                        setTimeout(animateCounter, 1);
-                    } else {
-                        globalCounter.textContent = globalCount.toLocaleString('en-US');
-                    }
-                })();
-            })
-            .catch((err) => console.error(err));
-    };
-
-    // set localCounter element text content to localCount and call getGlobalCount function
+    // display counter
     localCounter.textContent = localCount.toLocaleString('en-US');
-    getGlobalCount();
 
-    // periodically call getGlobalCount function if the document is in focus
-    let prevTime = 0;
-    setInterval(() => {
-        if (document.hasFocus() && getTimestamp() - prevTime >= 10000) {
-            getGlobalCount();
-            prevTime = getTimestamp();
-        }
-    }, 10000);
-
-    // function to update the count data on server and localStorage
-    function update(e, resetCount = true) {
-        const data = {
-            count: heldCount,
-            e: e
-        };
-
-        fetch('https://kuru-kuru-count-api.onrender.com/update', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(data)
-        })
-            .then(() => {
-                localStorage.setItem('count-v2', localCount);
-                if (resetCount) heldCount = 0;
-            })
-            .catch((err) => console.error(err));
-    };
-
-    // initialize timer variable and add event listener to the counter button element 
-    let timer;
+    // initialize timer variable and add event listener to the counter button element
     const counterButton = document.querySelector('#counter-button');
     counterButton.addEventListener('click', (e) => {
-        prevTime = getTimestamp();
-
-        heldCount++;
         localCount++;
-        globalCount++;
-
-        if (heldCount === 60) {
-            // update on 60 clicks
-            update(e, false);
-            heldCount -= 60;
-        } else {
-            // update 10 seconds after last click
-            clearTimeout(timer);
-            timer = setTimeout(() => update(e), 10000);
-        }
 
         localCounter.textContent = localCount.toLocaleString('en-US');
-        globalCounter.textContent = globalCount.toLocaleString('en-US');
 
         triggerRipple(e);
 
