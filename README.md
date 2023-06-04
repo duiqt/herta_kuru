@@ -1,4 +1,5 @@
-﻿
+﻿## Warning
+The counter has paused, awaiting additional remediation measures, as a result of the excessive traffic and malicious flood of requests.
 
 <div align="center"><img src="img/hertaa_github.gif"></div>
 
