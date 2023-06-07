@@ -113,7 +113,27 @@
                 "dialogs-credits-title": "Credits"
             },
             cardImage: "img/card_id.jpg"
-        }
+        },
+        "pt": {
+            audioList: null,
+            texts: {
+                "page-title": "Bem-vindo ao kuru~ da herta",
+                "doc-title": "Kuru Kuru~",
+                "page-descriptions": "O site para a Herta, a personagem mais <del>irritante</del> fofa e gênia do Honkai: Star Rail que existe.",
+                "counter-descriptions": ["O kuru~ já  foi clicado", "Herta ja falou kuru~ "],
+                "counter-unit": "vezes",
+                "counter-button": "Kuru kuru~!",
+                "access-via-pages": "No momento, você está acessando por meio do GitHub Pages. Para usuários na China (continente) ou algumas regiões, clique <a href='https://herta.ft2.ltd/'>aqui pode acessar via Netlify</a>. ",
+                "access-via-mirror": "Parabéns! Você está usando um site espelho, o que deve acelerar o acesso na China (continente) e algumas regiões. Clique aqui para <a href='https://duiqt.github.io/herta_kuru/'>visitar o site de origem no GitHub Pages</a>.",
+                "show-credits-text": "Mostrar Créditos",
+                "repository-desc": "GitHub Repo",
+                "options-txt-vo-lang": "Idioma da voz",
+                "options-txt-lang": "Idioma da página",
+                "dialogs-close": "Fechar",
+                "dialogs-credits-title": "Créditos"
+            },
+            cardImage: "img/card_pt.jpg"
+        },
     };
 
     // This code tries to retrieve the saved language 'lang' from localStorage. If it is not found or if its value is null, then it defaults to "en". 
@@ -373,6 +393,7 @@
         <option value="ja">日本語</option>
         <option value="kr">한국어</option>
         <option value="id">Bahasa Indonesia</option>
+        <option value="pt">Português-BR</option>
     </select>
     <br />
     <label id="options-txt-vo-lang">Voice-Over Language</label>
