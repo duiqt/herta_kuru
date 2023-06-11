@@ -24,7 +24,7 @@ body {
     position: absolute;
     width: 100%;
     height: 100%;
-    background-image: url("img/hertaa1.gif");
+    background-image: url("../img/hertaa1.gif");
     background-repeat: no-repeat;
     background-position: 50%;
     background-size: contain;
