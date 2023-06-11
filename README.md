@@ -10,7 +10,6 @@ The counter has paused, awaiting additional remediation measures, as a result of
 
 # Herta Kuru | 黑塔转圈圈 | ヘルタクルへ
 [Home Page | 主页 | ホーム ページ (Netlify)](https://herta.ft2.ltd/)
-[(BACKUP: via GitHub Pages)](https://duiqt.github.io/herta_kuru/)
 
 Herta gif and art made by | 黑塔 gif 绘画者 : [@Seseren_kr](https://twitter.com/Seseren_kr) 
 
