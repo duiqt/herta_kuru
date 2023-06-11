@@ -11,7 +11,7 @@ The counter has paused, awaiting additional remediation measures, as a result of
 # Herta Kuru | 黑塔转圈圈 | ヘルタクルへ
 [Home Page | 主页 | ホーム ページ (Netlify)](https://herta.ft2.ltd/)
 
-Herta gif and art made by | 黑塔 gif 绘画者 : [@Seseren_kr](https://twitter.com/Seseren_kr) 
+Herta GIF and art made by | 黑塔 GIF 绘画者 : [@Seseren_kr](https://twitter.com/Seseren_kr) 
 
 The art the relevant copyright of Honkai: Star Rail belongs to miHoYo/HoYoverse.
 
