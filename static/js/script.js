@@ -16,12 +16,20 @@ const LANGUAGES = {
             "options-txt-vo-lang": "Voice-Over Language",
             "options-txt-lang": "Page Language",
             "dialogs-close": "Close",
-            "dialogs-credits-title": "Credits"
+            "dialogs-credits-title": "Credits",
+
+            "CREDITS:main-dev": "Main Developer",
+            "CREDITS:code-contributor": "Code Contributor",
+            "CREDITS:artist": "Artist",
+            "CREDITS:localization": "Localization Contributor",
+            "CREDITS:localization:Korean": "Korean Localization Contributor",
+            "CREDITS:localization:Japanese": "Japanese Localization Contributor",
+            "CREDITS:localization:Indonesian": "Indonesian Localization Contributor",
+            "CREDITS:inspiration": "Inspiration"
         },
         cardImage: "img/card_en.jpg"
     }, "cn": {
         audioList: [
-            // TODO audio random weight
             "audio/cn/gululu.mp3",
             "audio/cn/gururu.mp3",
             "audio/cn/转圈圈.mp3",
@@ -42,7 +50,17 @@ const LANGUAGES = {
             "options-txt-vo-lang": "语音语言",
             "options-txt-lang": "界面语言",
             "dialogs-close": "关闭",
-            "dialogs-credits-title": "制作人员名单"
+            "dialogs-credits-title": "制作人员名单",
+
+            "CREDITS:main-dev": "主要开发者",
+            "CREDITS:code-contributor": "代码贡献者",
+            "CREDITS:artist": "艺术家",
+            "CREDITS:localization": "本地化贡献者",
+            "CREDITS:localization:Korean": "韩国本地化贡献者",
+            "CREDITS:localization:Japanese": "日本本地化贡献者",
+            "CREDITS:localization:Indonesian": "印度尼西亚本地化贡献者",
+            "CREDITS:inspiration": "灵感来源"
+
         },
         cardImage: "img/card_cn.jpg"
     },
@@ -336,7 +354,7 @@ const LANGUAGES = {
 
     // This function fetches data stored in a JSON file and displays it in a dialog box.
     function showCredits() {
-        fetch("credits.json").then(response => response.json()).then((data) => {
+        fetch("static/credits/list.json").then(response => response.json()).then((data) => {
             var contributors = data.contributors;
             contributors = randomShuffle(contributors);
             var creditsHtmlContent = `<p>in no specific order</p>`;
@@ -349,12 +367,12 @@ const LANGUAGES = {
                 }
                 creditsHtmlContent += `<li class="mdui-list-item mdui-ripple">
     <div class="mdui-list-item-avatar mdlist-ava-fix">
-      <img src="${current.icon}"/>
+      <img src="static/credits/${current.icon}"/>
     </div>
     <div class="mdui-list-item-content">
       <div class="mdui-list-item-title">${renderedName}</div>
       <div class="mdui-list-item-text mdui-list-item-one-line">
-        <span class="mdui-text-color-theme-text">${current.thing}</span>
+        <span class="mdui-text-color-theme-text">${getLocalText("CREDITS:" + current.thing)}</span>
       </div>
     </div>
   </li>`;
