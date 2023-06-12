@@ -375,7 +375,6 @@ var LANGUAGES = {
                 $.each(current.socialmedia, (key, value) => {
                     switch (key) {
                         case "bilibili":
-                            console.log("showing bili icon?")
                             let uid = value.uid;
                             let username = value.username;
                             socialMediaIcons += `<a href="https://space.bilibili.com/${uid}" title="${username}" target="_blank">`;
