@@ -23,9 +23,25 @@
       "thing": "main-dev",
       "socialmedia": {
         "github": "fred913",
-        "bilibili": 496636524
+        "bilibili": {
+          "uid": 496636524,
+          "username": "\u5269\u996d\u4e0d\u5403\u5269\u996d"
+        }
       },
       "icon": "images/5f6a01f9a9a75d6db4cda0a6af0f64668035c408.jpg"
+    },
+    {
+      "username": "george-chou",
+      "name": "Monet Joe",
+      "thing": "main-dev",
+      "socialmedia": {
+        "github": "george-chou",
+        "bilibili": {
+          "uid": 30620472,
+          "username": "\u4ea6\u771f\u4ea6\u5e7bStudio"
+        }
+      },
+      "icon": "images/46c7507364fa08477978f09251e953da5283f313.jpg"
     },
     {
       "username": "PencilCore",
@@ -80,7 +96,10 @@
       "thing": "localization",
       "socialmedia": {
         "github": "vgwik",
-        "bilibili": 38120922
+        "bilibili": {
+          "uid": 38120922,
+          "username": "vgwik"
+        }
       },
       "icon": "images/1324cb8ee772fe67f44ccc67ee002bdca3242064.jpg"
     },
@@ -88,7 +107,10 @@
       "username": "\u63d0\u706f\u4e66\u68a6",
       "thing": "localization:Korean",
       "socialmedia": {
-        "bilibili": 6318620
+        "bilibili": {
+          "uid": 6318620,
+          "username": "\u63d0\u706f\u4e66\u68a6"
+        }
       },
       "icon": "images/cee4acdeb90c016909e531ecbdfab2fe3eb6f65f.jpg"
     },
@@ -96,7 +118,10 @@
       "username": "\u4e8c\u6b21\u5143\u306e\u30ea\u30a2\u5145",
       "thing": "localization:Japanese",
       "socialmedia": {
-        "bilibili": 7885894
+        "bilibili": {
+          "uid": 7885894,
+          "username": "\u4e8c\u6b21\u5143\u306e\u30ea\u30a2\u5145"
+        }
       },
       "icon": "images/68f10e69275761caab0892eea60589997bffa6b5.jpg"
     },
