@@ -3,7 +3,7 @@
         {
             "username": "duiqt",
             "name": "Phúc Duy",
-            "thing": "Main Dev",
+            "thing": "main-dev",
             "socialmedia": {
                 "github": "duiqt"
             },
@@ -11,7 +11,7 @@
         },
         {
             "username": "risbi0",
-            "thing": "Main Dev",
+            "thing": "main-dev",
             "socialmedia": {
                 "github": "risbi0"
             },
@@ -20,16 +20,32 @@
         {
             "username": "fred913",
             "name": "Sheng Fan",
-            "thing": "Main Dev",
+            "thing": "main-dev",
             "socialmedia": {
                 "github": "fred913",
-                "bilibili": 496636524
+                "bilibili": {
+                    "uid": 496636524,
+                    "username": "剩饭不吃剩饭"
+                }
             },
             "icon": "https://avatars.githubusercontent.com/u/41846047?v=4"
         },
         {
+            "username": "george-chou",
+            "name": "Monet Joe",
+            "thing": "code-contributor",
+            "socialmedia": {
+                "github": "george-chou",
+                "bilibili": {
+                    "uid": 30620472,
+                    "username": "亦真亦幻Studio"
+                }
+            },
+            "icon": "https://avatars.githubusercontent.com/u/20459298?v=4"
+        },
+        {
             "username": "PencilCore",
-            "thing": "Code Contributor",
+            "thing": "code-contributor",
             "socialmedia": {
                 "github": "PencilCore"
             },
@@ -37,7 +53,7 @@
         },
         {
             "username": "moepoi",
-            "thing": "Code Contributor",
+            "thing": "code-contributor",
             "socialmedia": {
                 "github": "moepoi"
             },
@@ -45,7 +61,7 @@
         },
         {
             "username": "rikarani",
-            "thing": "Code Contributor",
+            "thing": "code-contributor",
             "socialmedia": {
                 "github": "rikarani"
             },
@@ -53,7 +69,7 @@
         },
         {
             "username": "joulev",
-            "thing": "Code Contributor",
+            "thing": "code-contributor",
             "socialmedia": {
                 "github": "joulev"
             },
@@ -61,7 +77,7 @@
         },
         {
             "username": "RafadanaM",
-            "thing": "Code Contributor",
+            "thing": "code-contributor",
             "socialmedia": {
                 "github": "RafadanaM"
             },
@@ -69,7 +85,7 @@
         },
         {
             "username": "Seseren_kr",
-            "thing": "Artist of the Herta GIF",
+            "thing": "artist",
             "socialmedia": {
                 "twitter": "Seseren_kr"
             },
@@ -77,32 +93,41 @@
         },
         {
             "username": "vgwik",
-            "thing": "Localization Contributor",
+            "thing": "localization",
             "socialmedia": {
                 "github": "vgwik",
-                "bilibili": 38120922
+                "bilibili": {
+                    "uid": 38120922,
+                    "username": "vgwik"
+                }
             },
             "icon": "https://avatars.githubusercontent.com/u/52212950?v=4"
         },
         {
             "username": "提灯书梦",
-            "thing": "Korean Translation",
+            "thing": "localization:Korean",
             "socialmedia": {
-                "bilibili": 6318620
+                "bilibili": {
+                    "uid": 6318620,
+                    "username": "提灯书梦"
+                }
             },
             "icon": "https://i2.hdslb.com/bfs/face/d3f6572157f3c51497cff1d58dd925632477faf5.jpg"
         },
         {
             "username": "二次元のリア充",
-            "thing": "Japanese Translation",
+            "thing": "localization:Japanese",
             "socialmedia": {
-                "bilibili": 7885894
+                "bilibili": {
+                    "uid": 7885894,
+                    "username": "二次元のリア充"
+                }
             },
             "icon": "https://i1.hdslb.com/bfs/face/5772af8e0ad4067323e1f082f887a220b92dbf71.jpg"
         },
         {
             "username": "TororuInta",
-            "thing": "Indonesian Translation",
+            "thing": "localization:Indonesian",
             "socialmedia": {
                 "github": "TororuInta"
             },
@@ -110,7 +135,7 @@
         },
         {
             "username": "KawaiiShadowii",
-            "thing": "Original Inspiration",
+            "thing": "inspiration",
             "socialmedia": {
                 "github": "KawaiiShadowii"
             },
