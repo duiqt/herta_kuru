@@ -337,7 +337,7 @@ const LANGUAGES = {
 
     // This function fetches data stored in a JSON file and displays it in a dialog box.
     function showCredits() {
-        fetch("credits.json").then(response => response.json()).then((data) => {
+        fetch("..\\static\\credits\\credits.json").then(response => response.json()).then((data) => {
             var contributors = data.contributors;
             contributors = randomShuffle(contributors);
             var creditsHtmlContent = `<p>in no specific order</p>`;
