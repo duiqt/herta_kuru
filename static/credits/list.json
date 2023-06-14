@@ -1,0 +1,145 @@
+{
+  "contributors": [
+    {
+      "username": "duiqt",
+      "name": "Ph\u00fac Duy",
+      "thing": "main-dev",
+      "socialmedia": {
+        "github": "duiqt"
+      },
+      "icon": "images/93a7f481e5a39e10c47c196afacf13a68e2037f0.jpg"
+    },
+    {
+      "username": "risbi0",
+      "thing": "main-dev",
+      "socialmedia": {
+        "github": "risbi0"
+      },
+      "icon": "images/71c4726c2704ca7397a23ff8dfee50eb460622e7.jpg"
+    },
+    {
+      "username": "fred913",
+      "name": "Sheng Fan",
+      "thing": "main-dev",
+      "socialmedia": {
+        "github": "fred913",
+        "bilibili": {
+          "uid": 496636524,
+          "username": "\u5269\u996d\u4e0d\u5403\u5269\u996d"
+        }
+      },
+      "icon": "images/5f6a01f9a9a75d6db4cda0a6af0f64668035c408.jpg"
+    },
+    {
+      "username": "george-chou",
+      "name": "Monet Joe",
+      "thing": "code-contributor",
+      "socialmedia": {
+        "github": "george-chou",
+        "bilibili": {
+          "uid": 30620472,
+          "username": "\u4ea6\u771f\u4ea6\u5e7bStudio"
+        }
+      },
+      "icon": "images/46c7507364fa08477978f09251e953da5283f313.jpg"
+    },
+    {
+      "username": "PencilCore",
+      "thing": "code-contributor",
+      "socialmedia": {
+        "github": "PencilCore"
+      },
+      "icon": "images/154915e50f36cd01283127ff1edd4b77d679c3a1.jpg"
+    },
+    {
+      "username": "moepoi",
+      "thing": "code-contributor",
+      "socialmedia": {
+        "github": "moepoi"
+      },
+      "icon": "images/785c87bcadbdd8a8b55278746561ff835ceb9565.jpg"
+    },
+    {
+      "username": "rikarani",
+      "thing": "code-contributor",
+      "socialmedia": {
+        "github": "rikarani"
+      },
+      "icon": "images/6387ed3947711ace1d350b806990a9640eb52757.jpg"
+    },
+    {
+      "username": "joulev",
+      "thing": "code-contributor",
+      "socialmedia": {
+        "github": "joulev"
+      },
+      "icon": "images/05f43cf0c42c4b55db91a1f258beeb1b249d747e.jpg"
+    },
+    {
+      "username": "RafadanaM",
+      "thing": "code-contributor",
+      "socialmedia": {
+        "github": "RafadanaM"
+      },
+      "icon": "images/9882e0e4562cac10e2f1e4f3021ebbdacb299210.jpg"
+    },
+    {
+      "username": "Seseren_kr",
+      "thing": "artist",
+      "socialmedia": {
+        "twitter": "Seseren_kr"
+      },
+      "icon": "images/d43a2f34d8ce0053323cda9b1d112bae7aea3602.jpg"
+    },
+    {
+      "username": "vgwik",
+      "thing": "localization",
+      "socialmedia": {
+        "github": "vgwik",
+        "bilibili": {
+          "uid": 38120922,
+          "username": "vgwik"
+        }
+      },
+      "icon": "images/1324cb8ee772fe67f44ccc67ee002bdca3242064.jpg"
+    },
+    {
+      "username": "\u63d0\u706f\u4e66\u68a6",
+      "thing": "localization:Korean",
+      "socialmedia": {
+        "bilibili": {
+          "uid": 6318620,
+          "username": "\u63d0\u706f\u4e66\u68a6"
+        }
+      },
+      "icon": "images/cee4acdeb90c016909e531ecbdfab2fe3eb6f65f.jpg"
+    },
+    {
+      "username": "\u4e8c\u6b21\u5143\u306e\u30ea\u30a2\u5145",
+      "thing": "localization:Japanese",
+      "socialmedia": {
+        "bilibili": {
+          "uid": 7885894,
+          "username": "\u4e8c\u6b21\u5143\u306e\u30ea\u30a2\u5145"
+        }
+      },
+      "icon": "images/68f10e69275761caab0892eea60589997bffa6b5.jpg"
+    },
+    {
+      "username": "TororuInta",
+      "thing": "localization:Indonesian",
+      "socialmedia": {
+        "github": "TororuInta"
+      },
+      "icon": "images/0d55609f3d0917631ac693802a0dd366c2d3556c.jpg"
+    },
+    {
+      "username": "KawaiiShadowii",
+      "thing": "inspiration",
+      "socialmedia": {
+        "github": "KawaiiShadowii"
+      },
+      "icon": "images/b8f98a1e38b58b7d0e772b29969ce41dba8a2817.jpg"
+    }
+  ]
+}
