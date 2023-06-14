@@ -299,6 +299,7 @@ var LANGUAGES = {
     function animateHerta() {
         let id = null;
         const random = Math.floor(Math.random() * 2) + 1;
+        const randomSpeed = Math.floor(Math.random() * 30) + 20;
         const elem = document.createElement("img");
         elem.src = cacheStaticObj(`img/hertaa${random}.gif`);
         elem.style.position = "absolute";
@@ -315,7 +316,7 @@ var LANGUAGES = {
                 clearInterval(id);
                 elem.remove()
             } else {
-                pos += 20;
+                pos += randomSpeed;
                 elem.style.right = pos + 'px';
             }
         }, 12);
