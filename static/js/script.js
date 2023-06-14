@@ -1,7 +1,12 @@
 const LANGUAGES = {
     "_": { defaultLanguage: "en", defaultVOLanguage: "ja" },
     "en": {
-        audioList: null,
+        audioList: [
+            // TODO audio random weight
+            "audio/en/en_1.mp3",
+            "audio/en/en_2.mp3",
+            "audio/en/en_3.mp3"
+        ],
         texts: {
             "page-title": "Welcome to herta kuru~",
             "doc-title": "Kuru Kuru~",
@@ -71,7 +76,12 @@ const LANGUAGES = {
         cardImage: "img/card_ja.jpg"
     },
     "kr": {
-        audioList: null,
+        audioList: [
+            // TODO audio random weight
+            "audio/kr/kr_1.mp3",
+            "audio/kr/kr_2.mp3",
+            "audio/kr/kr_3.mp3"
+        ],
         texts: {
             "page-title": "헤르타빙글 환영합니다~",
             "doc-title": "빙글 빙글~",
@@ -394,6 +404,8 @@ const LANGUAGES = {
     <select id="vo-language-selector" class="mdui-select" mdui-select='{"position": "bottom"}'>
         <option value="ja">日本語</option>
         <option value="cn">中文</option>
+        <option value="en">English</option>
+        <option value="kr">한국어</option>
     </select>
 </div>`,
             buttons: [
