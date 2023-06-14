@@ -190,6 +190,14 @@ h2 {
     border-bottom-right-radius: 2% 3.5%;
 }
 
+/* test,由vgwik添加 */
+#herta-card:hover {
+    background-color: #ececec;
+    transform: translate3d(-0.5px, -0.5px, 0px);
+    transition: transform 0.3s ease;
+    box-shadow: 2px 0.9px 2.5px 0.5px #00000042;
+}
+
 .footer-icon {
     display: inline-block;
     vertical-align: middle;
