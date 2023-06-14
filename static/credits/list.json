@@ -47,7 +47,11 @@
       "username": "PencilCore",
       "thing": "code-contributor",
       "socialmedia": {
-        "github": "PencilCore"
+        "github": "PencilCore",
+        "bilibili": {
+          "uid": 206149936,
+          "username": "PencilCore"
+        }
       },
       "icon": "images/154915e50f36cd01283127ff1edd4b77d679c3a1.jpg"
     },
