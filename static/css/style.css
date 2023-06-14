@@ -117,6 +117,7 @@ h2 {
 }
 
 #counter-button {
+    visibility: hidden;
     background-color: #574f84;
     border: none;
     border-radius: 16px;
