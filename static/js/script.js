@@ -354,17 +354,9 @@ var LANGUAGES = {
         });
     };
 
-    // This block dynamically displays different messages depending on which hostname the website is being loaded from.
-    // if (location.hostname == "herta.ft2.ltd" || location.hostname == "hertakuru.netlify.app") {
-    //     document.getElementById("access-via-tip-parent").innerHTML = "<p id='access-via-mirror'>Congratulations! You are using a mirror site, which should speed up access within China (Mainland) and some regions. Click here to <a href='https://duiqt.github.io/herta_kuru/'>visit the source site on GitHub Pages</a>.</p>";
-    //     multiLangMutation();
-    // } else {
-    //     document.getElementById("access-via-tip-parent").innerHTML = "<p id='access-via-pages'>You're currently accessing via GitHub Pages. For users in China (Mainland) or some regions, click <a href='https://duiqt.github.io/herta_kuru/'>here to access the mirror on Netlify</a>.</p>";
-    //     multiLangMutation();
-    // }
     // NOTE the deployment on Github pages is stopped and deprecated. This tip is not useful anymore.
-    if (location.hostname.endsWith(".github.io")) {
-        window.location.href = "https://herta.ft2.ltd/";
+    if (location.hostname.endsWith("duiqt.github.io")) {
+        window.location.href = "https://herta.ft2.ltd";
     }
 
     // This function fetches data stored in a JSON file and displays it in a dialog box.
