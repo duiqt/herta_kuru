@@ -239,11 +239,8 @@ var LANGUAGES = {
     const counterButton = document.querySelector('#counter-button');
     counterButton.addEventListener('click', (e) => {
         localCount++;
-
         localCounter.textContent = localCount.toLocaleString('en-US');
-
         triggerRipple(e);
-
         playKuru();
         animateHerta();
         refreshDynamicTexts();
@@ -268,7 +265,6 @@ var LANGUAGES = {
         }
         return myArr;
     }
-
 
     function getRandomAudioUrl() {
         var localAudioList = getLocalAudioList();
@@ -321,8 +317,6 @@ var LANGUAGES = {
         }, 12);
     };
 
-
-
     // This function creates ripples on a button click and removes it after 300ms.
     function triggerRipple(e) {
         let ripple = document.createElement("span");
@@ -369,6 +363,13 @@ var LANGUAGES = {
         </i>`;
     }
 
+    // This func adds avatars for credits and with href for those having social link
+    function addAvatar(socialLink, currentIcon) {
+        let avatar = `<img src="static/credits/${currentIcon}"/>`;
+        if (socialLink == '') return avatar;
+        return `<a href="${socialLink}" target="_blank">${avatar}</a>`;
+    }
+
     // This function fetches data stored in a JSON file and displays it in a dialog box.
     function showCredits() {
         fetch("static/credits/list.json").then(response => response.json()).then((data) => {
@@ -408,9 +409,7 @@ var LANGUAGES = {
         <div class="mdui-collapse-item-header">
             <li class="mdui-list-item mdui-ripple">
                 <div class="mdui-list-item-avatar mdlist-ava-fix">
-                    <a href="${socialLink}" target="_blank">
-                        <img src="static/credits/${current.icon}"/>
-                    </a>
+                    ${addAvatar(socialLink, current.icon)}
                 </div>
                 <div class="mdui-list-item-content">
                     <div class="mdui-list-item-title">${renderedName}</div>
