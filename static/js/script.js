@@ -349,9 +349,9 @@ var LANGUAGES = {
     };
 
     // NOTE the deployment on Github pages is stopped and deprecated. This tip is not useful anymore.
-    if (location.hostname.endsWith("duiqt.github.io")) {
-        window.location.href = "https://herta.onrender.com";
-    }
+    // if (location.hostname.endsWith("duiqt.github.io")) {
+    //     window.location.href = "https://herta.onrender.com";
+    // }
 
     // This function create bilibili icon in 2 cases: activated & inactivated
     function bilibiliIcon(color) {
