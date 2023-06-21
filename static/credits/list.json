@@ -91,7 +91,11 @@
       "username": "Seseren_kr",
       "thing": "artist",
       "socialmedia": {
-        "twitter": "Seseren_kr"
+        "twitter": "Seseren_kr",
+        "bilibili": {
+          "uid": 305550122,
+          "username": "Seseren"
+        }
       },
       "icon": "images/d43a2f34d8ce0053323cda9b1d112bae7aea3602.jpg"
     },
