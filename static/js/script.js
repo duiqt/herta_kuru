@@ -240,6 +240,7 @@ var LANGUAGES = {
     counterButton.addEventListener('click', (e) => {
         localCount++;
         localCounter.textContent = localCount.toLocaleString('en-US');
+        localStorage.setItem('count-v2', localCount);
         triggerRipple(e);
         playKuru();
         animateHerta();
