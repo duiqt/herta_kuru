@@ -148,6 +148,27 @@
         "github": "KawaiiShadowii"
       },
       "icon": "images/b8f98a1e38b58b7d0e772b29969ce41dba8a2817.jpg"
+    },
+    {
+      "username": "blacktunes",
+      "thing": "code-contributor",
+      "socialmedia": {
+        "github": "blacktunes",
+        "bilibili": {
+          "uid": 1384118,
+          "username": "单推黑猫白雪的咸鱼"
+        }
+      },
+      "icon": "https://avatars.githubusercontent.com/u/38934611?v=4"
+    },
+    {
+      "username": "Whitetiger0423",
+      "thing": "localization:Korean",
+      "socialmedia": {
+        "twitter": "__white_t__",
+        "github": "Whitetiger0423"
+      },
+      "icon": "https://avatars.githubusercontent.com/u/72282371?v=4"
     }
   ]
 }

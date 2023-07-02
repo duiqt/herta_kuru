@@ -441,7 +441,10 @@ const progress = [0, 1];
 
     // This func adds avatars for credits and with href for those having social link
     function addAvatar(socialLink, currentIcon) {
-        let avatar = `<img src="static/credits/${currentIcon}"/>`;
+        if (!currentIcon.includes('https://')) {
+            currentIcon = 'static/credits/' + currentIcon;
+        }
+        let avatar = `<img src="${currentIcon}"/>`;
         if (socialLink == '') return avatar;
         return `<a href="${socialLink}" target="_blank">${avatar}</a>`;
     }
@@ -471,12 +474,12 @@ const progress = [0, 1];
                             socialMediaIcons += `</a>`;
                             break;
 
-                        case "github":
-                            socialLink = "https://github.com/" + value;
-                            break;
-
                         case "twitter":
                             socialLink = "https://twitter.com/" + value;
+                            break;
+
+                        case "github":
+                            socialLink = "https://github.com/" + value;
                             break;
                     }
                 });
