@@ -441,6 +441,9 @@ const progress = [0, 1];
 
     // This func adds avatars for credits and with href for those having social link
     function addAvatar(socialLink, currentIcon) {
+        if (!currentIcon.includes('https://')) {
+            currentIcon = 'static/credits/' + currentIcon;
+        }
         let avatar = `<img src="${currentIcon}"/>`;
         if (socialLink == '') return avatar;
         return `<a href="${socialLink}" target="_blank">${avatar}</a>`;
@@ -448,7 +451,7 @@ const progress = [0, 1];
 
     // This function fetches data stored in a JSON file and displays it in a dialog box.
     function showCredits() {
-        fetch("static/credits/credits.rawiconurl.json").then(response => response.json()).then((data) => {
+        fetch("static/credits/list.json").then(response => response.json()).then((data) => {
             var contributors = data.contributors;
             contributors = randomShuffle(contributors);
             var creditsHtmlContent = `<p>in no specific order</p>`;
