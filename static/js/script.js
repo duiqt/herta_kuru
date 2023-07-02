@@ -160,6 +160,8 @@ var LANGUAGES = {
     },
 };
 
+const progress = [0, 1];
+
 (() => {
     const $ = mdui.$;
 
@@ -237,14 +239,87 @@ var LANGUAGES = {
 
     // initialize timer variable and add event listener to the counter button element
     const counterButton = document.querySelector('#counter-button');
-    counterButton.addEventListener('click', (e) => {
-        localCount++;
-        localCounter.textContent = localCount.toLocaleString('en-US');
-        triggerRipple(e);
-        playKuru();
-        animateHerta();
-        refreshDynamicTexts();
-    });
+
+    // Preload
+
+    async function convertMp3FilesToBase64(dict) {
+        const promises = [];
+        for (const lang in dict) {
+            if (dict.hasOwnProperty(lang)) {
+                const audioList = dict[lang].audioList;
+                if (Array.isArray(audioList)) {
+                    for (let i = 0; i < audioList.length; i++) {
+                        const url = audioList[i];
+                        if (typeof url === "string" && url.endsWith(".mp3")) {
+                            promises.push(loadAndEncode("static/" + url).then(result => dict[lang].audioList[i] = result));
+                        }
+                    }
+                }
+            }
+        }
+        progress[1] = promises.length
+        await Promise.all(promises);
+        return dict;
+    }
+
+    function upadteProgress() {
+        progress[0] += 1
+        counterButton.innerText = `${((progress[0] / progress[1]) * 100) | 0}%`
+    }
+
+    function loadAndEncode(url) {
+        return new Promise((resolve, reject) => {
+            const xhr = new XMLHttpRequest();
+            xhr.open("GET", url, true);
+            xhr.responseType = "arraybuffer";
+            xhr.onload = function () {
+                upadteProgress()
+                if (xhr.status === 200) {
+                    const buffer = xhr.response;
+                    const blob = new Blob([buffer], { type: "audio/mpeg" });
+                    const reader = new FileReader();
+                    reader.readAsDataURL(blob);
+                    reader.onloadend = function () {
+                        const base64data = reader.result;
+                        resolve(base64data);
+                    }
+                } else {
+                    reject(xhr.statusText);
+                }
+            };
+            xhr.onerror = function () {
+                upadteProgress()
+                reject(xhr.statusText);
+            };
+            xhr.send();
+        });
+    }
+
+    function addBtnEvent() {
+        counterButton.addEventListener('click', (e) => {
+            localCount++;
+            localCounter.textContent = localCount.toLocaleString('en-US');
+            localStorage.setItem('count-v2', localCount);
+            triggerRipple(e);
+            playKuru();
+            animateHerta();
+            refreshDynamicTexts();
+        });
+    };
+
+    window.onload = function () {
+        // Calling method
+        convertMp3FilesToBase64(LANGUAGES)
+            .catch(error => {
+                console.error(error);
+            })
+            .finally(() => {
+                refreshDynamicTexts();
+                addBtnEvent();
+                document.getElementById('loading').remove()
+            });
+    }
+
 
     // try caching the hertaa1.gif and hertaa2.gif images by calling the tryCacheUrl function
     cacheStaticObj("img/hertaa1.gif");
@@ -339,6 +414,7 @@ var LANGUAGES = {
 
     // This function retrieves localized dynamic text based on a given language code, and randomly replaces an element with one of the translations. 
     function refreshDynamicTexts() {
+        if (progress[0] !== progress[1]) return;
         let curLang = LANGUAGES[current_language];
         let localTexts = curLang.texts;
         Object.entries(localTexts).forEach(([textId, value]) => {
