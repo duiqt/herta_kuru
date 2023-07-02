@@ -474,12 +474,12 @@ const progress = [0, 1];
                             socialMediaIcons += `</a>`;
                             break;
 
-                        case "github":
-                            socialLink = "https://github.com/" + value;
-                            break;
-
                         case "twitter":
                             socialLink = "https://twitter.com/" + value;
+                            break;
+
+                        case "github":
+                            socialLink = "https://github.com/" + value;
                             break;
                     }
                 });
