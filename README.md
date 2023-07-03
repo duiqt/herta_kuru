@@ -9,7 +9,7 @@ The counter has paused, awaiting additional remediation measures, as a result of
   [![Chat on Discord](https://img.shields.io/badge/chat-discord-blue?style=flat&logo=discord)](https://discord.gg/yzkEz6xxdM)
 
 # Herta Kuru | 黑塔转圈圈 | ヘルタクルへ
-[Home Page | 主页 | ホーム ページ](https://duiqt.github.io/herta_kuru)
+[Home Page | 主页 | ホーム ページ (Netlify)](https://herta.ft2.ltd/)
 
 Herta GIF and art made by | 黑塔 GIF 绘画者 : [@Seseren_kr](https://twitter.com/Seseren_kr) 
 
