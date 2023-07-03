@@ -47,7 +47,11 @@
             "username": "PencilCore",
             "thing": "code-contributor",
             "socialmedia": {
-                "github": "PencilCore"
+                "github": "PencilCore",
+                "bilibili": {
+                    "uid": 206149936,
+                    "username": "PencilCore"
+                }
             },
             "icon": "https://avatars.githubusercontent.com/u/62322900?v=4"
         },
@@ -87,7 +91,11 @@
             "username": "Seseren_kr",
             "thing": "artist",
             "socialmedia": {
-                "twitter": "Seseren_kr"
+                "twitter": "Seseren_kr",
+                "bilibili": {
+                    "uid": 305550122,
+                    "username": "Seseren"
+                }
             },
             "icon": "https://pbs.twimg.com/profile_images/835117601676144641/mYxxpLOk_400x400.jpg"
         },
@@ -140,6 +148,27 @@
                 "github": "KawaiiShadowii"
             },
             "icon": "https://avatars.githubusercontent.com/u/33539431?v=4"
+        },
+        {
+            "username": "blacktunes",
+            "thing": "code-contributor",
+            "socialmedia": {
+                "github": "blacktunes",
+                "bilibili": {
+                    "uid": 1384118,
+                    "username": "单推黑猫白雪的咸鱼"
+                }
+            },
+            "icon": "https://avatars.githubusercontent.com/u/38934611?v=4"
+        },
+        {
+            "username": "Whitetiger0423",
+            "thing": "localization:Korean",
+            "socialmedia": {
+                "twitter": "__white_t__",
+                "github": "Whitetiger0423"
+            },
+            "icon": "https://avatars.githubusercontent.com/u/72282371?v=4"
         }
     ]
 }

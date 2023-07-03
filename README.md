@@ -1,7 +1,7 @@
 ﻿## Warning
 The counter has paused, awaiting additional remediation measures, as a result of the excessive traffic and malicious flood of requests.
 
-<div align="center"><img src="img/hertaa_github.gif"></div>
+<div align="center"><img src="static/img/hertaa_github.gif"></div>
 
 <div align="center"><p>The website for Herta, the cutest genius Honkai: Star Rail character out there!</p>
 <p>献给崩坏：星穹铁道最可爱的天才黑塔酱</p></div>
@@ -27,4 +27,4 @@ The art the relevant copyright of Honkai: Star Rail belongs to miHoYo/HoYoverse.
 
 ### Original Inspration
 
-Thanks KawaiiShadowii and his website [tannhauser.moe](https://tannhauser.moe/), where our inspirations and the super-original code from. ([#44](https://github.com/duiqt/herta_kuru/issues/44))
+Thanks KawaiiShadowii and his website [tannhauser.moe](https://tannhauser.moe), where our inspirations and the super-original code from. ([#44](https://github.com/duiqt/herta_kuru/issues/44))
