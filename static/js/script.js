@@ -1,4 +1,4 @@
-var LANGUAGES = {
+const LANGUAGES = {
     "_": { defaultLanguage: "en", defaultVOLanguage: "ja" },
     "en": {
         audioList: [
@@ -166,33 +166,79 @@ const progress = [0, 1];
     const $ = mdui.$;
 
     // initialize cachedObjects variable to store cached object URLs
-    var cachedObjects = {};
+    const cachedObjects = {};
 
     // function to try caching an object URL and return it if present in cache or else fetch it and cache it
     function cacheStaticObj(origUrl) {
         if (cachedObjects[origUrl]) {
             return cachedObjects[origUrl];
         } else {
-            setTimeout(() => {
-                fetch("static/" + origUrl)
-                    .then((response) => response.blob())
-                    .then((blob) => {
-                        const blobUrl = URL.createObjectURL(blob);
-                        cachedObjects[origUrl] = blobUrl;
-                    })
-                    .catch((error) => {
-                        console.error(`Error caching object from ${origUrl}: ${error}`);
-                    });
-            }, 1);
             return origUrl;
         }
     };
 
-    let firstSquish = true;
+    // Preload
+    function preload() {
+        const promises = [];
 
-    // This code tries to retrieve the saved language 'lang' from localStorage. If it is not found or if its value is null, then it defaults to "en". 
-    var current_language = localStorage.getItem("lang") || LANGUAGES._.defaultLanguage;
-    var current_vo_language = localStorage.getItem("volang") || LANGUAGES._.defaultVOLanguage;
+        // audio
+        for (const lang in LANGUAGES) {
+            if (LANGUAGES.hasOwnProperty(lang)) {
+                const audioList = LANGUAGES[lang].audioList;
+                if (Array.isArray(audioList)) {
+                    for (let i = 0; i < audioList.length; i++) {
+                        const url = audioList[i];
+                        if (typeof url === "string" && url.endsWith(".mp3")) {
+                            promises.push(
+                                getObjectURL("static/" + url)
+                                    .then(result => LANGUAGES[lang].audioList[i] = result)
+                            );
+                        }
+                    }
+                }
+            }
+        }
+
+        // image
+        const imageList = ["static/img/hertaa1.gif", "static/img/hertaa2.gif"]
+        imageList.forEach(url => {
+            promises.push(
+                getObjectURL(url)
+                    .then(result => cachedObjects[url] = result)
+            )
+        })
+
+        progress[1] = promises.length
+        return Promise.all(promises);
+    }
+
+    function getObjectURL(url) {
+        return new Promise((resolve) => {
+            fetch(url)
+                .then(response => response.blob())
+                .then(blob => {
+                    const blobUrl = URL.createObjectURL(blob);
+                    resolve(blobUrl);
+                })
+                .catch(error => {
+                    console.error(`Error caching object from ${origUrl}: ${error}`);
+                })
+                .finally(() => {
+                    upadteProgress()
+                })
+        });
+    }
+
+    function upadteProgress() {
+        progress[0] += 1
+        const _progress = ((progress[0] / progress[1]) * 100) | 0
+        document.getElementById('loading').style.width = `${100 - _progress}vw`
+        document.getElementById('progress').innerText = `${_progress}%`
+    }
+
+    // This code tries to retrieve the saved language 'lang' from localStorage. If it is not found or if its value is null, then it defaults to "en".
+    let current_language = localStorage.getItem("lang") || LANGUAGES._.defaultLanguage;
+    let current_vo_language = localStorage.getItem("volang") || LANGUAGES._.defaultVOLanguage;
 
     // function that takes a textId, optional language and whether to use fallback/ default language for translation. It returns the translated text in the given language or if it cannot find the translation, in the default fallback language.
     function getLocalText(textId, language = null, fallback = true) {
@@ -210,20 +256,34 @@ const progress = [0, 1];
         else return null;
     }
 
+    function updateElementById(textId, value) {
+        if (!(value instanceof Array)) {
+            if (document.getElementById(textId) != undefined) {
+                // replaces the innerHTML of the element with the given textId with its translated version.
+                document.getElementById(textId).innerHTML = value;
+            }
+        }
+        if (value instanceof Array) {
+            if (document.getElementById(textId) != undefined) {
+                document.getElementById(textId).innerHTML = randomChoice(value);
+            }
+        }
+    }
+
     // function that updates all the relevant text elements with the translations in the chosen language.
     function multiLangMutation() {
         let curLang = LANGUAGES[current_language];
         let localTexts = curLang.texts;
+
         Object.entries(localTexts).forEach(([textId, value]) => {
-            if (!(value instanceof Array))
-                if (document.getElementById(textId) != undefined)
-                    document.getElementById(textId).innerHTML = value; // replaces the innerHTML of the element with the given textId with its translated version.
+            updateElementById(textId, value)
         });
-        refreshDynamicTexts()
-        document.getElementById("herta-card").src = "static/" + curLang.cardImage; // sets the image of element with id "herta-card" to the translated version in the selected language.
+
+        // sets the image of element with id "herta-card" to the translated version in the selected language.
+        document.getElementById("herta-card").src = "static/" + curLang.cardImage;
     };
 
-    multiLangMutation() // the function multiLangMutation is called initially when the page loads.
+    multiLangMutation();
 
     // function that returns the list of audio files for the selected language
     function getLocalAudioList() {
@@ -232,71 +292,15 @@ const progress = [0, 1];
 
     // get global counter element and initialize its respective counts
     const localCounter = document.querySelector('#local-counter');
-    let localCount = localStorage.getItem('count-v2') || 0;
+    let localCount = Number(localStorage.getItem('count-v2') || 0);
 
     // display counter
     localCounter.textContent = localCount.toLocaleString('en-US');
 
-    // initialize timer variable and add event listener to the counter button element
-    const counterButton = document.querySelector('#counter-button');
-
-    // Preload
-
-    async function convertMp3FilesToBase64(dict) {
-        const promises = [];
-        for (const lang in dict) {
-            if (dict.hasOwnProperty(lang)) {
-                const audioList = dict[lang].audioList;
-                if (Array.isArray(audioList)) {
-                    for (let i = 0; i < audioList.length; i++) {
-                        const url = audioList[i];
-                        if (typeof url === "string" && url.endsWith(".mp3")) {
-                            promises.push(loadAndEncode("static/" + url).then(result => dict[lang].audioList[i] = result));
-                        }
-                    }
-                }
-            }
-        }
-        progress[1] = promises.length
-        await Promise.all(promises);
-        return dict;
-    }
-
-    function upadteProgress() {
-        progress[0] += 1
-        counterButton.innerText = `${((progress[0] / progress[1]) * 100) | 0}%`
-    }
-
-    function loadAndEncode(url) {
-        return new Promise((resolve, reject) => {
-            const xhr = new XMLHttpRequest();
-            xhr.open("GET", url, true);
-            xhr.responseType = "arraybuffer";
-            xhr.onload = function () {
-                upadteProgress()
-                if (xhr.status === 200) {
-                    const buffer = xhr.response;
-                    const blob = new Blob([buffer], { type: "audio/mpeg" });
-                    const reader = new FileReader();
-                    reader.readAsDataURL(blob);
-                    reader.onloadend = function () {
-                        const base64data = reader.result;
-                        resolve(base64data);
-                    }
-                } else {
-                    reject(xhr.statusText);
-                }
-            };
-            xhr.onerror = function () {
-                upadteProgress()
-                reject(xhr.statusText);
-            };
-            xhr.send();
-        });
-    }
+    const wrapperDom = document.getElementById('wrapper')
 
     function addBtnEvent() {
-        counterButton.addEventListener('click', (e) => {
+        wrapperDom.addEventListener('click', (e) => {
             localCount++;
             localCounter.textContent = localCount.toLocaleString('en-US');
             localStorage.setItem('count-v2', localCount);
@@ -309,21 +313,20 @@ const progress = [0, 1];
 
     window.onload = function () {
         // Calling method
-        convertMp3FilesToBase64(LANGUAGES)
+        preload()
             .catch(error => {
                 console.error(error);
             })
             .finally(() => {
-                refreshDynamicTexts();
                 addBtnEvent();
+                const bg = document.getElementById('wrapper-background')
+                bg.style.opacity = 0.2
+                bg.style.zIndex = -99
                 document.getElementById('loading').remove()
+                document.getElementById('progress').remove()
+                document.getElementById('content').style.opacity = 1;
             });
     }
-
-
-    // try caching the hertaa1.gif and hertaa2.gif images by calling the tryCacheUrl function
-    cacheStaticObj("img/hertaa1.gif");
-    cacheStaticObj("img/hertaa2.gif");
 
     // Define a function that takes an array as an argument and returns a random item from the array
     function randomChoice(myArr) {
@@ -342,7 +345,7 @@ const progress = [0, 1];
     }
 
     function getRandomAudioUrl() {
-        var localAudioList = getLocalAudioList();
+        const localAudioList = getLocalAudioList();
         if (current_vo_language == "ja") {
             const randomIndex = Math.floor(Math.random() * 2) + 1;
             return localAudioList[randomIndex];
@@ -352,14 +355,8 @@ const progress = [0, 1];
     }
 
     function playKuru() {
-        let audioUrl;
-        if (firstSquish) {
-            firstSquish = false;
-            audioUrl = getLocalAudioList()[0];
-        } else {
-            audioUrl = getRandomAudioUrl();
-        }
-        let audio = new Audio();//cacheStaticObj(audioUrl));
+        audioUrl = getRandomAudioUrl();
+        const audio = new Audio();
         audio.src = audioUrl;
         audio.play();
         audio.addEventListener("ended", function () {
@@ -370,13 +367,15 @@ const progress = [0, 1];
     function animateHerta() {
         let id = null;
         const random = Math.floor(Math.random() * 2) + 1;
-        const elem = document.createElement("img");
-        elem.src = cacheStaticObj(`img/hertaa${random}.gif`);
-        elem.style.position = "absolute";
-        elem.style.right = "-500px";
-        elem.style.top = counterButton.getClientRects()[0].bottom + scrollY - 430 + "px"
-        elem.style.zIndex = "-10";
-        document.body.appendChild(elem);
+        const randomSpeed = Math.floor(Math.random() * 20) + 20;
+        const elem = document.createElement('img');
+        elem.src = cacheStaticObj(`static/img/hertaa${random}.gif`);
+        elem.style.position = 'absolute';
+        elem.style.right = '-500px';
+        elem.style.bottom = '0px'
+        elem.style.zIndex = '-1';
+        elem.style.maxWidth = '100%';
+        wrapperDom.appendChild(elem);
 
         let pos = -500;
         const limit = window.innerWidth + 500;
@@ -386,7 +385,7 @@ const progress = [0, 1];
                 clearInterval(id);
                 elem.remove()
             } else {
-                pos += 20;
+                pos += randomSpeed;
                 elem.style.right = pos + 'px';
             }
         }, 12);
@@ -397,9 +396,6 @@ const progress = [0, 1];
         let ripple = document.createElement("span");
 
         ripple.classList.add("ripple");
-
-        const counter_button = document.getElementById("counter-button");
-        counter_button.appendChild(ripple);
 
         let x = e.clientX - e.target.offsetLeft;
         let y = e.clientY - e.target.offsetTop;
@@ -412,17 +408,18 @@ const progress = [0, 1];
         }, 300);
     };
 
-    // This function retrieves localized dynamic text based on a given language code, and randomly replaces an element with one of the translations. 
     function refreshDynamicTexts() {
-        if (progress[0] !== progress[1]) return;
-        let curLang = LANGUAGES[current_language];
-        let localTexts = curLang.texts;
-        Object.entries(localTexts).forEach(([textId, value]) => {
-            if (value instanceof Array)
-                if (document.getElementById(textId) != undefined)
-                    document.getElementById(textId).innerHTML = randomChoice(value);
-        });
-    };
+        const curLang = LANGUAGES[current_language];
+        const localTexts = curLang.texts;
+
+        updateElementById('counter-descriptions', localTexts['counter-descriptions'])
+        updateElementById('counter-unit', localTexts['counter-unit'])
+    }
+
+    let credits = {}
+    fetch("static/credits/list.json")
+        .then(response => response.json())
+        .then(data => credits = data)
 
     // NOTE the deployment on Github pages is stopped and deprecated. This tip is not useful anymore.
     // if (location.hostname.endsWith("duiqt.github.io")) {
@@ -451,96 +448,107 @@ const progress = [0, 1];
 
     // This function fetches data stored in a JSON file and displays it in a dialog box.
     function showCredits() {
-        fetch("static/credits/list.json").then(response => response.json()).then((data) => {
-            var contributors = data.contributors;
-            contributors = randomShuffle(contributors);
-            var creditsHtmlContent = `<p>in no specific order</p>`;
-            creditsHtmlContent += `<ul class="mdui-list">`;
-            for (let i = 0; i < contributors.length; i++) {
-                var current = contributors[i];
-                let renderedName = current.username;
-                if (current.name != undefined) {
-                    renderedName += " (" + current.name + ")";
-                }
-                var socialMediaIcons = bilibiliIcon('#999999');
-                var socialLink = "";
-                $.each(current.socialmedia, (key, value) => {
-                    switch (key) {
-                        case "bilibili":
-                            let uid = value.uid;
-                            let username = value.username;
-                            socialMediaIcons = `<a href="https://space.bilibili.com/${uid}" title="${username}" target="_blank">`;
-                            socialMediaIcons += bilibiliIcon('#00aeec');
-                            socialMediaIcons += `</a>`;
-                            break;
-
-                        case "twitter":
-                            socialLink = "https://twitter.com/" + value;
-                            break;
-
-                        case "github":
-                            socialLink = "https://github.com/" + value;
-                            break;
-                    }
-                });
-                creditsHtmlContent += `<div class="mdui-collapse">
-    <div class="mdui-collapse-item">
-        <div class="mdui-collapse-item-header">
-            <li class="mdui-list-item mdui-ripple">
-                <div class="mdui-list-item-avatar mdlist-ava-fix">
-                    ${addAvatar(socialLink, current.icon)}
-                </div>
-                <div class="mdui-list-item-content">
-                    <div class="mdui-list-item-title">${renderedName}</div>
-                    <div class="mdui-list-item-text mdui-list-item-one-line">
-                        <span class="mdui-text-color-theme-text">${getLocalText("CREDITS:" + current.thing)}</span>
-                    </div>
-                </div>
-                ${socialMediaIcons}
-            </li>
-        </div>
-    </div>
-</div>`;
-            }
-            creditsHtmlContent += `</ul>`;
-
-            mdui.dialog({
-                title: getLocalText("dialogs-credits-title"),
-                content: creditsHtmlContent,
-                buttons: [
-                    {
-                        text: getLocalText("dialogs-close")
-                    }
-                ],
-                history: false
-            });
-        });
+        if (credits.contributors) {
+            createCreditsBox(credits.contributors)
+        } else {
+            fetch("static/credits/list.json")
+                .then(response => response.json())
+                .then((data) => {
+                    createCreditsBox(data.contributors)
+                })
+        }
     }
 
+    function createCreditsBox(contributors) {
+        contributors = randomShuffle(contributors);
+        let creditsHtmlContent = `<p>in no specific order</p>`;
+        creditsHtmlContent += `<ul class="mdui-list">`;
+        for (let i = 0; i < contributors.length; i++) {
+            let current = contributors[i];
+            let renderedName = current.username;
+            if (current.name != undefined) {
+                renderedName += " (" + current.name + ")";
+            }
+            let socialMediaIcons = bilibiliIcon('#999999');
+            let socialLink = "";
+            $.each(current.socialmedia, (key, value) => {
+                switch (key) {
+                    case "bilibili":
+                        let uid = value.uid;
+                        let username = value.username;
+                        socialMediaIcons = `<a href="https://space.bilibili.com/${uid}" title="${username}" target="_blank">`;
+                        socialMediaIcons += bilibiliIcon('#00aeec');
+                        socialMediaIcons += `</a>`;
+                        break;
+
+                    case "twitter":
+                        socialLink = "https://twitter.com/" + value;
+                        break;
+
+                    case "github":
+                        socialLink = "https://github.com/" + value;
+                        break;
+                }
+            });
+            creditsHtmlContent += `
+                <div class="mdui-collapse">
+                    <div class="mdui-collapse-item">
+                        <div class="mdui-collapse-item-header">
+                            <li class="mdui-list-item mdui-ripple">
+                                <div class="mdui-list-item-avatar mdlist-ava-fix">
+                                    ${addAvatar(socialLink, current.icon)}
+                                </div>
+                                <div class="mdui-list-item-content">
+                                    <div class="mdui-list-item-title">${renderedName}</div>
+                                    <div class="mdui-list-item-text mdui-list-item-one-line">
+                                        <span class="mdui-text-color-theme-text">${getLocalText("CREDITS:" + current.thing)}</span>
+                                    </div>
+                                </div>
+                                ${socialMediaIcons}
+                            </li>
+                        </div>
+                    </div>
+                </div>`;
+        }
+        creditsHtmlContent += `</ul>`;
+
+        mdui.dialog({
+            title: getLocalText("dialogs-credits-title"),
+            content: creditsHtmlContent,
+            buttons: [
+                {
+                    text: getLocalText("dialogs-close")
+                }
+            ],
+            history: false
+        });
+
+    }
     $("#show-credits-opt").on("click", () => showCredits())
 
     function showOptions() {
         mdui.dialog({
             title: 'Options',
-            content: `<div style="min-height: 350px;" class="mdui-typo">
-    <label id="options-txt-lang">Page Language</label>
-    <select id="language-selector" class="mdui-select" mdui-select='{"position": "bottom"}'>
-        <option value="en">English</option>
-        <option value="cn">中文</option>
-        <option value="ja">日本語</option>
-        <option value="kr">한국어</option>
-        <option value="id">Bahasa Indonesia</option>
-        <option value="pt">Português-BR</option>
-    </select>
-    <br />
-    <label id="options-txt-vo-lang">Voice-Over Language</label>
-    <select id="vo-language-selector" class="mdui-select" mdui-select='{"position": "bottom"}'>
-        <option value="ja">日本語</option>
-        <option value="cn">中文</option>
-        <option value="en">English</option>
-        <option value="kr">한국어</option>
-    </select>
-</div>`,
+            content: `
+                <div style="min-height: 350px;" class="mdui-typo">
+                    <label id="options-txt-lang">Page Language</label>
+                    <select id="language-selector" class="mdui-select" mdui-select='{"position": "bottom"}'>
+                        <option value="en">English</option>
+                        <option value="cn">中文</option>
+                        <option value="ja">日本語</option>
+                        <option value="kr">한국어</option>
+                        <option value="id">Bahasa Indonesia</option>
+                        <option value="pt">Português-BR</option>
+                    </select>
+                    <br />
+                    <label id="options-txt-vo-lang">Voice-Over Language</label>
+                    <select id="vo-language-selector" class="mdui-select" mdui-select='{"position": "bottom"}'>
+                        <option value="ja">日本語</option>
+                        <option value="cn">中文</option>
+                        <option value="en">English</option>
+                        <option value="kr">한국어</option>
+                    </select>
+                </div>`,
             buttons: [
                 {
                     text: getLocalText("dialogs-close")
@@ -567,6 +575,5 @@ const progress = [0, 1];
             }
         });
     }
-
     $("#show-options-opt").on("click", () => showOptions())
-})(); 
+})();
