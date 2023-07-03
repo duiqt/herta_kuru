@@ -424,12 +424,14 @@ const progress = [0, 1];
         });
     };
 
-    // NOTE the deployment on Github pages is stopped and deprecated. This tip is not useful anymore.
+
+    // NOTE the deployment on Github pages is stopped and deprecated.
+    // TODO Waiting for decision as the final production website
     // if (location.hostname.endsWith("duiqt.github.io")) {
-    //     window.location.href = "https://herta.onrender.com";
+    //     window.location.href = "https://herta.ft2.ltd";
     // }
 
-    // This function create bilibili icon in 2 cases: activated & inactivated
+    // A fun manual implementation for integration between MDUI and Font-Awesome
     function bilibiliIcon(color) {
         return `<i class="mdui-list-item-icon mdui-icon">
         <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 512 512" style="fill: ${color};">
