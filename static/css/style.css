@@ -39,6 +39,19 @@ body {
     z-index: -20;
 }
 
+#loading {
+    position: absolute;
+    bottom: 48px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100px;
+    height: 100px;
+    background-image: url(../img/hertaa1.gif);
+    background-repeat: no-repeat;
+    background-position: 50%;
+    background-size: contain;
+}
+
 .preload {
     position: absolute;
     left: 0;
@@ -128,6 +141,7 @@ h2 {
     font-family: 'Roboto', sans-serif;
     font-weight: bold;
     margin-top: 16px;
+    min-width: 120px;
 
     position: relative;
     overflow: hidden;
@@ -346,3 +360,11 @@ h2 {
     top: 0px;
     left: 0px;
 }
+
+/* .bili-icon {
+    background: url('https://www.bilibili.com/favicon.ico');
+    display: block;
+    width: 32px;
+    height: 32px;
+    float: right;
+} */
