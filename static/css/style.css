@@ -39,6 +39,19 @@ body {
     z-index: -20;
 }
 
+#loading {
+    position: absolute;
+    bottom: 48px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100px;
+    height: 100px;
+    background-image: url(../img/hertaa1.gif);
+    background-repeat: no-repeat;
+    background-position: 50%;
+    background-size: contain;
+}
+
 .preload {
     position: absolute;
     left: 0;
@@ -128,6 +141,7 @@ h2 {
     font-family: 'Roboto', sans-serif;
     font-weight: bold;
     margin-top: 16px;
+    min-width: 120px;
 
     position: relative;
     overflow: hidden;
@@ -188,6 +202,14 @@ h2 {
     border-top-right-radius: 2% 3.5%;
     border-bottom-left-radius: 2% 3.5%;
     border-bottom-right-radius: 2% 3.5%;
+}
+
+/* test,由vgwik添加 */
+#herta-card:hover {
+    background-color: #ececec;
+    transform: translate3d(-0.5px, -0.5px, 0px);
+    transition: transform 0.3s ease;
+    box-shadow: 2px 0.9px 2.5px 0.5px #00000042;
 }
 
 .footer-icon {
