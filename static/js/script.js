@@ -19,6 +19,8 @@ var LANGUAGES = {
             "show-credits-text": "Show Credits",
             "repository-desc": "GitHub Repo",
             "options-txt-vo-lang": "Voice-Over Language",
+            "options-txt-random_speed": "Random speed",
+            "options-txt-speed": "Speed",
             "options-txt-lang": "Page Language",
             "dialogs-close": "Close",
             "dialogs-credits-title": "Credits",
@@ -53,6 +55,8 @@ var LANGUAGES = {
             "show-credits-text": "查看感谢页",
             "repository-desc": "GitHub 仓库",
             "options-txt-vo-lang": "语音语言",
+            "options-txt-random_speed": "随机速度",
+            "options-txt-speed": "速度",
             "options-txt-lang": "界面语言",
             "dialogs-close": "关闭",
             "dialogs-credits-title": "制作人员名单",
@@ -87,6 +91,8 @@ var LANGUAGES = {
             "show-credits-text": "Show Credits",
             "repository-desc": "GitHub Repo",
             "options-txt-vo-lang": "Voice-Over Language",
+            "options-txt-random_speed": "ランダム速度",
+            "options-txt-speed": "速度",
             "options-txt-lang": "Page Language",
             "dialogs-close": "Close",
             "dialogs-credits-title": "Credits"
@@ -112,6 +118,8 @@ var LANGUAGES = {
             "show-credits-text": "Show Credits",
             "repository-desc": "GitHub Repo",
             "options-txt-vo-lang": "Voice-Over Language",
+            "options-txt-random_speed": "무작위 속도",
+            "options-txt-speed": "속도",
             "options-txt-lang": "Page Language",
             "dialogs-close": "Close",
             "dialogs-credits-title": "Credits"
@@ -132,6 +140,8 @@ var LANGUAGES = {
             "show-credits-text": "Tampilkan Credit",
             "repository-desc": "GitHub Repo",
             "options-txt-vo-lang": "Voice-Over Language",
+            "options-txt-random_speed": "Kecepatan acak",
+            "options-txt-speed": "kecepatan",
             "options-txt-lang": "Page Language",
             "dialogs-close": "Close",
             "dialogs-credits-title": "Credits"
@@ -152,6 +162,8 @@ var LANGUAGES = {
             "show-credits-text": "Mostrar Créditos",
             "repository-desc": "GitHub Repo",
             "options-txt-vo-lang": "Idioma da voz",
+            "options-txt-random_speed": "Velocidade aleatória",
+            "options-txt-speed": "Velocidade",
             "options-txt-lang": "Idioma da página",
             "dialogs-close": "Fechar",
             "dialogs-credits-title": "Créditos"
@@ -372,9 +384,9 @@ const progress = [0, 1];
     function animateHerta() {
         let id = null;
         const random = Math.floor(Math.random() * 2) + 1;
-        const randomSpeed = Math.floor(Math.random() * 30) + 20;
+        const randomSpeed = Math.floor(Math.random() * 50) + 20;
         const elem = document.createElement("img");
-        var RunSpeed = current_speed;
+        let RunSpeed = Math.floor(current_speed);
         elem.src = cacheStaticObj(`img/hertaa${random}.gif`);
         elem.style.position = "absolute";
         elem.style.right = "-500px";
@@ -383,7 +395,10 @@ const progress = [0, 1];
         document.body.appendChild(elem);
 
         if(current_random_type == "on"){
-            RunSpeed = randomSpeed;
+            RunSpeed = Math.floor(window.innerWidth/randomSpeed);
+        }else{
+            const ReversalSpeed = 100 - Math.floor(current_speed);
+            RunSpeed = Math.floor(window.innerWidth/ReversalSpeed);
         }
 
         let pos = -500;
@@ -554,7 +569,7 @@ const progress = [0, 1];
                         </div>
                         <br>
                         <div class="progress-container">
-                            <label id="options-txt-random_speed">随机速度</label>
+                            <label id="options-txt-random_speed">Random speed</label>
                             <select id="random-speed-type" class="mdui-select" mdui-select='{"position": "bottom"}'>
                                 <option value="off">OFF</option>
                                 <option value="on">ON</option>
@@ -562,7 +577,7 @@ const progress = [0, 1];
                         </div>
                         <br>
                         <div class="progress-container">
-                            <label for="options-txt-speed-progress-bar">速度</label>
+                            <label for="options-txt-speed">Speed</label>
                             <input type="range" id="speed-progress-bar" min="1" max="100">
                         </div>
                     </div>`,
