@@ -384,7 +384,6 @@ const progress = [0, 1];
     function animateHerta() {
         let id = null;
         const random = Math.floor(Math.random() * 2) + 1;
-        const randomSpeed = Math.floor(Math.random() * 50) + 40;
         const elem = document.createElement("img");
         let RunSpeed = Math.floor(current_speed);
         elem.src = cacheStaticObj(`img/hertaa${random}.gif`);
