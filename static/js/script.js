@@ -395,7 +395,15 @@ const progress = [0, 1];
         document.body.appendChild(elem);
 
         if(current_random_type == "on"){
-            RunSpeed = Math.floor(randomSpeed);
+            if(window.innerWidth >= 1280){
+                const randomSpeed = Math.floor(Math.random() * 30) + 20;
+                const ReversalSpeed = Math.floor(randomSpeed);
+                RunSpeed = Math.floor(randomSpeed);
+            }else{
+                const randomSpeed = Math.floor(Math.random() * 40) + 50;
+                const ReversalSpeed = 100 - Math.floor(randomSpeed);
+                RunSpeed = Math.floor(window.innerWidth/ReversalSpeed);
+            }
         }else{
             const ReversalSpeed = 100 - Math.floor(current_speed);
             RunSpeed = Math.floor(window.innerWidth/ReversalSpeed);
