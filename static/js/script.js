@@ -585,7 +585,7 @@ const progress = [0, 1];
                         <br>
                         <div class="progress-container">
                             <label id="options-txt-speed">Speed</label>
-                            <input type="range" id="speed-progress-bar" min="1" max="100">
+                            <input type="range" id="speed-progress-bar" min="1" max="95">
                         </div>
                     </div>`,
             buttons: [
