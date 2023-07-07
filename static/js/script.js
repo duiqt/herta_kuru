@@ -1,5 +1,5 @@
 var LANGUAGES = {
-    "_": { defaultLanguage: "en", defaultVOLanguage: "ja" },
+    "_": { defaultLanguage: "en", defaultVOLanguage: "ja",defaultSpeed: 20, defaultRandmo: "off" },
     "en": {
         audioList: [
             // TODO audio random weight
@@ -19,6 +19,8 @@ var LANGUAGES = {
             "show-credits-text": "Show Credits",
             "repository-desc": "GitHub Repo",
             "options-txt-vo-lang": "Voice-Over Language",
+            "options-txt-random_speed": "Random speed",
+            "options-txt-speed": "Speed",
             "options-txt-lang": "Page Language",
             "dialogs-close": "Close",
             "dialogs-credits-title": "Credits",
@@ -53,6 +55,8 @@ var LANGUAGES = {
             "show-credits-text": "查看感谢页",
             "repository-desc": "GitHub 仓库",
             "options-txt-vo-lang": "语音语言",
+            "options-txt-random_speed": "随机速度",
+            "options-txt-speed": "速度",
             "options-txt-lang": "界面语言",
             "dialogs-close": "关闭",
             "dialogs-credits-title": "制作人员名单",
@@ -87,6 +91,8 @@ var LANGUAGES = {
             "show-credits-text": "Show Credits",
             "repository-desc": "GitHub Repo",
             "options-txt-vo-lang": "Voice-Over Language",
+            "options-txt-random_speed": "ランダム速度",
+            "options-txt-speed": "速度",
             "options-txt-lang": "Page Language",
             "dialogs-close": "Close",
             "dialogs-credits-title": "Credits"
@@ -112,6 +118,8 @@ var LANGUAGES = {
             "show-credits-text": "Show Credits",
             "repository-desc": "GitHub Repo",
             "options-txt-vo-lang": "Voice-Over Language",
+            "options-txt-random_speed": "무작위 속도",
+            "options-txt-speed": "속도",
             "options-txt-lang": "Page Language",
             "dialogs-close": "Close",
             "dialogs-credits-title": "Credits"
@@ -132,6 +140,8 @@ var LANGUAGES = {
             "show-credits-text": "Tampilkan Credit",
             "repository-desc": "GitHub Repo",
             "options-txt-vo-lang": "Voice-Over Language",
+            "options-txt-random_speed": "Kecepatan acak",
+            "options-txt-speed": "kecepatan",
             "options-txt-lang": "Page Language",
             "dialogs-close": "Close",
             "dialogs-credits-title": "Credits"
@@ -152,6 +162,8 @@ var LANGUAGES = {
             "show-credits-text": "Mostrar Créditos",
             "repository-desc": "GitHub Repo",
             "options-txt-vo-lang": "Idioma da voz",
+            "options-txt-random_speed": "Velocidade aleatória",
+            "options-txt-speed": "Velocidade",
             "options-txt-lang": "Idioma da página",
             "dialogs-close": "Fechar",
             "dialogs-credits-title": "Créditos"
@@ -193,6 +205,8 @@ const progress = [0, 1];
     // This code tries to retrieve the saved language 'lang' from localStorage. If it is not found or if its value is null, then it defaults to "en". 
     var current_language = localStorage.getItem("lang") || LANGUAGES._.defaultLanguage;
     var current_vo_language = localStorage.getItem("volang") || LANGUAGES._.defaultVOLanguage;
+    var current_speed = localStorage.getItem("speed") || LANGUAGES._.defaultSpeed;
+    var current_random_type = localStorage.getItem("random") || LANGUAGES._.defaultRandmo;
 
     // function that takes a textId, optional language and whether to use fallback/ default language for translation. It returns the translated text in the given language or if it cannot find the translation, in the default fallback language.
     function getLocalText(textId, language = null, fallback = true) {
@@ -371,12 +385,28 @@ const progress = [0, 1];
         let id = null;
         const random = Math.floor(Math.random() * 2) + 1;
         const elem = document.createElement("img");
+        let RunSpeed = Math.floor(current_speed);
         elem.src = cacheStaticObj(`img/hertaa${random}.gif`);
         elem.style.position = "absolute";
         elem.style.right = "-500px";
         elem.style.top = counterButton.getClientRects()[0].bottom + scrollY - 430 + "px"
         elem.style.zIndex = "-10";
         document.body.appendChild(elem);
+
+        if(current_random_type == "on"){
+            if(window.innerWidth >= 1280){
+                const randomSpeed = Math.floor(Math.random() * 30) + 20;
+                const ReversalSpeed = Math.floor(randomSpeed);
+                RunSpeed = Math.floor(randomSpeed);
+            }else{
+                const randomSpeed = Math.floor(Math.random() * 40) + 50;
+                const ReversalSpeed = 100 - Math.floor(randomSpeed);
+                RunSpeed = Math.floor(window.innerWidth/ReversalSpeed);
+            }
+        }else{
+            const ReversalSpeed = 100 - Math.floor(current_speed);
+            RunSpeed = Math.floor(window.innerWidth/ReversalSpeed);
+        }
 
         let pos = -500;
         const limit = window.innerWidth + 500;
@@ -386,7 +416,7 @@ const progress = [0, 1];
                 clearInterval(id);
                 elem.remove()
             } else {
-                pos += 20;
+                pos += RunSpeed;
                 elem.style.right = pos + 'px';
             }
         }, 12);
@@ -523,24 +553,41 @@ const progress = [0, 1];
         mdui.dialog({
             title: 'Options',
             content: `<div style="min-height: 350px;" class="mdui-typo">
-    <label id="options-txt-lang">Page Language</label>
-    <select id="language-selector" class="mdui-select" mdui-select='{"position": "bottom"}'>
-        <option value="en">English</option>
-        <option value="cn">中文</option>
-        <option value="ja">日本語</option>
-        <option value="kr">한국어</option>
-        <option value="id">Bahasa Indonesia</option>
-        <option value="pt">Português-BR</option>
-    </select>
-    <br />
-    <label id="options-txt-vo-lang">Voice-Over Language</label>
-    <select id="vo-language-selector" class="mdui-select" mdui-select='{"position": "bottom"}'>
-        <option value="ja">日本語</option>
-        <option value="cn">中文</option>
-        <option value="en">English</option>
-        <option value="kr">한국어</option>
-    </select>
-</div>`,
+                        <div class="progress-container">
+                            <label id="options-txt-lang">Page Language</label>
+                            <select id="language-selector" class="mdui-select" mdui-select='{"position": "bottom"}'>
+                                <option value="en">English</option>
+                                <option value="cn">中文</option>
+                                <option value="ja">日本語</option>
+                                <option value="kr">한국어</option>
+                                <option value="id">Bahasa Indonesia</option>
+                                <option value="pt">Português-BR</option>
+                            </select>
+                        </div>
+                        <br>
+                        <div class="progress-container">
+                            <label id="options-txt-vo-lang">Voice-Over Language</label>
+                            <select id="vo-language-selector" class="mdui-select" mdui-select='{"position": "bottom"}'>
+                                <option value="ja">日本語</option>
+                                <option value="cn">中文</option>
+                                <option value="en">English</option>
+                                <option value="kr">한국어</option>
+                            </select>
+                        </div>
+                        <br>
+                        <div class="progress-container">
+                            <label id="options-txt-random_speed">Random speed</label>
+                            <select id="random-speed-type" class="mdui-select" mdui-select='{"position": "bottom"}'>
+                                <option value="off">OFF</option>
+                                <option value="on">ON</option>
+                            </select>
+                        </div>
+                        <br>
+                        <div class="progress-container">
+                            <label id="options-txt-speed">Speed</label>
+                            <input type="range" id="speed-progress-bar" min="1" max="95">
+                        </div>
+                    </div>`,
             buttons: [
                 {
                     text: getLocalText("dialogs-close")
@@ -550,6 +597,14 @@ const progress = [0, 1];
             onOpen: (_inst) => {
                 $("#vo-language-selector").val(current_vo_language);
                 $("#language-selector").val(current_language);
+                $("#random-speed-type").val(current_random_type);
+                $("#speed-progress-bar").val(current_speed);
+
+                if(current_random_type == "on"){
+                    $("#speed-progress-bar").prop("disabled", true);
+                }else{
+                    $("#speed-progress-bar").removeAttr("disabled");
+                }
 
                 $("#language-selector").on("change", (ev) => {
                     current_language = ev.target.value;
@@ -560,6 +615,21 @@ const progress = [0, 1];
                 $("#vo-language-selector").on("change", (ev) => {
                     current_vo_language = ev.target.value;
                     localStorage.setItem("volang", ev.target.value);
+                });
+
+                $("#random-speed-type").on("change", (ev) => {
+                    current_random_type = ev.target.value;
+                    localStorage.setItem("random", ev.target.value);
+                    if(current_random_type == "on"){
+                        $("#speed-progress-bar").prop("disabled", true);
+                    }else{
+                        $("#speed-progress-bar").removeAttr("disabled");
+                    }
+                });
+
+                $("#speed-progress-bar").on("change", (ev) => {
+                    current_speed = ev.target.value;
+                    localStorage.setItem("speed", ev.target.value);
                 });
 
                 multiLangMutation();

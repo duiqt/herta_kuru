@@ -359,3 +359,20 @@ h2 {
     top: 0px;
     left: 0px;
 }
+
+/* .bili-icon {
+    background: url('https://www.bilibili.com/favicon.ico');
+    display: block;
+    width: 32px;
+    height: 32px;
+    float: right;
+} */
+
+.progress-container {
+    display: flex;
+    align-items: center;
+}
+
+.progress-container label {
+    margin-right: 10px;
+}
