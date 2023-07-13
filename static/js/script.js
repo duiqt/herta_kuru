@@ -523,23 +523,38 @@ const progress = [0, 1];
         mdui.dialog({
             title: 'Options',
             content: `<div style="min-height: 350px;" class="mdui-typo">
-    <label id="options-txt-lang">Page Language</label>
-    <select id="language-selector" class="mdui-select" mdui-select='{"position": "bottom"}'>
-        <option value="en">English</option>
-        <option value="cn">中文</option>
-        <option value="ja">日本語</option>
-        <option value="kr">한국어</option>
-        <option value="id">Bahasa Indonesia</option>
-        <option value="pt">Português-BR</option>
-    </select>
-    <br />
-    <label id="options-txt-vo-lang">Voice-Over Language</label>
-    <select id="vo-language-selector" class="mdui-select" mdui-select='{"position": "bottom"}'>
-        <option value="ja">日本語</option>
-        <option value="cn">中文</option>
-        <option value="en">English</option>
-        <option value="kr">한국어</option>
-    </select>
+    <table style="width:100%">
+        <tr>
+            <td style="width: 33.33%">
+                <label id="options-txt-lang">Page Language</label>
+            </td>
+            <td style="width: 33.33%"></td>
+            <td id="setting-item-table-td" style="width: 33.33%">
+                <select id="language-selector" class="mdui-select" mdui-select='{"position": "bottom"}'>
+                    <option value="en">English</option>
+                    <option value="cn">中文</option>
+                    <option value="ja">日本語</option>
+                    <option value="kr">한국어</option>
+                    <option value="id">Bahasa Indonesia</option>
+                    <option value="pt">Português-BR</option>
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td style="width: 33.33%">
+                <label id="options-txt-vo-lang">Voice-Over Language</label>
+            </td>
+            <td style="width: 33.33%"></td>
+            <td id="setting-item-table-td" style="width: 33.33%">
+                <select id="vo-language-selector" class="mdui-select" mdui-select='{"position": "bottom"}'>
+                    <option value="ja">日本語</option>
+                    <option value="cn">中文</option>
+                    <option value="en">English</option>
+                    <option value="kr">한국어</option>
+                </select>
+            </td>
+        </tr>
+    </table>
 </div>`,
             buttons: [
                 {
