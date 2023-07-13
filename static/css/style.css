@@ -359,3 +359,12 @@ h2 {
     top: 0px;
     left: 0px;
 }
+
+td#setting-item-table-td {
+    text-align: right;
+}
+
+td#setting-item-table-td > div.mdui-select {
+    text-align: center;
+    width: 100%;
+}
