@@ -546,41 +546,62 @@ const progress = [0, 1];
         mdui.dialog({
             title: 'Options',
             content: `<div style="min-height: 350px;" class="mdui-typo">
-                        <div class="progress-container">
-                            <label id="options-txt-lang">Page Language</label>
-                            <select id="language-selector" class="mdui-select" mdui-select='{"position": "bottom"}'>
-                                <option value="en">English</option>
-                                <option value="cn">中文</option>
-                                <option value="ja">日本語</option>
-                                <option value="kr">한국어</option>
-                                <option value="id">Bahasa Indonesia</option>
-                                <option value="pt">Português-BR</option>
-                            </select>
-                        </div>
-                        <br>
-                        <div class="progress-container">
-                            <label id="options-txt-vo-lang">Voice-Over Language</label>
-                            <select id="vo-language-selector" class="mdui-select" mdui-select='{"position": "bottom"}'>
-                                <option value="ja">日本語</option>
-                                <option value="cn">中文</option>
-                                <option value="en">English</option>
-                                <option value="kr">한국어</option>
-                            </select>
-                        </div>
-                        <br>
-                        <div class="progress-container">
-                            <label id="options-txt-random_speed">Random speed</label>
-                            <select id="random-speed-type" class="mdui-select" mdui-select='{"position": "bottom"}'>
-                                <option value="off">OFF</option>
-                                <option value="on">ON</option>
-                            </select>
-                        </div>
-                        <br>
-                        <div class="progress-container">
-                            <label for="options-txt-speed">Speed</label>
-                            <input type="range" id="speed-progress-bar" min="1" max="100">
-                        </div>
-                    </div>`,
+    <table style="width:100%">
+        <tr>
+            <td style="width: 33.33%">
+                <label id="options-txt-lang">Page Language</label>
+            </td>
+            <td style="width: 33.33%"></td>
+            <td id="setting-item-table-td" style="width: 33.33%">
+                <select id="language-selector" class="mdui-select" mdui-select='{"position": "bottom"}'>
+                    <option value="en">English</option>
+                    <option value="cn">中文</option>
+                    <option value="ja">日本語</option>
+                    <option value="kr">한국어</option>
+                    <option value="id">Bahasa Indonesia</option>
+                    <option value="pt">Português-BR</option>
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td style="width: 33.33%">
+                <label id="options-txt-vo-lang">Voice-Over Language</label>
+            </td>
+            <td style="width: 33.33%"></td>
+            <td id="setting-item-table-td" style="width: 33.33%">
+                <select id="vo-language-selector" class="mdui-select" mdui-select='{"position": "bottom"}'>
+                    <option value="ja">日本語</option>
+                    <option value="cn">中文</option>
+                    <option value="en">English</option>
+                    <option value="kr">한국어</option>
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td style="width: 33.33%">
+                <label id="options-txt-vo-lang">Random speed</label>
+            </td>
+            <td style="width: 33.33%"></td>
+            <td id="setting-item-table-td" style="width: 33.33%">
+                <select id="options-txt-random_speed" class="mdui-select" mdui-select='{"position": "bottom"}'>
+                    <option value="off">OFF</option>
+                    <option value="on">ON</option>
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td style="width: 33.33%">
+                <label id="options-txt-speed">Speed</label>
+            </td>
+            <td style="width: 33.33%"></td>
+            <td id="setting-item-table-td" style="width: 33.33%">
+                <label class="mdui-slider mdui-slider-discrete">
+                    <input type="range" step="1" min="0" max="95"/>
+                </label>
+            </td>
+        </tr>
+    </table>
+</div>`,
             buttons: [
                 {
                     text: getLocalText("dialogs-close")
