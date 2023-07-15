@@ -360,19 +360,11 @@ h2 {
     left: 0px;
 }
 
-/* .bili-icon {
-    background: url('https://www.bilibili.com/favicon.ico');
-    display: block;
-    width: 32px;
-    height: 32px;
-    float: right;
-} */
-
-.progress-container {
-    display: flex;
-    align-items: center;
+td#setting-item-table-td {
+    text-align: right;
 }
 
-.progress-container label {
-    margin-right: 10px;
+td#setting-item-table-td > div.mdui-select {
+    text-align: center;
+    width: 100%;
 }
