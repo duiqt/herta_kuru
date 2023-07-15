@@ -376,3 +376,11 @@ h2 {
 .progress-container label {
     margin-right: 10px;
 }
+td#setting-item-table-td {
+    text-align: right;
+}
+
+td#setting-item-table-td > div.mdui-select {
+    text-align: center;
+    width: 100%;
+}
