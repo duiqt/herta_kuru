@@ -198,7 +198,7 @@ const progress = [0, 1];
             }, 1);
             return origUrl;
         }
-    };
+    }
 
     let firstSquish = true;
 
@@ -235,7 +235,7 @@ const progress = [0, 1];
         });
         refreshDynamicTexts()
         document.getElementById("herta-card").src = "static/" + curLang.cardImage; // sets the image of element with id "herta-card" to the translated version in the selected language.
-    };
+    }
 
     multiLangMutation() // the function multiLangMutation is called initially when the page loads.
 
@@ -319,7 +319,7 @@ const progress = [0, 1];
             animateHerta();
             refreshDynamicTexts();
         });
-    };
+    }
 
     window.onload = function () {
         // Calling method
@@ -420,7 +420,7 @@ const progress = [0, 1];
                 elem.style.right = pos + 'px';
             }
         }, 12);
-    };
+    }
 
     // This function creates ripples on a button click and removes it after 300ms.
     function triggerRipple(e) {
@@ -440,7 +440,7 @@ const progress = [0, 1];
         setTimeout(() => {
             ripple.remove();
         }, 300);
-    };
+    }
 
     // This function retrieves localized dynamic text based on a given language code, and randomly replaces an element with one of the translations. 
     function refreshDynamicTexts() {
@@ -452,7 +452,7 @@ const progress = [0, 1];
                 if (document.getElementById(textId) != undefined)
                     document.getElementById(textId).innerHTML = randomChoice(value);
         });
-    };
+    }
 
     // NOTE the deployment on Github pages is stopped and deprecated. This tip is not useful anymore.
     // if (location.hostname.endsWith("duiqt.github.io")) {
@@ -643,8 +643,10 @@ const progress = [0, 1];
                     localStorage.setItem("random", ev.target.value);
                     if (current_random_type == "on") {
                         $("#speed-progress-bar").prop("disabled", true);
+                        mdui.mutation();
                     } else {
                         $("#speed-progress-bar").removeAttr("disabled");
+                        mdui.mutation();
                     }
                 });
 
