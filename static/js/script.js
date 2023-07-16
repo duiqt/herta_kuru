@@ -1,5 +1,5 @@
 var LANGUAGES = {
-    "_": { defaultLanguage: "en", defaultVOLanguage: "ja",defaultSpeed: 20, defaultRandmo: "off" },
+    "_": { defaultLanguage: "en", defaultVOLanguage: "ja", defaultSpeed: 20, defaultRandmo: "off" },
     "en": {
         audioList: [
             // TODO audio random weight
@@ -393,19 +393,19 @@ const progress = [0, 1];
         elem.style.zIndex = "-10";
         document.body.appendChild(elem);
 
-        if(current_random_type == "on"){
-            if(window.innerWidth >= 1280){
+        if (current_random_type == "on") {
+            if (window.innerWidth >= 1280) {
                 const randomSpeed = Math.floor(Math.random() * 30) + 20;
                 const ReversalSpeed = Math.floor(randomSpeed);
                 RunSpeed = Math.floor(randomSpeed);
-            }else{
+            } else {
                 const randomSpeed = Math.floor(Math.random() * 40) + 50;
                 const ReversalSpeed = 100 - Math.floor(randomSpeed);
-                RunSpeed = Math.floor(window.innerWidth/ReversalSpeed);
+                RunSpeed = Math.floor(window.innerWidth / ReversalSpeed);
             }
-        }else{
+        } else {
             const ReversalSpeed = 100 - Math.floor(current_speed);
-            RunSpeed = Math.floor(window.innerWidth/ReversalSpeed);
+            RunSpeed = Math.floor(window.innerWidth / ReversalSpeed);
         }
 
         let pos = -500;
@@ -621,9 +621,9 @@ const progress = [0, 1];
                 $("#random-speed-type").val(current_random_type);
                 $("#speed-progress-bar").val(current_speed);
 
-                if(current_random_type == "on"){
+                if (current_random_type == "on") {
                     $("#speed-progress-bar").prop("disabled", true);
-                }else{
+                } else {
                     $("#speed-progress-bar").removeAttr("disabled");
                 }
 
@@ -641,9 +641,9 @@ const progress = [0, 1];
                 $("#random-speed-type").on("change", (ev) => {
                     current_random_type = ev.target.value;
                     localStorage.setItem("random", ev.target.value);
-                    if(current_random_type == "on"){
+                    if (current_random_type == "on") {
                         $("#speed-progress-bar").prop("disabled", true);
-                    }else{
+                    } else {
                         $("#speed-progress-bar").removeAttr("disabled");
                     }
                 });
