@@ -72,8 +72,43 @@ var LANGUAGES = {
 
         },
         cardImage: "img/card_cn.jpg"
-    },
-    "ja": {
+    }, "zh-tw": {
+        audioList: [
+            "audio/cn/gululu.mp3",
+            "audio/cn/gururu.mp3",
+            "audio/cn/转圈圈.mp3",
+            "audio/cn/转圈圈咯.mp3",
+            "audio/cn/要坏掉了.mp3"
+        ],
+        texts: {
+            "page-title": "黑塔轉圈圈",
+            "doc-title": "咕嚕嚕~",
+            "page-descriptions": "給黑塔醬寫的小網站，對，就是那個<del>煩人的</del>最可愛的《崩壞：星穹鐵道》角色！",
+            "counter-descriptions": ["黑塔已經咕嚕嚕～了", "黑塔已經轉了"],
+            "counter-unit": ["次", "次圈圈"],
+            "counter-button": ["轉圈圈~", "咕嚕嚕！"],
+            "access-via-pages": "您目前是通過 GitHub Pages 訪問。對於中國大陸或其他一些地區的用戶，請<a href='https://herta.ft2.ltd/'>單擊此處訪問 Netlify 上的鏡像</a>。",
+            "access-via-mirror": "恭喜！您正使用鏡像站，這應當會加速在中國大陸及部分地區境內的訪問。點此<a href='https://duiqt.github.io/herta_kuru/'>訪問 GitHub Pages 上的源站</a>。",
+            "show-credits-text": "查看感謝頁",
+            "repository-desc": "GitHub 倉庫",
+            "options-txt-vo-lang": "語音語言",
+            "options-txt-random_speed": "隨機速度",
+            "options-txt-speed": "速度",
+            "options-txt-lang": "介面語言",
+            "dialogs-close": "關閉",
+            "dialogs-credits-title": "開發人員名單",
+
+            "CREDITS:main-dev": "主要開發者",
+            "CREDITS:code-contributor": "程式貢獻者",
+            "CREDITS:artist": "藝術家",
+            "CREDITS:localization": "在地化貢獻者",
+            "CREDITS:localization:Korean": "韓國在地化貢獻者",
+            "CREDITS:localization:Japanese": "日本在地化貢獻者",
+            "CREDITS:localization:Indonesian": "印尼在地化貢獻者",
+            "CREDITS:inspiration": "靈感來源"
+        },
+        cardImage: "img/card_en.jpg"
+    }, "ja": {
         audioList: [
             "audio/ja/kuruto.mp3",
             "audio/ja/kuru1.mp3",
@@ -562,7 +597,8 @@ const progress = [0, 1];
             <td id="setting-item-table-td" style="width: 33.33%">
                 <select id="language-selector" class="mdui-select" mdui-select='{"position": "bottom"}'>
                     <option value="en">English</option>
-                    <option value="cn">中文</option>
+                    <option value="cn">简体中文</option>
+                    <option value="zh-tw">繁體中文</option>
                     <option value="ja">日本語</option>
                     <option value="kr">한국어</option>
                     <option value="id">Bahasa Indonesia</option>
@@ -578,7 +614,7 @@ const progress = [0, 1];
             <td id="setting-item-table-td" style="width: 33.33%">
                 <select id="vo-language-selector" class="mdui-select" mdui-select='{"position": "bottom"}'>
                     <option value="ja">日本語</option>
-                    <option value="cn">中文</option>
+                    <option value="cn">漢語</option>
                     <option value="en">English</option>
                     <option value="kr">한국어</option>
                 </select>
