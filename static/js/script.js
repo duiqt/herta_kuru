@@ -81,22 +81,24 @@ var LANGUAGES = {
             "audio/cn/要坏掉了.mp3"
         ],
         texts: {
-            "page-title": "黑塔轉圈圈",
-            "doc-title": "咕嚕嚕~",
-            "page-descriptions": "給黑塔醬寫的小網站，對，就是那個<del>煩人的</del>最可愛的《崩壞：星穹鐵道》角色！",
-            "counter-descriptions": ["黑塔已經咕嚕嚕～了", "黑塔已經轉了"],
+            "page-title": "* 黑塔轉圈圈 ✩‧₊˚",
+            "doc-title": "咕嚕咕嚕～",
+            "page-descriptions": "致敬全宇宙超級無敵絕頂聰明黑塔醬的小網站<br>沒錯就是那位惹人愛的<del>很煩的</del>《崩壞：星穹鐵道》角色！",
+            "counter-descriptions": ["黑塔已經咕嚕咕嚕了", "黑塔已經轉了"],
             "counter-unit": ["次", "次圈圈"],
-            "counter-button": ["轉圈圈~", "咕嚕嚕！"],
-            "access-via-pages": "您目前是通過 GitHub Pages 訪問。對於中國大陸或其他一些地區的用戶，請<a href='https://herta.ft2.ltd/'>單擊此處訪問 Netlify 上的鏡像</a>。",
-            "access-via-mirror": "恭喜！您正使用鏡像站，這應當會加速在中國大陸及部分地區境內的訪問。點此<a href='https://duiqt.github.io/herta_kuru/'>訪問 GitHub Pages 上的源站</a>。",
-            "show-credits-text": "查看感謝頁",
-            "repository-desc": "GitHub 倉庫",
+            "counter-button": ["* 轉圈圈 ✩‧₊˚", "* 咕嚕咕嚕 ✩‧₊˚"],
+            "access-via-pages": "你目前正在透過 GitHub Pages 存取。至於從中國大陸和其他區域來的使用者，請點擊此處 <a href='https://herta.ft2.ltd/'> 訪問 Netlify 上的鏡像網站</a>。",
+            "access-via-mirror": "你目前正在使用鏡像網站，若是從中國大陸和其他區域來的存取，或多或少會變流暢。請點擊此處 <a href='https://duiqt.github.io/herta_kuru/'> 訪問 GitHub Pages 上的原始網站</a>。",
+            "show-credits-text": "顯示致謝名單",
+            "repository-desc": "GitHub Repo",
+            "show-options-text": "設定",
             "options-txt-vo-lang": "語音語言",
             "options-txt-random_speed": "隨機速度",
             "options-txt-speed": "速度",
             "options-txt-lang": "介面語言",
             "dialogs-close": "關閉",
             "dialogs-credits-title": "開發人員名單",
+            "dialogs_credits_content_text": "排序並無規則",
 
             "CREDITS:main-dev": "主要開發者",
             "CREDITS:code-contributor": "程式貢獻者",
@@ -587,7 +589,8 @@ const progress = [0, 1];
     function showOptions() {
         mdui.dialog({
             title: 'Options',
-            content: `<div style="min-height: 350px;" class="mdui-typo">
+            content: `
+<div style="min-height: 350px;" class="mdui-typo">
     <table style="width:100%">
         <tr>
             <td style="width: 33.33%">
