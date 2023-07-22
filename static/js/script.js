@@ -72,8 +72,45 @@ var LANGUAGES = {
 
         },
         cardImage: "img/card_cn.jpg"
-    },
-    "ja": {
+    }, "zh-tw": {
+        audioList: [
+            "audio/cn/gululu.mp3",
+            "audio/cn/gururu.mp3",
+            "audio/cn/转圈圈.mp3",
+            "audio/cn/转圈圈咯.mp3",
+            "audio/cn/要坏掉了.mp3"
+        ],
+        texts: {
+            "page-title": "* 黑塔轉圈圈 ✩‧₊˚",
+            "doc-title": "咕嚕咕嚕～",
+            "page-descriptions": "致敬全宇宙超級無敵絕頂聰明黑塔醬的小網站<br>沒錯就是那位惹人愛的<del>很煩的</del>《崩壞：星穹鐵道》角色！",
+            "counter-descriptions": ["黑塔已經咕嚕咕嚕了", "黑塔已經轉了"],
+            "counter-unit": ["次", "次圈圈"],
+            "counter-button": ["* 轉圈圈 ✩‧₊˚", "* 咕嚕咕嚕 ✩‧₊˚"],
+            "access-via-pages": "你目前正在透過 GitHub Pages 存取。至於從中國大陸和其他區域來的使用者，請點擊此處 <a href='https://herta.ft2.ltd/'> 訪問 Netlify 上的鏡像網站</a>。",
+            "access-via-mirror": "你目前正在使用鏡像網站，若是從中國大陸和其他區域來的存取，或多或少會變流暢。請點擊此處 <a href='https://duiqt.github.io/herta_kuru/'> 訪問 GitHub Pages 上的原始網站</a>。",
+            "show-credits-text": "顯示致謝名單",
+            "repository-desc": "GitHub Repo",
+            "show-options-text": "設定",
+            "options-txt-vo-lang": "語音語言",
+            "options-txt-random_speed": "隨機速度",
+            "options-txt-speed": "速度",
+            "options-txt-lang": "介面語言",
+            "dialogs-close": "關閉",
+            "dialogs-credits-title": "開發人員名單",
+            "dialogs_credits_content_text": "排序並無規則",
+
+            "CREDITS:main-dev": "主要開發者",
+            "CREDITS:code-contributor": "程式貢獻者",
+            "CREDITS:artist": "藝術家",
+            "CREDITS:localization": "在地化貢獻者",
+            "CREDITS:localization:Korean": "韓國在地化貢獻者",
+            "CREDITS:localization:Japanese": "日本在地化貢獻者",
+            "CREDITS:localization:Indonesian": "印尼在地化貢獻者",
+            "CREDITS:inspiration": "靈感來源"
+        },
+        cardImage: "img/card_en.jpg"
+    }, "ja": {
         audioList: [
             "audio/ja/kuruto.mp3",
             "audio/ja/kuru1.mp3",
@@ -552,7 +589,8 @@ const progress = [0, 1];
     function showOptions() {
         mdui.dialog({
             title: 'Options',
-            content: `<div style="min-height: 350px;" class="mdui-typo">
+            content: `
+<div style="min-height: 350px;" class="mdui-typo">
     <table style="width:100%">
         <tr>
             <td style="width: 33.33%">
@@ -562,7 +600,8 @@ const progress = [0, 1];
             <td id="setting-item-table-td" style="width: 33.33%">
                 <select id="language-selector" class="mdui-select" mdui-select='{"position": "bottom"}'>
                     <option value="en">English</option>
-                    <option value="cn">中文</option>
+                    <option value="cn">简体中文</option>
+                    <option value="zh-tw">繁體中文</option>
                     <option value="ja">日本語</option>
                     <option value="kr">한국어</option>
                     <option value="id">Bahasa Indonesia</option>
@@ -578,7 +617,7 @@ const progress = [0, 1];
             <td id="setting-item-table-td" style="width: 33.33%">
                 <select id="vo-language-selector" class="mdui-select" mdui-select='{"position": "bottom"}'>
                     <option value="ja">日本語</option>
-                    <option value="cn">中文</option>
+                    <option value="cn">漢語</option>
                     <option value="en">English</option>
                     <option value="kr">한국어</option>
                 </select>
