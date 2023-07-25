@@ -206,6 +206,28 @@ var LANGUAGES = {
             "dialogs-credits-title": "Créditos"
         },
         cardImage: "img/card_pt.jpg"
+    }, "vi": {
+        audioList: null,
+        texts: {
+            "page-title": "Chào mừng tới Herta kuru~",
+            "doc-title": "Kuru Kuru~",
+            "page-descriptions": "Trang web này cho Herta, một <del>phiền phức</del> thiên tài dễ thương nhất trong Honkai: Star Rail.",
+            "counter-descriptions": ["Kuru~ này đã quay", "Herta đã quay"],
+            "counter-unit": "lần",
+            "counter-button": ["Squish the kuru~!", "Kuru kuru~!"],
+            "access-via-pages": "Hiện bạn đang truy cập qua GitHub Pages. Cho người dùng tại Trung Quốc (Mainland) hoặc một số khu vực khác, ấn <a href='https://herta.ft2.ltd/'>tại đây để truy cập máy nhân bản trên Netlify</a>. ",
+            "access-via-mirror": "Chúc mừng! bạn đang sử dụng trang nhân bản, sẽ tăng tốc độ truy cập trong Trung Quốc (Mainland) và một số khu vực. ấn vào đây <a href='https://duiqt.github.io/herta_kuru/'>ghé thăm trang nguồn tại GitHub Pages</a>.",
+            "show-credits-text": "Show Credits",
+            "show-options-text": "Cài đặt",
+            "repository-desc": "GitHub Repo",
+            "options-txt-vo-lang": "Ngôn ngữ lồng tiếng",
+            "options-txt-random_speed": "Tốc độ ngẫu nhiên",
+            "options-txt-speed": "Tốc độ",
+            "options-txt-lang": "Ngôn ngữ",
+            "dialogs-close": "Đóng",
+            "dialogs-credits-title": "Credits",
+        },
+        cardImage: "img/card_en.jpg"
     },
 };
 
@@ -606,6 +628,7 @@ const progress = [0, 1];
                     <option value="kr">한국어</option>
                     <option value="id">Bahasa Indonesia</option>
                     <option value="pt">Português-BR</option>
+                    <option value="vi">Việt Nam</option>
                 </select>
             </td>
         </tr>
