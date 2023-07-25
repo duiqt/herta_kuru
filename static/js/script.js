@@ -207,12 +207,7 @@ var LANGUAGES = {
         },
         cardImage: "img/card_pt.jpg"
     }, "vi": {
-        audioList: [
-            // TODO audio random weight
-            "audio/en/en_1.mp3",
-            "audio/en/en_2.mp3",
-            "audio/en/en_3.mp3"
-        ],
+        audioList: null,
         texts: {
             "page-title": "Chào mừng tới Herta kuru~",
             "doc-title": "Kuru Kuru~",
