@@ -1,12 +1,12 @@
 const LANGUAGES = {
-    _: {
+    "_": {
         defaultLanguage: "en",
         defaultVOLanguage: "ja",
         defaultSpeed: 1,
         // on: random off: cucustom audio: audio duration
         defaultRandmo: "auto"
     },
-    en: {
+    "en": {
         texts: {
             "page-title": "Welcome to herta kuru~",
             "doc-title": "Kuru Kuru~",
@@ -19,7 +19,6 @@ const LANGUAGES = {
             "show-credits-text": "Show Credits",
             "repository-desc": "GitHub Repo",
             "options-txt-vo-lang": "Voice-Over Language",
-            "options-txt-random_speed": "Random speed",
             "options-txt-speed": "Speed",
             "options-txt-lang": "Page Language",
             "dialogs-close": "Close",
@@ -36,7 +35,7 @@ const LANGUAGES = {
         },
         cardImage: "img/card_en.jpg"
     },
-    cn: {
+    "cn": {
         texts: {
             "page-title": "黑塔转圈圈",
             "doc-title": "咕噜噜~",
@@ -49,7 +48,6 @@ const LANGUAGES = {
             "show-credits-text": "查看感谢页",
             "repository-desc": "GitHub 仓库",
             "options-txt-vo-lang": "语音语言",
-            "options-txt-random_speed": "随机速度",
             "options-txt-speed": "速度",
             "options-txt-lang": "界面语言",
             "dialogs-close": "关闭",
@@ -80,12 +78,11 @@ const LANGUAGES = {
             "repository-desc": "GitHub Repo",
             "show-options-text": "設定",
             "options-txt-vo-lang": "語音語言",
-            "options-txt-random_speed": "隨機速度",
             "options-txt-speed": "速度",
             "options-txt-lang": "介面語言",
             "dialogs-close": "關閉",
             "dialogs-credits-title": "開發人員名單",
-            dialogs_credits_content_text: "排序並無規則",
+            "dialogs_credits_content_text": "排序並無規則",
 
             "CREDITS:main-dev": "主要開發者",
             "CREDITS:code-contributor": "程式貢獻者",
@@ -98,7 +95,7 @@ const LANGUAGES = {
         },
         cardImage: "img/card_en.jpg"
     },
-    ja: {
+    "ja": {
         texts: {
             "page-title": "ヘルタクルへようこそ~",
             "doc-title": "クル クル~",
@@ -111,7 +108,6 @@ const LANGUAGES = {
             "show-credits-text": "Show Credits",
             "repository-desc": "GitHub Repo",
             "options-txt-vo-lang": "Voice-Over Language",
-            "options-txt-random_speed": "ランダム速度",
             "options-txt-speed": "速度",
             "options-txt-lang": "Page Language",
             "dialogs-close": "Close",
@@ -119,7 +115,7 @@ const LANGUAGES = {
         },
         cardImage: "img/card_ja.jpg"
     },
-    kr: {
+    "kr": {
         texts: {
             "page-title": "빙글빙글 헤르타에 오신걸 환영합니다~",
             "doc-title": "빙글빙글~",
@@ -132,7 +128,6 @@ const LANGUAGES = {
             "show-credits-text": "Show Credits",
             "repository-desc": "GitHub Repo",
             "options-txt-vo-lang": "Voice-Over Language",
-            "options-txt-random_speed": "무작위 속도",
             "options-txt-speed": "속도",
             "options-txt-lang": "Page Language",
             "dialogs-close": "Close",
@@ -140,7 +135,7 @@ const LANGUAGES = {
         },
         cardImage: "img/card_kr.jpg"
     },
-    id: {
+    "id": {
         texts: {
             "page-title": "Selamat datang di Herta kuru~",
             "doc-title": "Kuru Kuru~",
@@ -153,7 +148,6 @@ const LANGUAGES = {
             "show-credits-text": "Tampilkan Credit",
             "repository-desc": "GitHub Repo",
             "options-txt-vo-lang": "Voice-Over Language",
-            "options-txt-random_speed": "Kecepatan acak",
             "options-txt-speed": "kecepatan",
             "options-txt-lang": "Page Language",
             "dialogs-close": "Close",
@@ -161,7 +155,7 @@ const LANGUAGES = {
         },
         cardImage: "img/card_id.jpg"
     },
-    pt: {
+    "pt": {
         texts: {
             "page-title": "Bem-vindo ao kuru~ da herta",
             "doc-title": "Kuru Kuru~",
@@ -174,7 +168,6 @@ const LANGUAGES = {
             "show-credits-text": "Mostrar Créditos",
             "repository-desc": "GitHub Repo",
             "options-txt-vo-lang": "Idioma da voz",
-            "options-txt-random_speed": "Velocidade aleatória",
             "options-txt-speed": "Velocidade",
             "options-txt-lang": "Idioma da página",
             "dialogs-close": "Fechar",
@@ -182,7 +175,7 @@ const LANGUAGES = {
         },
         cardImage: "img/card_pt.jpg"
     },
-    vi: {
+    "vi": {
         texts: {
             "page-title": "Chào mừng tới Herta kuru~",
             "doc-title": "Kuru Kuru~",
@@ -196,7 +189,6 @@ const LANGUAGES = {
             "show-options-text": "Cài đặt",
             "repository-desc": "GitHub Repo",
             "options-txt-vo-lang": "Ngôn ngữ lồng tiếng",
-            "options-txt-random_speed": "Tốc độ ngẫu nhiên",
             "options-txt-speed": "Tốc độ",
             "options-txt-lang": "Ngôn ngữ",
             "dialogs-close": "Đóng",
@@ -294,7 +286,7 @@ const progress = [0, 1];
 
     function upadteProgress() {
         progress[0] += 1;
-        counterButton.innerText = `${((progress[0] / progress[1]) * 100) | 0}%`;
+        document.querySelector("#counter-button").innerText = `${((progress[0] / progress[1]) * 100) | 0}%`;
     }
 
     // This code tries to retrieve the saved language 'lang' from localStorage. If it is not found or if its value is null, then it defaults to "en".
@@ -345,7 +337,7 @@ const progress = [0, 1];
     localCounter.textContent = localCount.toLocaleString("en-US");
 
     // initialize timer variable and add event listener to the counter button element
-    const counterButton = document.querySelector("#counter-button");
+    const counterButton = document.querySelector("#counter-button-container");
 
     function addBtnEvent() {
         counterButton.addEventListener("click", (e) => {
@@ -440,8 +432,7 @@ const progress = [0, 1];
 
         ripple.classList.add("ripple");
 
-        const counter_button = document.getElementById("counter-button");
-        counter_button.appendChild(ripple);
+        counterButton.appendChild(ripple);
 
         let x = e.clientX - e.target.offsetLeft;
         let y = e.clientY - e.target.offsetTop;
@@ -601,7 +592,7 @@ const progress = [0, 1];
         </tr>
         <tr>
             <td style="width: 33.33%">
-                <label id="options-txt-random_speed">Mode</label>
+                <label id="options-txt-speed">Speed</label>
             </td>
             <td style="width: 33.33%"></td>
             <td id="setting-item-table-td" style="width: 33.33%">
@@ -613,9 +604,7 @@ const progress = [0, 1];
             </td>
         </tr>
         <tr id="speed-progress-option">
-            <td style="width: 33.33%">
-                <label id="options-txt-speed">Speed</label>
-            </td>
+            <td style="width: 33.33%"></td>
             <td style="width: 33.33%"></td>
             <td id="setting-item-table-td" style="width: 33.33%">
                 <label class="mdui-slider mdui-slider-discrete">
