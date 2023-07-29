@@ -6,6 +6,7 @@
     touch-action: manipulation;
     /* strange margin-right occurs when vw<500px */
     /* overflow-x: hidden; */
+    user-select: none;
 }
 
 body {

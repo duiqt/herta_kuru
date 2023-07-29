@@ -200,30 +200,68 @@ const LANGUAGES = {
 
 const AUDIOS = {
     en: [
-        //
-        "audio/en/en_1.mp3",
-        "audio/en/en_2.mp3",
-        "audio/en/en_3.mp3"
+        {
+            src: "audio/en/en_1.mp3",
+            weight: 1
+        },
+        {
+            src: "audio/en/en_2.mp3",
+            weight: 1
+        },
+        {
+            src: "audio/en/en_3.mp3",
+            weight: 1
+        }
     ],
     cn: [
-        //
-        "audio/cn/gululu.mp3",
-        "audio/cn/gururu.mp3",
-        "audio/cn/转圈圈.mp3",
-        "audio/cn/转圈圈咯.mp3",
-        "audio/cn/要坏掉了.mp3"
+        {
+            src: "audio/cn/gululu.mp3",
+            weight: 5
+        },
+        {
+            src: "audio/cn/gururu.mp3",
+            weight: 5
+        },
+        {
+            src: "audio/cn/转圈圈.mp3",
+            weight: 5
+        },
+        {
+            src: "audio/cn/转圈圈咯.mp3",
+            weight: 5
+        },
+        {
+            src: "audio/cn/要坏掉了.mp3",
+            weight: 1
+        }
     ],
     ja: [
-        //
-        "audio/ja/kuruto.mp3",
-        "audio/ja/kuru1.mp3",
-        "audio/ja/kuru2.mp3"
+        {
+            src: "audio/ja/kuruto.mp3",
+            weight: 1
+        },
+        {
+            src: "audio/ja/kuru1.mp3",
+            weight: 1
+        },
+        {
+            src: "audio/ja/kuru2.mp3",
+            weight: 1
+        }
     ],
     kr: [
-        //
-        "audio/kr/kr_1.mp3",
-        "audio/kr/kr_2.mp3",
-        "audio/kr/kr_3.mp3"
+        {
+            src: "audio/kr/kr_1.mp3",
+            weight: 1
+        },
+        {
+            src: "audio/kr/kr_2.mp3",
+            weight: 1
+        },
+        {
+            src: "audio/kr/kr_3.mp3",
+            weight: 1
+        }
     ]
 };
 
@@ -253,7 +291,7 @@ const progress = [0, 1];
             const audioList = AUDIOS[lang];
             for (let i = 0; i < audioList.length; i++) {
                 const item = audioList[i];
-                promises.push(getObjectURL("static/" + item).then((result) => (AUDIOS[lang][i] = result)));
+                promises.push(getObjectURL("static/" + item.src).then((result) => (AUDIOS[lang][i].src = result)));
             }
         }
 
@@ -385,13 +423,13 @@ const progress = [0, 1];
     }
 
     function getRandomAudioUrl() {
-        var localAudioList = getLocalAudioList();
-        if (current_vo_language == "ja") {
-            const randomIndex = Math.floor(Math.random() * 2) + 1;
-            return localAudioList[randomIndex];
-        }
-        const randomIndex = Math.floor(Math.random() * localAudioList.length);
-        return localAudioList[randomIndex];
+        const localAudioList = getLocalAudioList();
+        const weights = [];
+        localAudioList.forEach((item, index) => {
+            weights.push(item.weight + (weights[index - 1] ?? 0));
+        });
+        const random = Math.random() * weights.at(-1);
+        return localAudioList[weights.findIndex((weight) => weight > random)].src;
     }
 
     function playKuru() {
