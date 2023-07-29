@@ -1,6 +1,6 @@
 const LANGUAGES = {
-    "_": { defaultLanguage: "en", defaultVOLanguage: "ja", defaultSpeed: 20, defaultRandmo: "off" },
-    "en": {
+    _: { defaultLanguage: "en", defaultVOLanguage: "ja", defaultSpeed: 20, defaultRandmo: "off" },
+    en: {
         texts: {
             "page-title": "Welcome to herta kuru~",
             "doc-title": "Kuru Kuru~",
@@ -29,7 +29,8 @@ const LANGUAGES = {
             "CREDITS:inspiration": "Inspiration"
         },
         cardImage: "img/card_en.jpg"
-    }, "cn": {
+    },
+    cn: {
         texts: {
             "page-title": "黑塔转圈圈",
             "doc-title": "咕噜噜~",
@@ -56,10 +57,10 @@ const LANGUAGES = {
             "CREDITS:localization:Japanese": "日本本地化贡献者",
             "CREDITS:localization:Indonesian": "印度尼西亚本地化贡献者",
             "CREDITS:inspiration": "灵感来源"
-
         },
         cardImage: "img/card_cn.jpg"
-    }, "zh-tw": {
+    },
+    "zh-tw": {
         texts: {
             "page-title": "* 黑塔轉圈圈 ✩‧₊˚",
             "doc-title": "咕嚕咕嚕～",
@@ -78,7 +79,7 @@ const LANGUAGES = {
             "options-txt-lang": "介面語言",
             "dialogs-close": "關閉",
             "dialogs-credits-title": "開發人員名單",
-            "dialogs_credits_content_text": "排序並無規則",
+            dialogs_credits_content_text: "排序並無規則",
 
             "CREDITS:main-dev": "主要開發者",
             "CREDITS:code-contributor": "程式貢獻者",
@@ -90,7 +91,8 @@ const LANGUAGES = {
             "CREDITS:inspiration": "靈感來源"
         },
         cardImage: "img/card_en.jpg"
-    }, "ja": {
+    },
+    ja: {
         texts: {
             "page-title": "ヘルタクルへようこそ~",
             "doc-title": "クル クル~",
@@ -111,7 +113,7 @@ const LANGUAGES = {
         },
         cardImage: "img/card_ja.jpg"
     },
-    "kr": {
+    kr: {
         texts: {
             "page-title": "빙글빙글 헤르타에 오신걸 환영합니다~",
             "doc-title": "빙글빙글~",
@@ -132,7 +134,7 @@ const LANGUAGES = {
         },
         cardImage: "img/card_kr.jpg"
     },
-    "id": {
+    id: {
         texts: {
             "page-title": "Selamat datang di Herta kuru~",
             "doc-title": "Kuru Kuru~",
@@ -153,7 +155,7 @@ const LANGUAGES = {
         },
         cardImage: "img/card_id.jpg"
     },
-    "pt": {
+    pt: {
         texts: {
             "page-title": "Bem-vindo ao kuru~ da herta",
             "doc-title": "Kuru Kuru~",
@@ -173,8 +175,8 @@ const LANGUAGES = {
             "dialogs-credits-title": "Créditos"
         },
         cardImage: "img/card_pt.jpg"
-    }, 
-    "vi": {
+    },
+    vi: {
         texts: {
             "page-title": "Chào mừng tới Herta kuru~",
             "doc-title": "Kuru Kuru~",
@@ -192,19 +194,21 @@ const LANGUAGES = {
             "options-txt-speed": "Tốc độ",
             "options-txt-lang": "Ngôn ngữ",
             "dialogs-close": "Đóng",
-            "dialogs-credits-title": "Credits",
+            "dialogs-credits-title": "Credits"
         },
         cardImage: "img/card_en.jpg"
-    },
+    }
 };
 
 const AUDIOS = {
     en: [
+        //
         "audio/en/en_1.mp3",
         "audio/en/en_2.mp3",
         "audio/en/en_3.mp3"
     ],
     cn: [
+        //
         "audio/cn/gululu.mp3",
         "audio/cn/gururu.mp3",
         "audio/cn/转圈圈.mp3",
@@ -212,16 +216,18 @@ const AUDIOS = {
         "audio/cn/要坏掉了.mp3"
     ],
     ja: [
+        //
         "audio/ja/kuruto.mp3",
         "audio/ja/kuru1.mp3",
-        "audio/ja/kuru2.mp3",
+        "audio/ja/kuru2.mp3"
     ],
     kr: [
+        //
         "audio/kr/kr_1.mp3",
         "audio/kr/kr_2.mp3",
         "audio/kr/kr_3.mp3"
     ]
-}
+};
 
 const progress = [0, 1];
 
@@ -238,7 +244,7 @@ const progress = [0, 1];
         } else {
             return origUrl;
         }
-    };
+    }
 
     // Preload
     function preload() {
@@ -246,53 +252,47 @@ const progress = [0, 1];
 
         // audio
         for (const lang in AUDIOS) {
-                const audioList = AUDIOS[lang];
-                for (let i = 0; i < audioList.length; i++) {
-                    const item = audioList[i];
-                    promises.push(
-                        getObjectURL("static/" + item)
-                            .then(result => AUDIOS[lang][i] = result)
-                    );
-                }
+            const audioList = AUDIOS[lang];
+            for (let i = 0; i < audioList.length; i++) {
+                const item = audioList[i];
+                promises.push(getObjectURL("static/" + item).then((result) => (AUDIOS[lang][i] = result)));
+            }
         }
 
         // image
-        const imageList = ["img/hertaa1.gif", "img/hertaa2.gif"]
-        imageList.forEach(url => {
-            promises.push(
-                getObjectURL(`static/${url}`)
-                    .then(result => cachedObjects[url] = result)
-            )
-        })
+        const imageList = ["img/hertaa1.gif", "img/hertaa2.gif"];
+        imageList.forEach((url) => {
+            promises.push(getObjectURL(`static/${url}`).then((result) => (cachedObjects[url] = result)));
+        });
 
-        progress[1] = promises.length
+        progress[1] = promises.length;
         return Promise.all(promises);
     }
 
     function getObjectURL(url) {
-        console.log(url)
+        console.log(url);
         return new Promise((resolve) => {
             fetch(url)
-                .then(response => response.blob())
-                .then(blob => {
+                .then((response) => response.blob())
+                .then((blob) => {
                     const blobUrl = URL.createObjectURL(blob);
                     resolve(blobUrl);
                 })
-                .catch(error => {
+                .catch((error) => {
                     console.error(`Error caching object from ${origUrl}: ${error}`);
                 })
                 .finally(() => {
-                    upadteProgress()
-                })
+                    upadteProgress();
+                });
         });
-    };
-
-    function upadteProgress() {
-        progress[0] += 1
-        counterButton.innerText = `${((progress[0] / progress[1]) * 100) | 0}%`
     }
 
-    // This code tries to retrieve the saved language 'lang' from localStorage. If it is not found or if its value is null, then it defaults to "en". 
+    function upadteProgress() {
+        progress[0] += 1;
+        counterButton.innerText = `${((progress[0] / progress[1]) * 100) | 0}%`;
+    }
+
+    // This code tries to retrieve the saved language 'lang' from localStorage. If it is not found or if its value is null, then it defaults to "en".
     var current_language = localStorage.getItem("lang") || LANGUAGES._.defaultLanguage;
     var current_vo_language = localStorage.getItem("volang") || LANGUAGES._.defaultVOLanguage;
     var current_speed = localStorage.getItem("speed") || LANGUAGES._.defaultSpeed;
@@ -310,7 +310,7 @@ const progress = [0, 1];
                 return value;
             }
         }
-        if (fallback) return getLocalText(textId, language = "en", fallback = false);
+        if (fallback) return getLocalText(textId, (language = "en"), (fallback = false));
         else return null;
     }
 
@@ -319,15 +319,13 @@ const progress = [0, 1];
         let curLang = LANGUAGES[current_language];
         let localTexts = curLang.texts;
         Object.entries(localTexts).forEach(([textId, value]) => {
-            if (!(value instanceof Array))
-                if (document.getElementById(textId) != undefined)
-                    document.getElementById(textId).innerHTML = value; // replaces the innerHTML of the element with the given textId with its translated version.
+            if (!(value instanceof Array)) if (document.getElementById(textId) != undefined) document.getElementById(textId).innerHTML = value; // replaces the innerHTML of the element with the given textId with its translated version.
         });
-        refreshDynamicTexts()
+        refreshDynamicTexts();
         document.getElementById("herta-card").src = "static/" + curLang.cardImage; // sets the image of element with id "herta-card" to the translated version in the selected language.
     }
 
-    multiLangMutation() // the function multiLangMutation is called initially when the page loads.
+    multiLangMutation(); // the function multiLangMutation is called initially when the page loads.
 
     // function that returns the list of audio files for the selected language
     function getLocalAudioList() {
@@ -335,20 +333,20 @@ const progress = [0, 1];
     }
 
     // get global counter element and initialize its respective counts
-    const localCounter = document.querySelector('#local-counter');
-    let localCount = localStorage.getItem('count-v2') || 0;
+    const localCounter = document.querySelector("#local-counter");
+    let localCount = localStorage.getItem("count-v2") || 0;
 
     // display counter
-    localCounter.textContent = localCount.toLocaleString('en-US');
+    localCounter.textContent = localCount.toLocaleString("en-US");
 
     // initialize timer variable and add event listener to the counter button element
-    const counterButton = document.querySelector('#counter-button');
+    const counterButton = document.querySelector("#counter-button");
 
     function addBtnEvent() {
-        counterButton.addEventListener('click', (e) => {
+        counterButton.addEventListener("click", (e) => {
             localCount++;
-            localCounter.textContent = localCount.toLocaleString('en-US');
-            localStorage.setItem('count-v2', localCount);
+            localCounter.textContent = localCount.toLocaleString("en-US");
+            localStorage.setItem("count-v2", localCount);
             triggerRipple(e);
             playKuru();
             animateHerta();
@@ -358,16 +356,15 @@ const progress = [0, 1];
 
     window.onload = function () {
         preload()
-            .catch(error => {
+            .catch((error) => {
                 console.error(error);
             })
             .finally(() => {
                 refreshDynamicTexts();
                 addBtnEvent();
-                document.getElementById('loading').remove()
+                document.getElementById("loading").remove();
             });
-    }
-
+    };
 
     // try caching the hertaa1.gif and hertaa2.gif images by calling the tryCacheUrl function
     cacheStaticObj("img/hertaa1.gif");
@@ -400,8 +397,8 @@ const progress = [0, 1];
     }
 
     function playKuru() {
-        let audioUrl =getRandomAudioUrl();
-        let audio = new Audio();//cacheStaticObj(audioUrl));
+        let audioUrl = getRandomAudioUrl();
+        let audio = new Audio(); //cacheStaticObj(audioUrl));
         audio.src = audioUrl;
         audio.play();
         audio.addEventListener("ended", function () {
@@ -417,7 +414,7 @@ const progress = [0, 1];
         elem.src = cacheStaticObj(`img/hertaa${random}.gif`);
         elem.style.position = "absolute";
         elem.style.right = "-500px";
-        elem.style.top = counterButton.getClientRects()[0].bottom + scrollY - 430 + "px"
+        elem.style.top = counterButton.getClientRects()[0].bottom + scrollY - 430 + "px";
         elem.style.zIndex = "-10";
         document.body.appendChild(elem);
 
@@ -442,10 +439,10 @@ const progress = [0, 1];
         id = setInterval(() => {
             if (pos >= limit) {
                 clearInterval(id);
-                elem.remove()
+                elem.remove();
             } else {
                 pos += RunSpeed;
-                elem.style.right = pos + 'px';
+                elem.style.right = pos + "px";
             }
         }, 12);
     }
@@ -470,15 +467,13 @@ const progress = [0, 1];
         }, 300);
     }
 
-    // This function retrieves localized dynamic text based on a given language code, and randomly replaces an element with one of the translations. 
+    // This function retrieves localized dynamic text based on a given language code, and randomly replaces an element with one of the translations.
     function refreshDynamicTexts() {
         if (progress[0] !== progress[1]) return;
         let curLang = LANGUAGES[current_language];
         let localTexts = curLang.texts;
         Object.entries(localTexts).forEach(([textId, value]) => {
-            if (value instanceof Array)
-                if (document.getElementById(textId) != undefined)
-                    document.getElementById(textId).innerHTML = randomChoice(value);
+            if (value instanceof Array) if (document.getElementById(textId) != undefined) document.getElementById(textId).innerHTML = randomChoice(value);
         });
     }
 
@@ -499,49 +494,51 @@ const progress = [0, 1];
 
     // This func adds avatars for credits and with href for those having social link
     function addAvatar(socialLink, currentIcon) {
-        if (!currentIcon.includes('https://')) {
-            currentIcon = 'static/credits/' + currentIcon;
+        if (!currentIcon.includes("https://")) {
+            currentIcon = "static/credits/" + currentIcon;
         }
         let avatar = `<img src="${currentIcon}"/>`;
-        if (socialLink == '') return avatar;
+        if (socialLink == "") return avatar;
         return `<a href="${socialLink}" target="_blank">${avatar}</a>`;
     }
 
     // This function fetches data stored in a JSON file and displays it in a dialog box.
     function showCredits() {
-        fetch("static/credits/list.json").then(response => response.json()).then((data) => {
-            var contributors = data.contributors;
-            contributors = randomShuffle(contributors);
-            var creditsHtmlContent = `<p>in no specific order</p>`;
-            creditsHtmlContent += `<ul class="mdui-list">`;
-            for (let i = 0; i < contributors.length; i++) {
-                var current = contributors[i];
-                let renderedName = current.username;
-                if (current.name != undefined) {
-                    renderedName += " (" + current.name + ")";
-                }
-                var socialMediaIcons = bilibiliIcon('#999999');
-                var socialLink = "";
-                $.each(current.socialmedia, (key, value) => {
-                    switch (key) {
-                        case "bilibili":
-                            let uid = value.uid;
-                            let username = value.username;
-                            socialMediaIcons = `<a href="https://space.bilibili.com/${uid}" title="${username}" target="_blank">`;
-                            socialMediaIcons += bilibiliIcon('#00aeec');
-                            socialMediaIcons += `</a>`;
-                            break;
-
-                        case "twitter":
-                            socialLink = "https://twitter.com/" + value;
-                            break;
-
-                        case "github":
-                            socialLink = "https://github.com/" + value;
-                            break;
+        fetch("static/credits/list.json")
+            .then((response) => response.json())
+            .then((data) => {
+                var contributors = data.contributors;
+                contributors = randomShuffle(contributors);
+                var creditsHtmlContent = `<p>in no specific order</p>`;
+                creditsHtmlContent += `<ul class="mdui-list">`;
+                for (let i = 0; i < contributors.length; i++) {
+                    var current = contributors[i];
+                    let renderedName = current.username;
+                    if (current.name != undefined) {
+                        renderedName += " (" + current.name + ")";
                     }
-                });
-                creditsHtmlContent += `<div class="mdui-collapse">
+                    var socialMediaIcons = bilibiliIcon("#999999");
+                    var socialLink = "";
+                    $.each(current.socialmedia, (key, value) => {
+                        switch (key) {
+                            case "bilibili":
+                                let uid = value.uid;
+                                let username = value.username;
+                                socialMediaIcons = `<a href="https://space.bilibili.com/${uid}" title="${username}" target="_blank">`;
+                                socialMediaIcons += bilibiliIcon("#00aeec");
+                                socialMediaIcons += `</a>`;
+                                break;
+
+                            case "twitter":
+                                socialLink = "https://twitter.com/" + value;
+                                break;
+
+                            case "github":
+                                socialLink = "https://github.com/" + value;
+                                break;
+                        }
+                    });
+                    creditsHtmlContent += `<div class="mdui-collapse">
     <div class="mdui-collapse-item">
         <div class="mdui-collapse-item-header">
             <li class="mdui-list-item mdui-ripple">
@@ -559,27 +556,27 @@ const progress = [0, 1];
         </div>
     </div>
 </div>`;
-            }
-            creditsHtmlContent += `</ul>`;
+                }
+                creditsHtmlContent += `</ul>`;
 
-            mdui.dialog({
-                title: getLocalText("dialogs-credits-title"),
-                content: creditsHtmlContent,
-                buttons: [
-                    {
-                        text: getLocalText("dialogs-close")
-                    }
-                ],
-                history: false
+                mdui.dialog({
+                    title: getLocalText("dialogs-credits-title"),
+                    content: creditsHtmlContent,
+                    buttons: [
+                        {
+                            text: getLocalText("dialogs-close")
+                        }
+                    ],
+                    history: false
+                });
             });
-        });
     }
 
-    $("#show-credits-opt").on("click", () => showCredits())
+    $("#show-credits-opt").on("click", () => showCredits());
 
     function showOptions() {
         mdui.dialog({
-            title: 'Options',
+            title: "Options",
             content: `
 <div style="min-height: 350px;" class="mdui-typo">
     <table style="width:100%">
@@ -692,5 +689,5 @@ const progress = [0, 1];
         });
     }
 
-    $("#show-options-opt").on("click", () => showOptions())
-})(); 
+    $("#show-options-opt").on("click", () => showOptions());
+})();
