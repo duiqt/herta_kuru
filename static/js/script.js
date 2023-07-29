@@ -640,7 +640,7 @@ const progress = [0, 1];
             <td id="setting-item-table-td" style="width: 33.33%">
                 <select id="vo-language-selector" class="mdui-select" mdui-select='{"position": "bottom"}'>
                     <option value="ja">日本語</option>
-                    <option value="cn">漢語</option>
+                    <option value="cn">中文</option>
                     <option value="en">English</option>
                     <option value="kr">한국어</option>
                 </select>
