@@ -1,12 +1,6 @@
-var LANGUAGES = {
+const LANGUAGES = {
     "_": { defaultLanguage: "en", defaultVOLanguage: "ja", defaultSpeed: 20, defaultRandmo: "off" },
     "en": {
-        audioList: [
-            // TODO audio random weight
-            "audio/en/en_1.mp3",
-            "audio/en/en_2.mp3",
-            "audio/en/en_3.mp3"
-        ],
         texts: {
             "page-title": "Welcome to herta kuru~",
             "doc-title": "Kuru Kuru~",
@@ -36,13 +30,6 @@ var LANGUAGES = {
         },
         cardImage: "img/card_en.jpg"
     }, "cn": {
-        audioList: [
-            "audio/cn/gululu.mp3",
-            "audio/cn/gururu.mp3",
-            "audio/cn/转圈圈.mp3",
-            "audio/cn/转圈圈咯.mp3",
-            "audio/cn/要坏掉了.mp3"
-        ],
         texts: {
             "page-title": "黑塔转圈圈",
             "doc-title": "咕噜噜~",
@@ -73,13 +60,6 @@ var LANGUAGES = {
         },
         cardImage: "img/card_cn.jpg"
     }, "zh-tw": {
-        audioList: [
-            "audio/cn/gululu.mp3",
-            "audio/cn/gururu.mp3",
-            "audio/cn/转圈圈.mp3",
-            "audio/cn/转圈圈咯.mp3",
-            "audio/cn/要坏掉了.mp3"
-        ],
         texts: {
             "page-title": "* 黑塔轉圈圈 ✩‧₊˚",
             "doc-title": "咕嚕咕嚕～",
@@ -111,11 +91,6 @@ var LANGUAGES = {
         },
         cardImage: "img/card_en.jpg"
     }, "ja": {
-        audioList: [
-            "audio/ja/kuruto.mp3",
-            "audio/ja/kuru1.mp3",
-            "audio/ja/kuru2.mp3",
-        ],
         texts: {
             "page-title": "ヘルタクルへようこそ~",
             "doc-title": "クル クル~",
@@ -137,12 +112,6 @@ var LANGUAGES = {
         cardImage: "img/card_ja.jpg"
     },
     "kr": {
-        audioList: [
-            // TODO audio random weight
-            "audio/kr/kr_1.mp3",
-            "audio/kr/kr_2.mp3",
-            "audio/kr/kr_3.mp3"
-        ],
         texts: {
             "page-title": "빙글빙글 헤르타에 오신걸 환영합니다~",
             "doc-title": "빙글빙글~",
@@ -164,7 +133,6 @@ var LANGUAGES = {
         cardImage: "img/card_kr.jpg"
     },
     "id": {
-        audioList: null,
         texts: {
             "page-title": "Selamat datang di Herta kuru~",
             "doc-title": "Kuru Kuru~",
@@ -186,7 +154,6 @@ var LANGUAGES = {
         cardImage: "img/card_id.jpg"
     },
     "pt": {
-        audioList: null,
         texts: {
             "page-title": "Bem-vindo ao kuru~ da herta",
             "doc-title": "Kuru Kuru~",
@@ -206,8 +173,8 @@ var LANGUAGES = {
             "dialogs-credits-title": "Créditos"
         },
         cardImage: "img/card_pt.jpg"
-    }, "vi": {
-        audioList: null,
+    }, 
+    "vi": {
         texts: {
             "page-title": "Chào mừng tới Herta kuru~",
             "doc-title": "Kuru Kuru~",
@@ -231,35 +198,99 @@ var LANGUAGES = {
     },
 };
 
+const AUDIOS = {
+    en: [
+        "audio/en/en_1.mp3",
+        "audio/en/en_2.mp3",
+        "audio/en/en_3.mp3"
+    ],
+    cn: [
+        "audio/cn/gululu.mp3",
+        "audio/cn/gururu.mp3",
+        "audio/cn/转圈圈.mp3",
+        "audio/cn/转圈圈咯.mp3",
+        "audio/cn/要坏掉了.mp3"
+    ],
+    ja: [
+        "audio/ja/kuruto.mp3",
+        "audio/ja/kuru1.mp3",
+        "audio/ja/kuru2.mp3",
+    ],
+    kr: [
+        "audio/kr/kr_1.mp3",
+        "audio/kr/kr_2.mp3",
+        "audio/kr/kr_3.mp3"
+    ]
+}
+
 const progress = [0, 1];
 
 (() => {
     const $ = mdui.$;
 
     // initialize cachedObjects variable to store cached object URLs
-    var cachedObjects = {};
+    const cachedObjects = {};
 
     // function to try caching an object URL and return it if present in cache or else fetch it and cache it
     function cacheStaticObj(origUrl) {
         if (cachedObjects[origUrl]) {
             return cachedObjects[origUrl];
         } else {
-            setTimeout(() => {
-                fetch("static/" + origUrl)
-                    .then((response) => response.blob())
-                    .then((blob) => {
-                        const blobUrl = URL.createObjectURL(blob);
-                        cachedObjects[origUrl] = blobUrl;
-                    })
-                    .catch((error) => {
-                        console.error(`Error caching object from ${origUrl}: ${error}`);
-                    });
-            }, 1);
             return origUrl;
         }
+    };
+
+    // Preload
+    function preload() {
+        const promises = [];
+
+        // audio
+        for (const lang in AUDIOS) {
+                const audioList = AUDIOS[lang];
+                for (let i = 0; i < audioList.length; i++) {
+                    const item = audioList[i];
+                    promises.push(
+                        getObjectURL("static/" + item)
+                            .then(result => AUDIOS[lang][i] = result)
+                    );
+                }
+        }
+
+        // image
+        const imageList = ["img/hertaa1.gif", "img/hertaa2.gif"]
+        imageList.forEach(url => {
+            promises.push(
+                getObjectURL(`static/${url}`)
+                    .then(result => cachedObjects[url] = result)
+            )
+        })
+
+        progress[1] = promises.length
+        return Promise.all(promises);
     }
 
-    let firstSquish = true;
+    function getObjectURL(url) {
+        console.log(url)
+        return new Promise((resolve) => {
+            fetch(url)
+                .then(response => response.blob())
+                .then(blob => {
+                    const blobUrl = URL.createObjectURL(blob);
+                    resolve(blobUrl);
+                })
+                .catch(error => {
+                    console.error(`Error caching object from ${origUrl}: ${error}`);
+                })
+                .finally(() => {
+                    upadteProgress()
+                })
+        });
+    };
+
+    function upadteProgress() {
+        progress[0] += 1
+        counterButton.innerText = `${((progress[0] / progress[1]) * 100) | 0}%`
+    }
 
     // This code tries to retrieve the saved language 'lang' from localStorage. If it is not found or if its value is null, then it defaults to "en". 
     var current_language = localStorage.getItem("lang") || LANGUAGES._.defaultLanguage;
@@ -300,7 +331,7 @@ const progress = [0, 1];
 
     // function that returns the list of audio files for the selected language
     function getLocalAudioList() {
-        return LANGUAGES[current_vo_language].audioList;
+        return AUDIOS[current_vo_language];
     }
 
     // get global counter element and initialize its respective counts
@@ -312,61 +343,6 @@ const progress = [0, 1];
 
     // initialize timer variable and add event listener to the counter button element
     const counterButton = document.querySelector('#counter-button');
-
-    // Preload
-
-    async function convertMp3FilesToBase64(dict) {
-        const promises = [];
-        for (const lang in dict) {
-            if (dict.hasOwnProperty(lang)) {
-                const audioList = dict[lang].audioList;
-                if (Array.isArray(audioList)) {
-                    for (let i = 0; i < audioList.length; i++) {
-                        const url = audioList[i];
-                        if (typeof url === "string" && url.endsWith(".mp3")) {
-                            promises.push(loadAndEncode("static/" + url).then(result => dict[lang].audioList[i] = result));
-                        }
-                    }
-                }
-            }
-        }
-        progress[1] = promises.length
-        await Promise.all(promises);
-        return dict;
-    }
-
-    function upadteProgress() {
-        progress[0] += 1
-        counterButton.innerText = `${((progress[0] / progress[1]) * 100) | 0}%`
-    }
-
-    function loadAndEncode(url) {
-        return new Promise((resolve, reject) => {
-            const xhr = new XMLHttpRequest();
-            xhr.open("GET", url, true);
-            xhr.responseType = "arraybuffer";
-            xhr.onload = function () {
-                upadteProgress()
-                if (xhr.status === 200) {
-                    const buffer = xhr.response;
-                    const blob = new Blob([buffer], { type: "audio/mpeg" });
-                    const reader = new FileReader();
-                    reader.readAsDataURL(blob);
-                    reader.onloadend = function () {
-                        const base64data = reader.result;
-                        resolve(base64data);
-                    }
-                } else {
-                    reject(xhr.statusText);
-                }
-            };
-            xhr.onerror = function () {
-                upadteProgress()
-                reject(xhr.statusText);
-            };
-            xhr.send();
-        });
-    }
 
     function addBtnEvent() {
         counterButton.addEventListener('click', (e) => {
@@ -381,8 +357,7 @@ const progress = [0, 1];
     }
 
     window.onload = function () {
-        // Calling method
-        convertMp3FilesToBase64(LANGUAGES)
+        preload()
             .catch(error => {
                 console.error(error);
             })
@@ -425,13 +400,7 @@ const progress = [0, 1];
     }
 
     function playKuru() {
-        let audioUrl;
-        if (firstSquish) {
-            firstSquish = false;
-            audioUrl = getLocalAudioList()[0];
-        } else {
-            audioUrl = getRandomAudioUrl();
-        }
+        let audioUrl =getRandomAudioUrl();
         let audio = new Audio();//cacheStaticObj(audioUrl));
         audio.src = audioUrl;
         audio.play();
@@ -640,7 +609,7 @@ const progress = [0, 1];
             <td id="setting-item-table-td" style="width: 33.33%">
                 <select id="vo-language-selector" class="mdui-select" mdui-select='{"position": "bottom"}'>
                     <option value="ja">日本語</option>
-                    <option value="cn">漢語</option>
+                    <option value="cn">中文</option>
                     <option value="en">English</option>
                     <option value="kr">한국어</option>
                 </select>
