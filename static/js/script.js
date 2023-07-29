@@ -1,5 +1,11 @@
 const LANGUAGES = {
-    _: { defaultLanguage: "en", defaultVOLanguage: "ja", defaultSpeed: 20, defaultRandmo: "off" },
+    _: {
+        defaultLanguage: "en",
+        defaultVOLanguage: "ja",
+        defaultSpeed: 1,
+        // on: random off: cucustom audio: audio duration
+        defaultRandmo: "auto"
+    },
     en: {
         texts: {
             "page-title": "Welcome to herta kuru~",
@@ -270,7 +276,6 @@ const progress = [0, 1];
     }
 
     function getObjectURL(url) {
-        console.log(url);
         return new Promise((resolve) => {
             fetch(url)
                 .then((response) => response.blob())
@@ -295,7 +300,7 @@ const progress = [0, 1];
     // This code tries to retrieve the saved language 'lang' from localStorage. If it is not found or if its value is null, then it defaults to "en".
     var current_language = localStorage.getItem("lang") || LANGUAGES._.defaultLanguage;
     var current_vo_language = localStorage.getItem("volang") || LANGUAGES._.defaultVOLanguage;
-    var current_speed = localStorage.getItem("speed") || LANGUAGES._.defaultSpeed;
+    var current_speed = Math.min(localStorage.getItem("speed") || LANGUAGES._.defaultSpeed, 2);
     var current_random_type = localStorage.getItem("random") || LANGUAGES._.defaultRandmo;
 
     // function that takes a textId, optional language and whether to use fallback/ default language for translation. It returns the translated text in the given language or if it cannot find the translation, in the default fallback language.
@@ -397,54 +402,36 @@ const progress = [0, 1];
     }
 
     function playKuru() {
-        let audioUrl = getRandomAudioUrl();
-        let audio = new Audio(); //cacheStaticObj(audioUrl));
-        audio.src = audioUrl;
-        audio.play();
-        audio.addEventListener("ended", function () {
-            this.remove();
-        });
+        let audio = new Audio();
+        audio.src = getRandomAudioUrl();
+        audio.oncanplay = () => {
+            let time = audio.duration * 1000;
+            if (current_random_type === "on") {
+                time = ((Math.random() * 1.5 + 0.5) * 1000) | 0;
+            } else if (current_random_type === "off") {
+                time = (current_speed * 1000) | 0;
+            }
+            animateHerta(time);
+            audio.play();
+        };
+        audio.onended = () => {
+            audio = null;
+        };
     }
 
-    function animateHerta() {
-        let id = null;
+    function animateHerta(time) {
         const random = Math.floor(Math.random() * 2) + 1;
-        const elem = document.createElement("img");
-        let RunSpeed = Math.floor(current_speed);
-        elem.src = cacheStaticObj(`img/hertaa${random}.gif`);
-        elem.style.position = "absolute";
-        elem.style.right = "-500px";
-        elem.style.top = counterButton.getClientRects()[0].bottom + scrollY - 430 + "px";
-        elem.style.zIndex = "-10";
+        let elem = document.createElement("img");
+        elem.src = cacheStaticObj(`static/img/hertaa${random}.gif`);
+        elem.className = "herta";
+        elem.style.animation = `herta ${time - 200}ms ease-in forwards`;
+        elem.style.top = counterButton.getClientRects()[0].bottom + scrollY - 450 + "px";
         document.body.appendChild(elem);
 
-        if (current_random_type == "on") {
-            if (window.innerWidth >= 1280) {
-                const randomSpeed = Math.floor(Math.random() * 30) + 20;
-                const ReversalSpeed = Math.floor(randomSpeed);
-                RunSpeed = Math.floor(randomSpeed);
-            } else {
-                const randomSpeed = Math.floor(Math.random() * 40) + 50;
-                const ReversalSpeed = 100 - Math.floor(randomSpeed);
-                RunSpeed = Math.floor(window.innerWidth / ReversalSpeed);
-            }
-        } else {
-            const ReversalSpeed = 100 - Math.floor(current_speed);
-            RunSpeed = Math.floor(window.innerWidth / ReversalSpeed);
-        }
-
-        let pos = -500;
-        const limit = window.innerWidth + 500;
-        clearInterval(id);
-        id = setInterval(() => {
-            if (pos >= limit) {
-                clearInterval(id);
-                elem.remove();
-            } else {
-                pos += RunSpeed;
-                elem.style.right = pos + "px";
-            }
-        }, 12);
+        setTimeout(() => {
+            elem.remove();
+            elem = null;
+        }, time - 200);
     }
 
     // This function creates ripples on a button click and removes it after 300ms.
@@ -614,24 +601,25 @@ const progress = [0, 1];
         </tr>
         <tr>
             <td style="width: 33.33%">
-                <label id="options-txt-random_speed">Random speed</label>
+                <label id="options-txt-random_speed">Mode</label>
             </td>
             <td style="width: 33.33%"></td>
             <td id="setting-item-table-td" style="width: 33.33%">
                 <select id="random-speed-type" class="mdui-select" mdui-select='{"position": "bottom"}'>
-                    <option value="off">OFF</option>
-                    <option value="on">ON</option>
+                    <option value="auto">Auto</option>
+                    <option value="on">Random</option>
+                    <option value="off">Custom</option>
                 </select>
             </td>
         </tr>
-        <tr>
+        <tr id="speed-progress-option">
             <td style="width: 33.33%">
                 <label id="options-txt-speed">Speed</label>
             </td>
             <td style="width: 33.33%"></td>
             <td id="setting-item-table-td" style="width: 33.33%">
                 <label class="mdui-slider mdui-slider-discrete">
-                    <input type="range" step="1" min="0" max="95" id="speed-progress-bar"/>
+                    <input type="range" step="0.1" min="0.5" max="2" id="speed-progress-bar"/>
                 </label>
             </td>
         </tr>
@@ -649,10 +637,8 @@ const progress = [0, 1];
                 $("#random-speed-type").val(current_random_type);
                 $("#speed-progress-bar").val(current_speed);
 
-                if (current_random_type == "on") {
-                    $("#speed-progress-bar").prop("disabled", true);
-                } else {
-                    $("#speed-progress-bar").removeAttr("disabled");
+                if (current_random_type !== "off") {
+                    $("#speed-progress-option").hide();
                 }
 
                 $("#language-selector").on("change", (ev) => {
@@ -669,12 +655,10 @@ const progress = [0, 1];
                 $("#random-speed-type").on("change", (ev) => {
                     current_random_type = ev.target.value;
                     localStorage.setItem("random", ev.target.value);
-                    if (current_random_type == "on") {
-                        $("#speed-progress-bar").prop("disabled", true);
-                        mdui.mutation();
+                    if (current_random_type === "off") {
+                        $("#speed-progress-option").show();
                     } else {
-                        $("#speed-progress-bar").removeAttr("disabled");
-                        mdui.mutation();
+                        $("#speed-progress-option").hide();
                     }
                 });
 

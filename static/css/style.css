@@ -368,3 +368,23 @@ td#setting-item-table-td > div.mdui-select {
     text-align: center;
     width: 100%;
 }
+
+.herta {
+    z-index: -1;
+    position: absolute;
+    right: 0;
+    max-width: 100%;
+    transform: translate3d(100%, 0, 0);
+}
+
+@keyframes herta {
+    from {
+        right: 0;
+        transform: translate3d(100%, 0, 0);
+        opacity: 1;
+    }
+    to {
+        right: 100%;
+        transform: translate3d(0, 0, 0);
+    }
+}
