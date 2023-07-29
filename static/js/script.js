@@ -338,6 +338,7 @@ const progress = [0, 1];
 
     // initialize timer variable and add event listener to the counter button element
     const counterButton = document.querySelector("#counter-button-container");
+    const wrapper = document.getElementById("wrapper");
 
     function addBtnEvent() {
         counterButton.addEventListener("click", (e) => {
@@ -417,8 +418,7 @@ const progress = [0, 1];
         elem.src = cacheStaticObj(`static/img/hertaa${random}.gif`);
         elem.className = "herta";
         elem.style.animation = `herta ${time - 200}ms ease-in forwards`;
-        elem.style.top = counterButton.getClientRects()[0].bottom + scrollY - 450 + "px";
-        document.body.appendChild(elem);
+        wrapper.appendChild(elem);
 
         setTimeout(() => {
             elem.remove();
