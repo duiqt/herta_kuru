@@ -111,6 +111,7 @@ const LANGUAGES = {
             "footer-repository-text": "Bạn có thể check repo Github ở đây:",
             "footer-repository-text-2": "herta_kuru repo",
             "access-via-pages": "đây là bản thêm ngôn ngữ bởi Nguyễn Hiếu</a>.Chủ sở hữu repo gốc này là <a href='https://github.com/duiqt/herta_kuru'>duiqt</a>",
+            "access-via-page1":"Chủ sở hữu repo gốc này là <a href='https://github.com/duiqt/herta_kuru'>duiqt</a>" ,
             "access-via-mirror": "Congratulations! You are using a mirror site, which should speed up access within China (Mainland) and some regions. Click here to <a href='https://duiqt.github.io/herta_kuru/'>visit the source site on GitHub Pages</a>."
         },
         cardImage: "img/card_en.jpg"
