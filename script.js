@@ -93,6 +93,27 @@ const LANGUAGES = {
             "access-via-mirror": "Congratulations! You are using a mirror site, which should speed up access within China (Mainland) and some regions. Click here to <a href='https://duiqt.github.io/herta_kuru/'>visit the source site on GitHub Pages</a>."
         },
         cardImage: "img/card_kr.jpg"
+    }, "vn": {
+        audioList: [
+            "audio/ja/kuruto.mp3",
+            "audio/ja/kuru1.mp3",
+            "audio/ja/kuru2.mp3",
+        ],
+        texts: {
+            "page-title": "Chào mừng đến herta kuru~",
+            "doc-title": "Kuru Kuru~",
+            "page-descriptions": "Trang web của Herta, Nhân vật dễ thương nhất Honkai: Star Rail.",
+            // dynamic texts
+            "counter-descriptions": ["kuru~ gif đã xuất hiện được", "Herta đã kêu kuru~ed được"],
+            "counter-unit": "lần",
+            "counter-button": ["Squish kuru~!", "Kuru kuru~!"],
+            "credits-gif": "Gif herta được tạo bởi",
+            "footer-repository-text": "Bạn có thể check repo Github ở đây:",
+            "footer-repository-text-2": "herta_kuru repo",
+            "access-via-pages": "đây là bản thêm ngôn ngữ bởi Nguyễn Hiếu</a>.Chủ sở hữu repo gốc này là <a href='https://github.com/duiqt/herta_kuru'>duiqt</a>",
+            "access-via-mirror": "Congratulations! You are using a mirror site, which should speed up access within China (Mainland) and some regions. Click here to <a href='https://duiqt.github.io/herta_kuru/'>visit the source site on GitHub Pages</a>."
+        },
+        cardImage: "img/card_en.jpg"
     }
 };
 
