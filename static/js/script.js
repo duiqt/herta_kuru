@@ -665,7 +665,7 @@ const progress = [0, 1];
                     <option value="id">Bahasa Indonesia</option>
                     <option value="pt">Português-BR</option>
                     <option value="vi">Việt Nam</option>
-                    option value="tr">Türkçe</option>
+                    <option value="tr">Türkçe</option>
                 </select>
             </td>
         </tr>
