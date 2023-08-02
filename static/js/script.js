@@ -207,13 +207,7 @@ var LANGUAGES = {
         },
         cardImage: "img/card_pt.jpg"
           }, "tr": {
-        audioList: [
-            "audio/cn/gululu.mp3",
-            "audio/cn/gururu.mp3",
-            "audio/cn/转圈圈.mp3",
-            "audio/cn/转圈圈咯.mp3",
-            "audio/cn/要坏掉了.mp3"
-            ],
+        audioList: null,
         texts: {
             "page-title": "Herta Kuru'ya Hoşgeldiniz~",
             "doc-title": "Kuru Kuru~",
