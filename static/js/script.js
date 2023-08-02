@@ -231,8 +231,8 @@ var LANGUAGES = {
             "CREDITS:artist": "Sanatçı",
             "CREDITS:localization": "Yerelleştirmede Katkıda Bulunan",
             "CREDITS:localization:Korean": "Korece Yerelleştirmede Katkıda Bulunanlar",
-            "CREDITS:localization:Japanese": Japonca Yerelleştirmede Katkıda Bulunan",
-            "CREDITS:localization:Indonesian": Endonezce Yerelleştirmede Katkıda Bulunan",
+            "CREDITS:localization:Japanese": "Japonca Yerelleştirmede Katkıda Bulunan",
+            "CREDITS:localization:Indonesian": "Endonezce Yerelleştirmede Katkıda Bulunan",
             "CREDITS:inspiration": "İlham Alınan"
         },
         cardImage: "img/card_en.jpg"
