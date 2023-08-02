@@ -221,7 +221,7 @@ var LANGUAGES = {
             "repository-desc": "GitHub Repo",
             "options-txt-vo-lang": "Ses dili",
             "options-txt-random_speed": "Rastgele hız",
-            "options-txt-speed": "Hız",
+            "options-txt-speed": "Hızı",
             "options-txt-lang": "Sayfa Dili",
             "dialogs-close": "Kapat",
             "dialogs-credits-title": "Katkıda bulunanlar",
