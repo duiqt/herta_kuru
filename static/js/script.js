@@ -206,6 +206,36 @@ var LANGUAGES = {
             "dialogs-credits-title": "Créditos"
         },
         cardImage: "img/card_pt.jpg"
+          }, "tr": {
+        audioList: null,
+        texts: {
+            "page-title": "Herta Kuru'ya Hoşgeldiniz~",
+            "doc-title": "Kuru Kuru~",
+            "page-descriptions": "<del>Sinir bozucu</del> En sevimli, dahi Honkai: Star Rail karakteri Herta'nın web sitesi.",
+            "counter-descriptions": ["Kuru kuru ya bu kadar basıldı.", "Herta tarafından bu kadar kuru kurulandın"],
+            "counter-unit": "Kere",
+            "counter-button": ["Daha Fazla kuru~!", "Kuru kuru~!"],
+            "access-via-pages": "You're currently accessing via GitHub Pages. For users in China (Mainland) or some other regions, click <a href='https://herta.ft2.ltd/'>here to access the mirror on Netlify</a>. ",
+            "access-via-mirror": "Congratulations! You are using a mirror site, which should speed up access within China (Mainland) and some regions. Click here to <a href='https://duiqt.github.io/herta_kuru/'>visit the source site on GitHub Pages</a>.",
+            "show-credits-text": "Katkıda bulunanları göster",
+            "repository-desc": "GitHub Repo",
+            "options-txt-vo-lang": "Ses dili",
+            "options-txt-random_speed": "Rastgele hız",
+            "options-txt-speed": "Hızı",
+            "options-txt-lang": "Sayfa Dili",
+            "dialogs-close": "Kapat",
+            "dialogs-credits-title": "Katkıda bulunanlar",
+
+            "CREDITS:main-dev": "Ana Geliştirici",
+            "CREDITS:code-contributor": "Koda Katkıda Bulunan ",
+            "CREDITS:artist": "Sanatçı",
+            "CREDITS:localization": "Yerelleştirmede Katkıda Bulunan",
+            "CREDITS:localization:Korean": "Korece Yerelleştirmede Katkıda Bulunanlar",
+            "CREDITS:localization:Japanese": "Japonca Yerelleştirmede Katkıda Bulunan",
+            "CREDITS:localization:Indonesian": "Endonezce Yerelleştirmede Katkıda Bulunan",
+            "CREDITS:inspiration": "İlham Alınan"
+        },
+        cardImage: "img/card_en.jpg"
     }, "vi": {
         audioList: null,
         texts: {
@@ -629,6 +659,7 @@ const progress = [0, 1];
                     <option value="id">Bahasa Indonesia</option>
                     <option value="pt">Português-BR</option>
                     <option value="vi">Việt Nam</option>
+                    <option value="tr">Türkçe</option>
                 </select>
             </td>
         </tr>
