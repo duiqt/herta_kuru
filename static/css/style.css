@@ -6,17 +6,18 @@
     touch-action: manipulation;
     /* strange margin-right occurs when vw<500px */
     /* overflow-x: hidden; */
+    user-select: none;
 }
 
 body {
     background-color: #9d88d3;
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI Adjusted", "Segoe UI", "Liberation Sans", 'Roboto', sans-serif;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI Adjusted", "Segoe UI", "Liberation Sans", "Roboto", sans-serif;
     font-size: 1.5em;
     color: white;
     overflow-x: hidden;
 }
 
-.wrapper {
+#wrapper {
     position: relative;
 }
 
@@ -113,7 +114,7 @@ h2 {
     margin: 64px 0;
 }
 
-#counter-container>p {
+#counter-container > p {
     text-shadow: #9d88d3 0 0 10px, #9d88d3 0 0 10px, #9d88d3 0 0 10px, #9d88d3 0 0 10px, #9d88d3 0 0 10px;
 }
 
@@ -129,7 +130,7 @@ h2 {
     font-size: 2em;
 }
 
-#counter-button {
+#counter-button-container {
     background-color: #574f84;
     border: none;
     border-radius: 16px;
@@ -137,7 +138,7 @@ h2 {
     padding: 16px 32px;
     text-decoration: none;
     font-size: 1em;
-    font-family: 'Roboto', sans-serif;
+    font-family: "Roboto", sans-serif;
     font-weight: bold;
     margin-top: 16px;
     min-width: 120px;
@@ -149,15 +150,20 @@ h2 {
     transition: background-color 0.1s ease-in-out, scale 0.1s cubic-bezier(0.075, 0.82, 0.165, 1);
 }
 
-#counter-button:hover {
+#counter-button-container:hover {
     background-color: #2d2463;
 }
 
-#counter-button:active {
+#counter-button-container:active {
     scale: 0.95;
 }
 
-#counter-button span {
+#counter-button {
+    pointer-events: none;
+}
+
+#counter-button-container span {
+    pointer-events: none;
     position: absolute;
     border-radius: 50%;
     background-color: #ffffff50;
@@ -367,4 +373,25 @@ td#setting-item-table-td {
 td#setting-item-table-td > div.mdui-select {
     text-align: center;
     width: 100%;
+}
+
+.herta {
+    z-index: -1;
+    position: absolute;
+    bottom: -60px;
+    right: 0;
+    max-width: 100%;
+    transform: translate3d(100%, 0, 0);
+}
+
+@keyframes herta {
+    from {
+        right: 0;
+        transform: translate3d(100%, 0, 0);
+        opacity: 1;
+    }
+    to {
+        right: 100%;
+        transform: translate3d(0, 0, 0);
+    }
 }

@@ -1,12 +1,12 @@
-var LANGUAGES = {
-    "_": { defaultLanguage: "en", defaultVOLanguage: "ja", defaultSpeed: 20, defaultRandmo: "off" },
+const LANGUAGES = {
+    "_": {
+        defaultLanguage: "en",
+        defaultVOLanguage: "ja",
+        defaultSpeed: 1,
+        // on: random off: cucustom audio: audio duration
+        defaultRandmo: "auto"
+    },
     "en": {
-        audioList: [
-            // TODO audio random weight
-            "audio/en/en_1.mp3",
-            "audio/en/en_2.mp3",
-            "audio/en/en_3.mp3"
-        ],
         texts: {
             "page-title": "Welcome to herta kuru~",
             "doc-title": "Kuru Kuru~",
@@ -19,7 +19,6 @@ var LANGUAGES = {
             "show-credits-text": "Show Credits",
             "repository-desc": "GitHub Repo",
             "options-txt-vo-lang": "Voice-Over Language",
-            "options-txt-random_speed": "Random speed",
             "options-txt-speed": "Speed",
             "options-txt-lang": "Page Language",
             "dialogs-close": "Close",
@@ -35,14 +34,8 @@ var LANGUAGES = {
             "CREDITS:inspiration": "Inspiration"
         },
         cardImage: "img/card_en.jpg"
-    }, "cn": {
-        audioList: [
-            "audio/cn/gululu.mp3",
-            "audio/cn/gururu.mp3",
-            "audio/cn/转圈圈.mp3",
-            "audio/cn/转圈圈咯.mp3",
-            "audio/cn/要坏掉了.mp3"
-        ],
+    },
+    "cn": {
         texts: {
             "page-title": "黑塔转圈圈",
             "doc-title": "咕噜噜~",
@@ -55,7 +48,6 @@ var LANGUAGES = {
             "show-credits-text": "查看感谢页",
             "repository-desc": "GitHub 仓库",
             "options-txt-vo-lang": "语音语言",
-            "options-txt-random_speed": "随机速度",
             "options-txt-speed": "速度",
             "options-txt-lang": "界面语言",
             "dialogs-close": "关闭",
@@ -69,17 +61,10 @@ var LANGUAGES = {
             "CREDITS:localization:Japanese": "日本本地化贡献者",
             "CREDITS:localization:Indonesian": "印度尼西亚本地化贡献者",
             "CREDITS:inspiration": "灵感来源"
-
         },
         cardImage: "img/card_cn.jpg"
-    }, "zh-tw": {
-        audioList: [
-            "audio/cn/gululu.mp3",
-            "audio/cn/gururu.mp3",
-            "audio/cn/转圈圈.mp3",
-            "audio/cn/转圈圈咯.mp3",
-            "audio/cn/要坏掉了.mp3"
-        ],
+    },
+    "zh-tw": {
         texts: {
             "page-title": "* 黑塔轉圈圈 ✩‧₊˚",
             "doc-title": "咕嚕咕嚕～",
@@ -93,7 +78,6 @@ var LANGUAGES = {
             "repository-desc": "GitHub Repo",
             "show-options-text": "設定",
             "options-txt-vo-lang": "語音語言",
-            "options-txt-random_speed": "隨機速度",
             "options-txt-speed": "速度",
             "options-txt-lang": "介面語言",
             "dialogs-close": "關閉",
@@ -110,12 +94,8 @@ var LANGUAGES = {
             "CREDITS:inspiration": "靈感來源"
         },
         cardImage: "img/card_en.jpg"
-    }, "ja": {
-        audioList: [
-            "audio/ja/kuruto.mp3",
-            "audio/ja/kuru1.mp3",
-            "audio/ja/kuru2.mp3",
-        ],
+    },
+    "ja": {
         texts: {
             "page-title": "ヘルタクルへようこそ~",
             "doc-title": "クル クル~",
@@ -128,7 +108,6 @@ var LANGUAGES = {
             "show-credits-text": "Show Credits",
             "repository-desc": "GitHub Repo",
             "options-txt-vo-lang": "Voice-Over Language",
-            "options-txt-random_speed": "ランダム速度",
             "options-txt-speed": "速度",
             "options-txt-lang": "Page Language",
             "dialogs-close": "Close",
@@ -137,12 +116,6 @@ var LANGUAGES = {
         cardImage: "img/card_ja.jpg"
     },
     "kr": {
-        audioList: [
-            // TODO audio random weight
-            "audio/kr/kr_1.mp3",
-            "audio/kr/kr_2.mp3",
-            "audio/kr/kr_3.mp3"
-        ],
         texts: {
             "page-title": "빙글빙글 헤르타에 오신걸 환영합니다~",
             "doc-title": "빙글빙글~",
@@ -155,7 +128,6 @@ var LANGUAGES = {
             "show-credits-text": "Show Credits",
             "repository-desc": "GitHub Repo",
             "options-txt-vo-lang": "Voice-Over Language",
-            "options-txt-random_speed": "무작위 속도",
             "options-txt-speed": "속도",
             "options-txt-lang": "Page Language",
             "dialogs-close": "Close",
@@ -164,7 +136,6 @@ var LANGUAGES = {
         cardImage: "img/card_kr.jpg"
     },
     "id": {
-        audioList: null,
         texts: {
             "page-title": "Selamat datang di Herta kuru~",
             "doc-title": "Kuru Kuru~",
@@ -177,7 +148,6 @@ var LANGUAGES = {
             "show-credits-text": "Tampilkan Credit",
             "repository-desc": "GitHub Repo",
             "options-txt-vo-lang": "Voice-Over Language",
-            "options-txt-random_speed": "Kecepatan acak",
             "options-txt-speed": "kecepatan",
             "options-txt-lang": "Page Language",
             "dialogs-close": "Close",
@@ -186,7 +156,6 @@ var LANGUAGES = {
         cardImage: "img/card_id.jpg"
     },
     "pt": {
-        audioList: null,
         texts: {
             "page-title": "Bem-vindo ao kuru~ da herta",
             "doc-title": "Kuru Kuru~",
@@ -199,7 +168,6 @@ var LANGUAGES = {
             "show-credits-text": "Mostrar Créditos",
             "repository-desc": "GitHub Repo",
             "options-txt-vo-lang": "Idioma da voz",
-            "options-txt-random_speed": "Velocidade aleatória",
             "options-txt-speed": "Velocidade",
             "options-txt-lang": "Idioma da página",
             "dialogs-close": "Fechar",
@@ -251,14 +219,80 @@ var LANGUAGES = {
             "show-options-text": "Cài đặt",
             "repository-desc": "GitHub Repo",
             "options-txt-vo-lang": "Ngôn ngữ lồng tiếng",
-            "options-txt-random_speed": "Tốc độ ngẫu nhiên",
             "options-txt-speed": "Tốc độ",
             "options-txt-lang": "Ngôn ngữ",
             "dialogs-close": "Đóng",
-            "dialogs-credits-title": "Credits",
+            "dialogs-credits-title": "Credits"
         },
         cardImage: "img/card_en.jpg"
-    },
+    }
+};
+
+const AUDIOS = {
+    en: [
+        {
+            src: "audio/en/en_1.mp3",
+            weight: 1
+        },
+        {
+            src: "audio/en/en_2.mp3",
+            weight: 1
+        },
+        {
+            src: "audio/en/en_3.mp3",
+            weight: 1
+        }
+    ],
+    cn: [
+        {
+            src: "audio/cn/gululu.mp3",
+            weight: 5
+        },
+        {
+            src: "audio/cn/gururu.mp3",
+            weight: 5
+        },
+        {
+            src: "audio/cn/转圈圈.mp3",
+            weight: 5
+        },
+        {
+            src: "audio/cn/转圈圈咯.mp3",
+            weight: 5
+        },
+        {
+            src: "audio/cn/要坏掉了.mp3",
+            weight: 1
+        }
+    ],
+    ja: [
+        {
+            src: "audio/ja/kuruto.mp3",
+            weight: 1
+        },
+        {
+            src: "audio/ja/kuru1.mp3",
+            weight: 1
+        },
+        {
+            src: "audio/ja/kuru2.mp3",
+            weight: 1
+        }
+    ],
+    kr: [
+        {
+            src: "audio/kr/kr_1.mp3",
+            weight: 1
+        },
+        {
+            src: "audio/kr/kr_2.mp3",
+            weight: 1
+        },
+        {
+            src: "audio/kr/kr_3.mp3",
+            weight: 1
+        }
+    ]
 };
 
 const progress = [0, 1];
@@ -267,34 +301,66 @@ const progress = [0, 1];
     const $ = mdui.$;
 
     // initialize cachedObjects variable to store cached object URLs
-    var cachedObjects = {};
+    const cachedObjects = {};
 
     // function to try caching an object URL and return it if present in cache or else fetch it and cache it
     function cacheStaticObj(origUrl) {
         if (cachedObjects[origUrl]) {
             return cachedObjects[origUrl];
         } else {
-            setTimeout(() => {
-                fetch("static/" + origUrl)
-                    .then((response) => response.blob())
-                    .then((blob) => {
-                        const blobUrl = URL.createObjectURL(blob);
-                        cachedObjects[origUrl] = blobUrl;
-                    })
-                    .catch((error) => {
-                        console.error(`Error caching object from ${origUrl}: ${error}`);
-                    });
-            }, 1);
             return origUrl;
         }
     }
 
-    let firstSquish = true;
+    // Preload
+    function preload() {
+        const promises = [];
 
-    // This code tries to retrieve the saved language 'lang' from localStorage. If it is not found or if its value is null, then it defaults to "en". 
+        // audio
+        for (const lang in AUDIOS) {
+            const audioList = AUDIOS[lang];
+            for (let i = 0; i < audioList.length; i++) {
+                const item = audioList[i];
+                promises.push(getObjectURL("static/" + item.src).then((result) => (AUDIOS[lang][i].src = result)));
+            }
+        }
+
+        // image
+        const imageList = ["img/hertaa1.gif", "img/hertaa2.gif"];
+        imageList.forEach((url) => {
+            promises.push(getObjectURL(`static/${url}`).then((result) => (cachedObjects[url] = result)));
+        });
+
+        progress[1] = promises.length;
+        return Promise.all(promises);
+    }
+
+    function getObjectURL(url) {
+        return new Promise((resolve) => {
+            fetch(url)
+                .then((response) => response.blob())
+                .then((blob) => {
+                    const blobUrl = URL.createObjectURL(blob);
+                    resolve(blobUrl);
+                })
+                .catch((error) => {
+                    console.error(`Error caching object from ${origUrl}: ${error}`);
+                })
+                .finally(() => {
+                    upadteProgress();
+                });
+        });
+    }
+
+    function upadteProgress() {
+        progress[0] += 1;
+        document.querySelector("#counter-button").innerText = `${((progress[0] / progress[1]) * 100) | 0}%`;
+    }
+
+    // This code tries to retrieve the saved language 'lang' from localStorage. If it is not found or if its value is null, then it defaults to "en".
     var current_language = localStorage.getItem("lang") || LANGUAGES._.defaultLanguage;
     var current_vo_language = localStorage.getItem("volang") || LANGUAGES._.defaultVOLanguage;
-    var current_speed = localStorage.getItem("speed") || LANGUAGES._.defaultSpeed;
+    var current_speed = Math.min(localStorage.getItem("speed") || LANGUAGES._.defaultSpeed, 2);
     var current_random_type = localStorage.getItem("random") || LANGUAGES._.defaultRandmo;
 
     // function that takes a textId, optional language and whether to use fallback/ default language for translation. It returns the translated text in the given language or if it cannot find the translation, in the default fallback language.
@@ -309,7 +375,7 @@ const progress = [0, 1];
                 return value;
             }
         }
-        if (fallback) return getLocalText(textId, language = "en", fallback = false);
+        if (fallback) return getLocalText(textId, (language = "en"), (fallback = false));
         else return null;
     }
 
@@ -318,91 +384,35 @@ const progress = [0, 1];
         let curLang = LANGUAGES[current_language];
         let localTexts = curLang.texts;
         Object.entries(localTexts).forEach(([textId, value]) => {
-            if (!(value instanceof Array))
-                if (document.getElementById(textId) != undefined)
-                    document.getElementById(textId).innerHTML = value; // replaces the innerHTML of the element with the given textId with its translated version.
+            if (!(value instanceof Array)) if (document.getElementById(textId) != undefined) document.getElementById(textId).innerHTML = value; // replaces the innerHTML of the element with the given textId with its translated version.
         });
-        refreshDynamicTexts()
+        refreshDynamicTexts();
         document.getElementById("herta-card").src = "static/" + curLang.cardImage; // sets the image of element with id "herta-card" to the translated version in the selected language.
     }
 
-    multiLangMutation() // the function multiLangMutation is called initially when the page loads.
+    multiLangMutation(); // the function multiLangMutation is called initially when the page loads.
 
     // function that returns the list of audio files for the selected language
     function getLocalAudioList() {
-        return LANGUAGES[current_vo_language].audioList;
+        return AUDIOS[current_vo_language];
     }
 
     // get global counter element and initialize its respective counts
-    const localCounter = document.querySelector('#local-counter');
-    let localCount = localStorage.getItem('count-v2') || 0;
+    const localCounter = document.querySelector("#local-counter");
+    let localCount = localStorage.getItem("count-v2") || 0;
 
     // display counter
-    localCounter.textContent = localCount.toLocaleString('en-US');
+    localCounter.textContent = localCount.toLocaleString("en-US");
 
     // initialize timer variable and add event listener to the counter button element
-    const counterButton = document.querySelector('#counter-button');
-
-    // Preload
-
-    async function convertMp3FilesToBase64(dict) {
-        const promises = [];
-        for (const lang in dict) {
-            if (dict.hasOwnProperty(lang)) {
-                const audioList = dict[lang].audioList;
-                if (Array.isArray(audioList)) {
-                    for (let i = 0; i < audioList.length; i++) {
-                        const url = audioList[i];
-                        if (typeof url === "string" && url.endsWith(".mp3")) {
-                            promises.push(loadAndEncode("static/" + url).then(result => dict[lang].audioList[i] = result));
-                        }
-                    }
-                }
-            }
-        }
-        progress[1] = promises.length
-        await Promise.all(promises);
-        return dict;
-    }
-
-    function upadteProgress() {
-        progress[0] += 1
-        counterButton.innerText = `${((progress[0] / progress[1]) * 100) | 0}%`
-    }
-
-    function loadAndEncode(url) {
-        return new Promise((resolve, reject) => {
-            const xhr = new XMLHttpRequest();
-            xhr.open("GET", url, true);
-            xhr.responseType = "arraybuffer";
-            xhr.onload = function () {
-                upadteProgress()
-                if (xhr.status === 200) {
-                    const buffer = xhr.response;
-                    const blob = new Blob([buffer], { type: "audio/mpeg" });
-                    const reader = new FileReader();
-                    reader.readAsDataURL(blob);
-                    reader.onloadend = function () {
-                        const base64data = reader.result;
-                        resolve(base64data);
-                    }
-                } else {
-                    reject(xhr.statusText);
-                }
-            };
-            xhr.onerror = function () {
-                upadteProgress()
-                reject(xhr.statusText);
-            };
-            xhr.send();
-        });
-    }
+    const counterButton = document.querySelector("#counter-button-container");
+    const wrapper = document.getElementById("wrapper");
 
     function addBtnEvent() {
-        counterButton.addEventListener('click', (e) => {
+        counterButton.addEventListener("click", (e) => {
             localCount++;
-            localCounter.textContent = localCount.toLocaleString('en-US');
-            localStorage.setItem('count-v2', localCount);
+            localCounter.textContent = localCount.toLocaleString("en-US");
+            localStorage.setItem("count-v2", localCount);
             triggerRipple(e);
             playKuru();
             animateHerta();
@@ -411,18 +421,16 @@ const progress = [0, 1];
     }
 
     window.onload = function () {
-        // Calling method
-        convertMp3FilesToBase64(LANGUAGES)
-            .catch(error => {
+        preload()
+            .catch((error) => {
                 console.error(error);
             })
             .finally(() => {
                 refreshDynamicTexts();
                 addBtnEvent();
-                document.getElementById('loading').remove()
+                document.getElementById("loading").remove();
             });
-    }
-
+    };
 
     // try caching the hertaa1.gif and hertaa2.gif images by calling the tryCacheUrl function
     cacheStaticObj("img/hertaa1.gif");
@@ -445,70 +453,45 @@ const progress = [0, 1];
     }
 
     function getRandomAudioUrl() {
-        var localAudioList = getLocalAudioList();
-        if (current_vo_language == "ja") {
-            const randomIndex = Math.floor(Math.random() * 2) + 1;
-            return localAudioList[randomIndex];
-        }
-        const randomIndex = Math.floor(Math.random() * localAudioList.length);
-        return localAudioList[randomIndex];
+        const localAudioList = getLocalAudioList();
+        const weights = [];
+        localAudioList.forEach((item, index) => {
+            weights.push(item.weight + (weights[index - 1] ?? 0));
+        });
+        const random = Math.random() * weights.at(-1);
+        return localAudioList[weights.findIndex((weight) => weight > random)].src;
     }
 
     function playKuru() {
-        let audioUrl;
-        if (firstSquish) {
-            firstSquish = false;
-            audioUrl = getLocalAudioList()[0];
-        } else {
-            audioUrl = getRandomAudioUrl();
-        }
-        let audio = new Audio();//cacheStaticObj(audioUrl));
-        audio.src = audioUrl;
-        audio.play();
-        audio.addEventListener("ended", function () {
-            this.remove();
-        });
+        let audio = new Audio();
+        audio.src = getRandomAudioUrl();
+        audio.oncanplay = () => {
+            let time = audio.duration * 1000;
+            if (current_random_type === "on") {
+                time = ((Math.random() * 1.5 + 0.5) * 1000) | 0;
+            } else if (current_random_type === "off") {
+                time = (current_speed * 1000) | 0;
+            }
+            animateHerta(time);
+            audio.play();
+        };
+        audio.onended = () => {
+            audio = null;
+        };
     }
 
-    function animateHerta() {
-        let id = null;
+    function animateHerta(time) {
         const random = Math.floor(Math.random() * 2) + 1;
-        const elem = document.createElement("img");
-        let RunSpeed = Math.floor(current_speed);
-        elem.src = cacheStaticObj(`img/hertaa${random}.gif`);
-        elem.style.position = "absolute";
-        elem.style.right = "-500px";
-        elem.style.top = counterButton.getClientRects()[0].bottom + scrollY - 430 + "px"
-        elem.style.zIndex = "-10";
-        document.body.appendChild(elem);
+        let elem = document.createElement("img");
+        elem.src = cacheStaticObj(`static/img/hertaa${random}.gif`);
+        elem.className = "herta";
+        elem.style.animation = `herta ${time - 200}ms ease-in forwards`;
+        wrapper.appendChild(elem);
 
-        if (current_random_type == "on") {
-            if (window.innerWidth >= 1280) {
-                const randomSpeed = Math.floor(Math.random() * 30) + 20;
-                const ReversalSpeed = Math.floor(randomSpeed);
-                RunSpeed = Math.floor(randomSpeed);
-            } else {
-                const randomSpeed = Math.floor(Math.random() * 40) + 50;
-                const ReversalSpeed = 100 - Math.floor(randomSpeed);
-                RunSpeed = Math.floor(window.innerWidth / ReversalSpeed);
-            }
-        } else {
-            const ReversalSpeed = 100 - Math.floor(current_speed);
-            RunSpeed = Math.floor(window.innerWidth / ReversalSpeed);
-        }
-
-        let pos = -500;
-        const limit = window.innerWidth + 500;
-        clearInterval(id);
-        id = setInterval(() => {
-            if (pos >= limit) {
-                clearInterval(id);
-                elem.remove()
-            } else {
-                pos += RunSpeed;
-                elem.style.right = pos + 'px';
-            }
-        }, 12);
+        setTimeout(() => {
+            elem.remove();
+            elem = null;
+        }, time - 200);
     }
 
     // This function creates ripples on a button click and removes it after 300ms.
@@ -517,8 +500,7 @@ const progress = [0, 1];
 
         ripple.classList.add("ripple");
 
-        const counter_button = document.getElementById("counter-button");
-        counter_button.appendChild(ripple);
+        counterButton.appendChild(ripple);
 
         let x = e.clientX - e.target.offsetLeft;
         let y = e.clientY - e.target.offsetTop;
@@ -531,15 +513,13 @@ const progress = [0, 1];
         }, 300);
     }
 
-    // This function retrieves localized dynamic text based on a given language code, and randomly replaces an element with one of the translations. 
+    // This function retrieves localized dynamic text based on a given language code, and randomly replaces an element with one of the translations.
     function refreshDynamicTexts() {
         if (progress[0] !== progress[1]) return;
         let curLang = LANGUAGES[current_language];
         let localTexts = curLang.texts;
         Object.entries(localTexts).forEach(([textId, value]) => {
-            if (value instanceof Array)
-                if (document.getElementById(textId) != undefined)
-                    document.getElementById(textId).innerHTML = randomChoice(value);
+            if (value instanceof Array) if (document.getElementById(textId) != undefined) document.getElementById(textId).innerHTML = randomChoice(value);
         });
     }
 
@@ -560,49 +540,51 @@ const progress = [0, 1];
 
     // This func adds avatars for credits and with href for those having social link
     function addAvatar(socialLink, currentIcon) {
-        if (!currentIcon.includes('https://')) {
-            currentIcon = 'static/credits/' + currentIcon;
+        if (!currentIcon.includes("https://")) {
+            currentIcon = "static/credits/" + currentIcon;
         }
         let avatar = `<img src="${currentIcon}"/>`;
-        if (socialLink == '') return avatar;
+        if (socialLink == "") return avatar;
         return `<a href="${socialLink}" target="_blank">${avatar}</a>`;
     }
 
     // This function fetches data stored in a JSON file and displays it in a dialog box.
     function showCredits() {
-        fetch("static/credits/list.json").then(response => response.json()).then((data) => {
-            var contributors = data.contributors;
-            contributors = randomShuffle(contributors);
-            var creditsHtmlContent = `<p>in no specific order</p>`;
-            creditsHtmlContent += `<ul class="mdui-list">`;
-            for (let i = 0; i < contributors.length; i++) {
-                var current = contributors[i];
-                let renderedName = current.username;
-                if (current.name != undefined) {
-                    renderedName += " (" + current.name + ")";
-                }
-                var socialMediaIcons = bilibiliIcon('#999999');
-                var socialLink = "";
-                $.each(current.socialmedia, (key, value) => {
-                    switch (key) {
-                        case "bilibili":
-                            let uid = value.uid;
-                            let username = value.username;
-                            socialMediaIcons = `<a href="https://space.bilibili.com/${uid}" title="${username}" target="_blank">`;
-                            socialMediaIcons += bilibiliIcon('#00aeec');
-                            socialMediaIcons += `</a>`;
-                            break;
-
-                        case "twitter":
-                            socialLink = "https://twitter.com/" + value;
-                            break;
-
-                        case "github":
-                            socialLink = "https://github.com/" + value;
-                            break;
+        fetch("static/credits/list.json")
+            .then((response) => response.json())
+            .then((data) => {
+                var contributors = data.contributors;
+                contributors = randomShuffle(contributors);
+                var creditsHtmlContent = `<p>in no specific order</p>`;
+                creditsHtmlContent += `<ul class="mdui-list">`;
+                for (let i = 0; i < contributors.length; i++) {
+                    var current = contributors[i];
+                    let renderedName = current.username;
+                    if (current.name != undefined) {
+                        renderedName += " (" + current.name + ")";
                     }
-                });
-                creditsHtmlContent += `<div class="mdui-collapse">
+                    var socialMediaIcons = bilibiliIcon("#999999");
+                    var socialLink = "";
+                    $.each(current.socialmedia, (key, value) => {
+                        switch (key) {
+                            case "bilibili":
+                                let uid = value.uid;
+                                let username = value.username;
+                                socialMediaIcons = `<a href="https://space.bilibili.com/${uid}" title="${username}" target="_blank">`;
+                                socialMediaIcons += bilibiliIcon("#00aeec");
+                                socialMediaIcons += `</a>`;
+                                break;
+
+                            case "twitter":
+                                socialLink = "https://twitter.com/" + value;
+                                break;
+
+                            case "github":
+                                socialLink = "https://github.com/" + value;
+                                break;
+                        }
+                    });
+                    creditsHtmlContent += `<div class="mdui-collapse">
     <div class="mdui-collapse-item">
         <div class="mdui-collapse-item-header">
             <li class="mdui-list-item mdui-ripple">
@@ -620,27 +602,27 @@ const progress = [0, 1];
         </div>
     </div>
 </div>`;
-            }
-            creditsHtmlContent += `</ul>`;
+                }
+                creditsHtmlContent += `</ul>`;
 
-            mdui.dialog({
-                title: getLocalText("dialogs-credits-title"),
-                content: creditsHtmlContent,
-                buttons: [
-                    {
-                        text: getLocalText("dialogs-close")
-                    }
-                ],
-                history: false
+                mdui.dialog({
+                    title: getLocalText("dialogs-credits-title"),
+                    content: creditsHtmlContent,
+                    buttons: [
+                        {
+                            text: getLocalText("dialogs-close")
+                        }
+                    ],
+                    history: false
+                });
             });
-        });
     }
 
-    $("#show-credits-opt").on("click", () => showCredits())
+    $("#show-credits-opt").on("click", () => showCredits());
 
     function showOptions() {
         mdui.dialog({
-            title: 'Options',
+            title: "Options",
             content: `
 <div style="min-height: 350px;" class="mdui-typo">
     <table style="width:100%">
@@ -679,24 +661,23 @@ const progress = [0, 1];
         </tr>
         <tr>
             <td style="width: 33.33%">
-                <label id="options-txt-random_speed">Random speed</label>
-            </td>
-            <td style="width: 33.33%"></td>
-            <td id="setting-item-table-td" style="width: 33.33%">
-                <select id="random-speed-type" class="mdui-select" mdui-select='{"position": "bottom"}'>
-                    <option value="off">OFF</option>
-                    <option value="on">ON</option>
-                </select>
-            </td>
-        </tr>
-        <tr>
-            <td style="width: 33.33%">
                 <label id="options-txt-speed">Speed</label>
             </td>
             <td style="width: 33.33%"></td>
             <td id="setting-item-table-td" style="width: 33.33%">
+                <select id="random-speed-type" class="mdui-select" mdui-select='{"position": "bottom"}'>
+                    <option value="auto">Auto</option>
+                    <option value="on">Random</option>
+                    <option value="off">Custom</option>
+                </select>
+            </td>
+        </tr>
+        <tr id="speed-progress-option">
+            <td style="width: 33.33%"></td>
+            <td style="width: 33.33%"></td>
+            <td id="setting-item-table-td" style="width: 33.33%">
                 <label class="mdui-slider mdui-slider-discrete">
-                    <input type="range" step="1" min="0" max="95" id="speed-progress-bar"/>
+                    <input type="range" step="0.1" min="0.5" max="2" id="speed-progress-bar"/>
                 </label>
             </td>
         </tr>
@@ -714,10 +695,8 @@ const progress = [0, 1];
                 $("#random-speed-type").val(current_random_type);
                 $("#speed-progress-bar").val(current_speed);
 
-                if (current_random_type == "on") {
-                    $("#speed-progress-bar").prop("disabled", true);
-                } else {
-                    $("#speed-progress-bar").removeAttr("disabled");
+                if (current_random_type !== "off") {
+                    $("#speed-progress-option").hide();
                 }
 
                 $("#language-selector").on("change", (ev) => {
@@ -734,12 +713,10 @@ const progress = [0, 1];
                 $("#random-speed-type").on("change", (ev) => {
                     current_random_type = ev.target.value;
                     localStorage.setItem("random", ev.target.value);
-                    if (current_random_type == "on") {
-                        $("#speed-progress-bar").prop("disabled", true);
-                        mdui.mutation();
+                    if (current_random_type === "off") {
+                        $("#speed-progress-option").show();
                     } else {
-                        $("#speed-progress-bar").removeAttr("disabled");
-                        mdui.mutation();
+                        $("#speed-progress-option").hide();
                     }
                 });
 
@@ -754,5 +731,5 @@ const progress = [0, 1];
         });
     }
 
-    $("#show-options-opt").on("click", () => showOptions())
-})(); 
+    $("#show-options-opt").on("click", () => showOptions());
+})();
