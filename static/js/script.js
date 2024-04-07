@@ -136,15 +136,15 @@ var LANGUAGES = {
         },
         cardImage: "img/card_ja.jpg"
     },
-    "kr": {
+    "ko": {
         audioList: [
             // TODO audio random weight
-            "audio/kr/kr_1.mp3",
-            "audio/kr/kr_2.mp3",
-            "audio/kr/kr_3.mp3"
+            "audio/ko/ko_1.mp3",
+            "audio/ko/ko_2.mp3",
+            "audio/ko/ko_3.mp3"
         ],
         texts: {
-            "page-title": "빙글빙글 헤르타에 오신걸 환영합니다~",
+            "page-title": "빙글빙글 헤르타에 오신 것을 환영합니다~",
             "doc-title": "빙글빙글~",
             "page-descriptions": "이 웹사이트는 붕괴: 스타레일의 가장 <del>짜증나는</del>귀여운 천재 헤르타를 위해 만들어졌습니다.",
             "counter-descriptions": "전 세계에서",
@@ -152,16 +152,26 @@ var LANGUAGES = {
             "counter-button": "빙글빙글~!",
             "access-via-pages": "현재 GitHub Pages를 통해 액세스하고 있습니다. 중국 본토나 일부 지역에 있는 사용자의 경우 <a href='https://herta.ft2.ltd/'>여기를 클릭하여 Netlify의 미러 사이트에 접속하세요</a>.",
             "access-via-mirror": "축하합니다. 현재 미러 사이트를 통해 접속하고 있습니다. 이 사이트에선 중국 본토 및 일부 지역에서의 액세스 속도가 빨라집니다. <a href='https://duiqt.github.io/herta_kuru/'>여기를 클릭하여 GitHub Pages에 접속하세요</a>.",
-            "show-credits-text": "Show Credits",
+            "show-credits-text": "크레딧 보기",
+            "show-options-text": "옵션",
             "repository-desc": "GitHub Repo",
-            "options-txt-vo-lang": "Voice-Over Language",
+            "options-txt-vo-lang": "Voice-Over 언어",
             "options-txt-random_speed": "무작위 속도",
             "options-txt-speed": "속도",
-            "options-txt-lang": "Page Language",
-            "dialogs-close": "Close",
-            "dialogs-credits-title": "Credits"
+            "options-txt-lang": "페이지 언어",
+            "dialogs-close": "닫기",
+            "dialogs-credits-title": "크레딧",
+
+            "CREDITS:main-dev": "메인 개발자",
+            "CREDITS:code-contributor": "코드 기여자",
+            "CREDITS:artist": "아티스트",
+            "CREDITS:localization": "현지화 기여자",
+            "CREDITS:localization:Korean": "한국어 현지화 기여자",
+            "CREDITS:localization:Japanese": "일본어 현지화 기여자",
+            "CREDITS:localization:Indonesian": "인도네시아어 현지화 기여자",
+            "CREDITS:inspiration": "영감"
         },
-        cardImage: "img/card_kr.jpg"
+        cardImage: "img/card_ko.jpg"
     },
     "id": {
         audioList: null,
@@ -300,7 +310,7 @@ const progress = [0, 1];
 
     let firstSquish = true;
 
-    // This code tries to retrieve the saved language 'lang' from localStorage. If it is not found or if its value is null, then it defaults to "en". 
+    // This code tries to retrieve the saved language 'lang' from localStorage. If it is not found or if its value is null, then it defaults to "en".
     var current_language = localStorage.getItem("lang") || LANGUAGES._.defaultLanguage;
     var current_vo_language = localStorage.getItem("volang") || LANGUAGES._.defaultVOLanguage;
     var current_speed = localStorage.getItem("speed") || LANGUAGES._.defaultSpeed;
@@ -540,7 +550,7 @@ const progress = [0, 1];
         }, 300);
     }
 
-    // This function retrieves localized dynamic text based on a given language code, and randomly replaces an element with one of the translations. 
+    // This function retrieves localized dynamic text based on a given language code, and randomly replaces an element with one of the translations.
     function refreshDynamicTexts() {
         if (progress[0] !== progress[1]) return;
         let curLang = LANGUAGES[current_language];
@@ -664,7 +674,7 @@ const progress = [0, 1];
                     <option value="cn">简体中文</option>
                     <option value="zh-tw">繁體中文</option>
                     <option value="ja">日本語</option>
-                    <option value="kr">한국어</option>
+                    <option value="ko">한국어</option>
                     <option value="id">Bahasa Indonesia</option>
                     <option value="pt">Português-BR</option>
                     <option value="vi">Việt Nam</option>
@@ -682,7 +692,7 @@ const progress = [0, 1];
                     <option value="ja">日本語</option>
                     <option value="cn">中文</option>
                     <option value="en">English</option>
-                    <option value="kr">한국어</option>
+                    <option value="ko">한국어</option>
                 </select>
             </td>
         </tr>
@@ -764,4 +774,4 @@ const progress = [0, 1];
     }
 
     $("#show-options-opt").on("click", () => showOptions())
-})(); 
+})();
