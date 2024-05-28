@@ -68,7 +68,7 @@ var LANGUAGES = {
             "CREDITS:localization:Korean": "韩国本地化贡献者",
             "CREDITS:localization:Japanese": "日本本地化贡献者",
             "CREDITS:localization:Indonesian": "印度尼西亚本地化贡献者",
-            "CREDITS:inspiration": "灵感来源"
+            "CREDITS:inspiration": "灵感来源" 
 
         },
         cardImage: "img/card_cn.jpg"
@@ -234,6 +234,36 @@ var LANGUAGES = {
             "CREDITS:localization:Japanese": "Japonca Yerelleştirmede Katkıda Bulunan",
             "CREDITS:localization:Indonesian": "Endonezce Yerelleştirmede Katkıda Bulunan",
             "CREDITS:inspiration": "İlham Alınan"
+        },
+        cardImage: "img/card_en.jpg"
+    }, "uy": {
+        audioList: null,
+        texts: {
+            "page-title": "ھەرتا كۇرۇغا~ خۇش كەپسىز",
+            "doc-title": "~ ھەرتا كۇرۇ",
+            "page-descriptions": "<del>ئاچچىقلىغۇچى</del>ئەڭ ئوماق ، تالانت ئىگىسى خونكاينىڭ تور بېكىتى: چولپان تۆمۈر يول پېرسوناژى ھېرتا",
+            "counter-descriptions": ["كۇرۇ بېسىلىپ قالدى", "ھەرتا تەرىپىدىن شۇنچە قۇرۇق قۇرۇتۇلدى"],
+            "counter-unit": "Kere",
+            "counter-button": ["!~تېخىمۇ كۇرۇ كۇرۇ", "!~كۇرۇ كۇرۇ"],
+            "access-via-pages": "You're currently accessing via GitHub Pages. For users in China (Mainland) or some other regions, click <a href='https://herta.ft2.ltd/'>here to access the mirror on Netlify</a>. ",
+            "access-via-mirror": "Congratulations! You are using a mirror site, which should speed up access within China (Mainland) and some regions. Click here to <a href='https://duiqt.github.io/herta_kuru/'>visit the source site on GitHub Pages</a>.",
+            "show-credits-text": "تۆھپىكارلارنى كۆرسەت",
+            "repository-desc": "گىتخۇب ئامبارى",
+            "options-txt-vo-lang": "ئاۋاز تىلى",
+            "options-txt-random_speed": "تاسادىپىي سۈرئەت",
+            "options-txt-speed": "سۈرئىتى",
+            "options-txt-lang": "بەت تىلى",
+            "dialogs-close": "تاقاش",
+            "dialogs-credits-title": "تۆھپىكارلار",
+
+            "CREDITS:main-dev": "ئاساسىي تۈزگۈچى",
+            "CREDITS:code-contributor": "كودغاتۆھپە قوشقانلار",
+            "CREDITS:artist": "سەنئەتكار",
+            "CREDITS:localization": " يەرلىكلەشتۈرۈشكە تۆھپە قوشقانلار",
+            "CREDITS:localization:Korean": "كورېيە تىلىنىڭ يەرلىكلەشتۈرۈلۈشىگە تۆھپە قوشقانلار",
+            "CREDITS:localization:Japanese": "ياپون تىلىنىڭ يەرلىكلەشتۈرۈلۈشىگە تۆھپە قوشقۇچى ",
+            "CREDITS:localization:Indonesian": "ھىندونېزىيە يەرلىكلەشتۈرۈشكە تۆھپە قوشقۇچى",
+            "CREDITS:inspiration": "ئىلھام ئېلىنغان"
         },
         cardImage: "img/card_en.jpg"
     }, "vi": {
@@ -651,7 +681,7 @@ const progress = [0, 1];
         mdui.dialog({
             title: 'Options',
             content: `
-<div style="min-height: 350px;" class="mdui-typo">
+<div style="min-height: 400px;" class="mdui-typo">
     <table style="width:100%">
         <tr>
             <td style="width: 33.33%">
@@ -669,6 +699,8 @@ const progress = [0, 1];
                     <option value="pt">Português-BR</option>
                     <option value="vi">Việt Nam</option>
                     <option value="tr">Türkçe</option>
+                    <option value="uy">Uyghur</option>
+
                 </select>
             </td>
         </tr>
