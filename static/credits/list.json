@@ -31,19 +31,6 @@
       "icon": "images/5f6a01f9a9a75d6db4cda0a6af0f64668035c408.jpg"
     },
     {
-      "username": "MuGeminorum",
-      "name": "MuGeminorum Studio",
-      "thing": "code-contributor",
-      "socialmedia": {
-        "github": "MuGeminorum",
-        "bilibili": {
-          "uid": 30620472,
-          "username": "\u4ea6\u771f\u4ea6\u5e7bStudio"
-        }
-      },
-      "icon": "images/46c7507364fa08477978f09251e953da5283f313.jpg"
-    },
-    {
       "username": "PencilCore",
       "thing": "code-contributor",
       "socialmedia": {
